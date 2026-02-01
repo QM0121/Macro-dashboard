@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>總經 × 牛熊市判斷指標｜實戰監控手冊</title>
+  <meta name="description" content="利率、縮表、流動性、金融條件：一眼判讀。附官方資料連結與PDF線上預覽。" />
+  <meta property="og:title" content="總經 × 牛熊市判斷指標｜實戰監控手冊" />
+  <meta property="og:description" content="可分享網址、可線上預覽PDF。利率｜縮表｜流動性｜金融條件" />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="badge">Macro Dashboard</div>
+      <h1>總經 × 牛熊市判斷指標<br/><span>實戰監控手冊</span></h1>
+      <p class="sub">
+        利率｜縮表（QT）｜流動性｜金融條件（NFCI / 信用利差 / VIX）<br/>
+        直接分享網址給朋友，打開就能看。
+      </p>
+
+      <div class="actions">
+        <a class="btn primary" href="#viewer">線上預覽 PDF</a>
+        <a class="btn" href="handbook.pdf" download>下載 PDF</a>
+        <button class="btn ghost" id="copyLinkBtn">複製分享網址</button>
+      </div>
+
+      <div class="toc">
+        <a href="#rate">① 利率（方向盤）</a>
+        <a href="#qt">② 縮表 QT（血液循環）</a>
+        <a href="#risk">③ 牛熊市（心肺功能）</a>
+        <a href="#sources">資料來源</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="grid">
+      <article class="card" id="rate">
+        <h2>① 利率（方向盤）</h2>
+        <ul>
+          <li><b>聯邦基金利率</b>：↑ 緊縮｜↓ 名目寬鬆</li>
+          <li><b>殖利率曲線</b>：2Y &gt; 10Y 衰退警訊｜轉正 復甦可能</li>
+        </ul>
+      </article>
+
+      <article class="card" id="qt">
+        <h2>② 縮表 QT（血液循環）</h2>
+        <ul>
+          <li><b>Fed 總資產</b>：↓ QT｜→ 停止｜↑ QE</li>
+          <li><b>Runoff</b>：&gt;600 億 強 QT｜&lt;200 億 幾乎無</li>
+          <li><b>準備金</b>：↓ 缺血｜↑ 回流</li>
+          <li><b>RRP</b>：RRP↓ + 準備金↓ → 真 QT</li>
+        </ul>
+      </article>
+
+      <article class="card" id="risk">
+        <h2>③ 牛熊市（心肺功能）</h2>
+        <ul>
+          <li><b>NFCI</b>：&lt;0 寬鬆｜&gt;0 熊市風險</li>
+          <li><b>高收益債利差</b>：↑ 風險升高｜↓ 安心</li>
+          <li><b>VIX</b>：&lt;15 安逸｜&gt;30 恐慌</li>
+        </ul>
+      </article>
+
+      <article class="card" id="sources">
+        <h2>資料來源（官方/常用）</h2>
+        <p class="muted">你也可以在 PDF 內放完整連結；這裡先放常用入口。</p>
+        <ul class="links">
+          <li><a target="_blank" rel="noopener" href="https://fred.stlouisfed.org/">FRED（Fed/市場數據）</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.federalreserve.gov/releases/h41/">Fed H.4.1（資產負債表）</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.chicagofed.org/publications/nfci/index">Chicago Fed NFCI</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.twse.com.tw/zh/page/trading/fund/T86.html">台股外資買賣超（TWSE）</a></li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="viewer" id="viewer">
+      <div class="viewer-head">
+        <h2>PDF 線上預覽</h2>
+        <div class="viewer-actions">
+          <a class="btn small" href="handbook.pdf" target="_blank" rel="noopener">新分頁開啟</a>
+          <a class="btn small" href="handbook.pdf" download>下載</a>
+        </div>
+      </div>
+
+      <object data="handbook.pdf" type="application/pdf" class="pdf">
+        <p class="muted">
+          你的瀏覽器不支援內嵌 PDF。
+          <a href="handbook.pdf" target="_blank" rel="noopener">點我開啟 PDF</a>
+        </p>
+      </object>
+    </section>
+
+    <footer class="footer">
+      <p class="muted">© <span id="year"></span> Macro Dashboard｜可自由分享連結（建議標注來源）。</p>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("copyLinkBtn").addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        alert("已複製分享網址！");
+      } catch (e) {
+        prompt("你的瀏覽器不允許自動複製，請手動複製：", window.location.href);
+      }
+    });
+  </script>
+</body>
+</html>
