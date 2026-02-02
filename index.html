@@ -6,14 +6,9 @@
 
   <title>總經 × 牛熊市判斷指標｜基準利率・殖利率曲線・QT・流動性・金融條件</title>
 
-  <meta name="description" content="
-  總經 × 牛熊市判斷指標。
-  透過基準利率、殖利率曲線、量化緊縮（QT）、流動性與金融條件，
-  協助判斷股市與總體經濟多空方向。
-  " />
-
+  <meta name="description" content="總經 × 牛熊市判斷指標：以基準利率、殖利率曲線、量化緊縮（QT）、流動性與金融條件（NFCI／信用利差／VIX）建立一眼判讀的監控面板，並提供 PDF 手冊與官方資料來源。" />
   <meta property="og:title" content="總經 × 牛熊市判斷指標" />
-  <meta property="og:description" content="基準利率｜殖利率曲線｜量化緊縮（QT）｜流動性｜金融條件" />
+  <meta property="og:description" content="基準利率｜殖利率曲線｜量化緊縮（QT）｜流動性｜金融條件（NFCI / 信用利差 / VIX）" />
   <meta property="og:type" content="website" />
 
   <link rel="stylesheet" href="styles.css" />
@@ -25,25 +20,48 @@
   <div class="container">
 
     <div class="header-top">
-      <span class="badge">Macro Dashboard</span>
-      <span class="status">每週更新</span>
+      <div class="badge">Macro Dashboard</div>
+
+      <div class="status">
+        <span class="status-dot"></span>
+        <span>每週更新</span>
+      </div>
     </div>
 
     <h1>總經 × 牛熊市判斷指標</h1>
 
     <p class="subtitle">
-      基準利率｜殖利率曲線｜量化緊縮（QT）｜流動性｜金融條件
+      基準利率｜殖利率曲線｜量化緊縮（QT）｜流動性｜金融條件（NFCI / 信用利差 / VIX）
     </p>
 
     <div class="header-meta">
-      <span>Version 1.3</span>
-      <span>Last update：2026-02-02</span>
+      <div class="meta-item">
+        <span class="meta-label">Version</span>
+        <span class="meta-value">1.4</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Last update</span>
+        <span class="meta-value">2026-02-02</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Notes</span>
+        <span class="meta-value">數據需手動填寫，建議每週同步更新</span>
+      </div>
     </div>
 
     <div class="header-actions">
-      <a class="btn ghost" href="handbook.pdf" download>下載 PDF</a>
+      <a class="btn ghost" href="handbook.pdf" download>下載 PDF 手冊</a>
       <button class="btn ghost" id="copyLinkBtn">複製分享網址</button>
       <a class="btn primary" href="#viewer">前往 PDF 預覽</a>
+    </div>
+
+    <div class="tip">
+      <div class="tip-title">使用方式</div>
+      <div class="tip-body">
+        <div class="tip-line">① 先看「方向」：利率、曲線、流動性是否在收緊</div>
+        <div class="tip-line">② 再看「壓力」：NFCI / 信用利差 / VIX 是否同步惡化</div>
+        <div class="tip-line">③ 最後決定風險曝險：偏多 / 中性 / 偏空</div>
+      </div>
     </div>
 
   </div>
@@ -51,124 +69,302 @@
 
 <main class="container">
 
+  <!-- ===== Summary ===== -->
+  <section class="summary">
+    <div class="summary-card">
+      <div class="summary-k">本週觀察重點</div>
+      <div class="summary-v">
+        <span class="pill pill-blue">看利率趨勢</span>
+        <span class="pill pill-purple">看曲線倒掛</span>
+        <span class="pill pill-teal">看資產負債表</span>
+        <span class="pill pill-amber">看信用利差</span>
+      </div>
+    </div>
+
+    <div class="summary-card">
+      <div class="summary-k">你可以用來回答</div>
+      <div class="summary-v lines">
+        <div class="line">• 現在偏多還偏空？還是只是「假多頭」？</div>
+        <div class="line">• 若 QT 未停但股市創高，是否只是流動性轉移？</div>
+        <div class="line">• 信用市場有沒有先出現裂縫（利差先擴）？</div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== 指標卡片 ===== -->
   <section class="grid">
 
-    <article class="card">
-      <h2>① 基準利率（Policy Rate）</h2>
-      <p class="desc">聯準會貨幣政策的核心工具</p>
+    <!-- 基準利率 -->
+    <article class="card" id="rate">
+      <div class="card-head">
+        <h2>① 基準利率（Policy Rate）</h2>
+        <span class="tag tag-blue">Rates</span>
+      </div>
+
+      <p class="desc">
+        利率是資金成本的總開關。利率上行通常壓抑估值；利率下行通常支撐風險資產，但需搭配通膨與金融條件判斷。
+      </p>
 
       <div class="metric">
         <div class="metric-title">聯邦基金利率（%）</div>
         <div class="metric-values">
-          <span>前值：3.88</span>
-          <span>目前：3.72</span>
+          <span class="chip">前值 <b>3.88</b></span>
+          <span class="chip">目前 <b>3.72</b></span>
+        </div>
+        <div class="metric-hints">
+          <div class="hint good">• 降息 + 金融條件仍寬鬆：偏多環境</div>
+          <div class="hint warn">• 降息但利差擴大：可能是衰退型降息</div>
+          <div class="hint bad">• 升息/維持高利率 + 流動性收縮：估值壓力</div>
         </div>
       </div>
-    </article>
 
-    <article class="card">
-      <h2>② 殖利率曲線（Yield Curve）</h2>
-      <p class="desc">經濟衰退與復甦的重要領先指標</p>
+      <div class="divider"></div>
 
       <div class="metric">
-        <div class="metric-title">美債 10Y − 2Y（%）</div>
-        <div class="metric-values">
-          <span>前值：0.70</span>
-          <span>目前：0.71</span>
+        <div class="metric-title">觀察方式</div>
+        <div class="metric-text">
+          <div class="line">• 以 FOMC 決策與市場預期（期貨）交叉確認</div>
+          <div class="line">• 若股市強、但利率不降：通常是「獲利推升」而非「估值推升」</div>
         </div>
-        <div class="note">負值代表殖利率倒掛</div>
       </div>
     </article>
 
-    <article class="card">
-      <h2>③ 量化緊縮（QT）</h2>
-      <p class="desc">聯準會資產負債表與流動性變化</p>
+    <!-- 殖利率曲線 -->
+    <article class="card" id="yield">
+      <div class="card-head">
+        <h2>② 殖利率曲線（Yield Curve）</h2>
+        <span class="tag tag-purple">Curve</span>
+      </div>
+
+      <p class="desc">
+        曲線倒掛常被視為衰退警訊。倒掛解除不一定立刻轉多，需觀察解除方式（短端降 vs 長端飆）與信用市場是否承壓。
+      </p>
+
+      <div class="metric">
+        <div class="metric-title">2Y − 10Y（%）</div>
+        <div class="metric-values">
+          <span class="chip">前值 <b>0.70</b></span>
+          <span class="chip">目前 <b>0.71</b></span>
+        </div>
+        <div class="metric-hints">
+          <div class="hint good">• 曲線轉正 + 利差不擴：復甦機率提升</div>
+          <div class="hint warn">• 倒掛縮小但信用惡化：衰退仍在路上</div>
+          <div class="hint bad">• 長端飆升造成轉正：風險資產可能承壓</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="metric">
+        <div class="metric-title">備註</div>
+        <div class="metric-text">
+          <div class="line">• 這裡建議固定用「2Y − 10Y」或「3M − 10Y」長期追蹤</div>
+          <div class="line">• 若你想看倒掛：請把數值換成「負值」呈現更直覺</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- QT / 流動性 -->
+    <article class="card" id="qt">
+      <div class="card-head">
+        <h2>③ 量化緊縮（QT）與流動性</h2>
+        <span class="tag tag-teal">Liquidity</span>
+      </div>
+
+      <p class="desc">
+        QT 不是只有「有沒有縮」，而是「縮表是否造成金融壓力」。建議搭配準備金與 RRP 觀察是否抽到市場的血。
+      </p>
 
       <div class="metric">
         <div class="metric-title">Fed 總資產（兆美元）</div>
         <div class="metric-values">
-          <span>前值：6.584</span>
-          <span>目前：6.587</span>
+          <span class="chip">前值 <b>6.584</b></span>
+          <span class="chip">目前 <b>6.587</b></span>
+        </div>
+        <div class="metric-hints">
+          <div class="hint good">• 總資產持平/上升：流動性壓力減輕</div>
+          <div class="hint warn">• 緩慢下降：中性偏緊</div>
+          <div class="hint bad">• 加速下降：估值壓力上升</div>
         </div>
       </div>
+
+      <div class="divider"></div>
 
       <div class="metric">
         <div class="metric-title">Fed 資產單週變動（億）</div>
         <div class="metric-values">
-          <span>前值：9.58</span>
-          <span>目前：76.17</span>
+          <span class="chip">前值 <b>9.58</b></span>
+          <span class="chip">目前 <b>76.17</b></span>
+        </div>
+        <div class="metric-text">
+          <div class="line">• 這是「週變動」不是「月化 Runoff」</div>
+          <div class="line">• 若要月化：請用 4 週累計或用月資料</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="metric">
+        <div class="metric-title">銀行準備金（兆美元）</div>
+        <div class="metric-values">
+          <span class="chip">前值 <b>2.954</b></span>
+          <span class="chip">目前 <b>2.901</b></span>
+        </div>
+        <div class="metric-hints">
+          <div class="hint good">• 準備金穩：市場資金不緊</div>
+          <div class="hint warn">• 緩降：留意金融條件是否跟著緊</div>
+          <div class="hint bad">• 快降：可能觸發流動性事件</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="metric">
+        <div class="metric-title">逆回購 RRP（兆美元）</div>
+        <div class="metric-values">
+          <span class="chip">前值 <b>2.852</b></span>
+          <span class="chip">目前 <b>9.629</b></span>
+        </div>
+        <div class="metric-text">
+          <div class="line">• RRP 大降通常是「水回到市場」</div>
+          <div class="line">• RRP ↓ + 準備金 ↓，才更像「真 QT」</div>
         </div>
       </div>
     </article>
 
-    <article class="card">
-      <h2>④ 金融條件 / 牛熊市</h2>
-      <p class="desc">市場風險偏好與信用狀況</p>
+    <!-- 金融條件 / 風險 -->
+    <article class="card" id="risk">
+      <div class="card-head">
+        <h2>④ 金融條件（Risk / Stress）</h2>
+        <span class="tag tag-amber">Risk</span>
+      </div>
+
+      <p class="desc">
+        風險指標用來辨識「牛市是真的強」還是「只是資金推估值」。利差常比股市更早反應裂縫，VIX 反應情緒與波動。
+      </p>
 
       <div class="metric">
         <div class="metric-title">NFCI</div>
         <div class="metric-values">
-          <span>前值：-0.59</span>
-          <span>目前：-0.60</span>
+          <span class="chip">前值 <b>-0.59</b></span>
+          <span class="chip">目前 <b>-0.60</b></span>
+        </div>
+        <div class="metric-hints">
+          <div class="hint good">• NFCI &lt; 0：金融條件偏寬鬆</div>
+          <div class="hint warn">• 接近 0：市場開始敏感</div>
+          <div class="hint bad">• &gt; 0：熊市風險上升</div>
         </div>
       </div>
+
+      <div class="divider"></div>
 
       <div class="metric">
         <div class="metric-title">高收益債利差（%）</div>
         <div class="metric-values">
-          <span>前值：2.72</span>
-          <span>目前：2.77</span>
+          <span class="chip">前值 <b>2.72</b></span>
+          <span class="chip">目前 <b>2.77</b></span>
+        </div>
+        <div class="metric-hints">
+          <div class="hint good">• 利差收斂：資金偏好風險</div>
+          <div class="hint warn">• 溫和擴大：可能只是雜訊</div>
+          <div class="hint bad">• 快速擴大：信用裂縫開始</div>
         </div>
       </div>
+
+      <div class="divider"></div>
 
       <div class="metric">
         <div class="metric-title">VIX</div>
         <div class="metric-values">
-          <span>前值：16.35</span>
-          <span>目前：16.88</span>
+          <span class="chip">前值 <b>16.35</b></span>
+          <span class="chip">目前 <b>16.88</b></span>
+        </div>
+        <div class="metric-hints">
+          <div class="hint good">• &lt; 15：安逸區</div>
+          <div class="hint warn">• 15–30：常態波動</div>
+          <div class="hint bad">• &gt; 30：恐慌與去槓桿風險</div>
         </div>
       </div>
     </article>
 
   </section>
 
-  <!-- ===== PDF ===== -->
+  <!-- ===== PDF Viewer ===== -->
   <section class="viewer" id="viewer">
     <div class="viewer-head">
-      <h2>PDF 線上預覽</h2>
+      <div>
+        <h2>PDF 線上預覽</h2>
+        <p class="viewer-sub">
+          你可以直接在網頁內閱讀手冊，也可以開新分頁或下載。若無法內嵌顯示，請使用「新分頁」。
+        </p>
+      </div>
+
       <div class="viewer-actions">
-        <a class="btn small" href="handbook.pdf" target="_blank">新分頁</a>
+        <a class="btn small" href="handbook.pdf" target="_blank" rel="noopener">新分頁</a>
         <a class="btn small" href="handbook.pdf" download>下載</a>
       </div>
     </div>
 
-    <object class="pdf" data="handbook.pdf" type="application/pdf">
-      <p>你的瀏覽器不支援內嵌 PDF，請 <a href="handbook.pdf">點此開啟</a></p>
-    </object>
+    <div class="viewer-frame">
+      <object class="pdf" data="handbook.pdf" type="application/pdf">
+        <p class="fallback">
+          你的瀏覽器不支援內嵌 PDF，請 <a href="handbook.pdf" target="_blank" rel="noopener">點此開啟</a>。
+        </p>
+      </object>
+    </div>
+  </section>
+
+  <!-- ===== 資料來源 ===== -->
+  <section class="sources">
+    <h2>官方資料來源（建議收藏）</h2>
+    <div class="sources-grid">
+      <a class="source" href="https://www.federalreserve.gov/releases/h41/" target="_blank" rel="noopener">
+        <div class="source-title">Fed H.4.1</div>
+        <div class="source-desc">資產負債表（總資產/準備金/流動性）</div>
+      </a>
+
+      <a class="source" href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">
+        <div class="source-title">FRED</div>
+        <div class="source-desc">利率、準備金、信用利差等資料庫</div>
+      </a>
+
+      <a class="source" href="https://www.chicagofed.org/publications/nfci/index" target="_blank" rel="noopener">
+        <div class="source-title">Chicago Fed NFCI</div>
+        <div class="source-desc">金融條件指數（NFCI）</div>
+      </a>
+    </div>
   </section>
 
   <!-- ===== SEO 說明（搜尋引擎用）===== -->
   <section class="seo-text">
-    <h2>總經 × 牛熊市判斷指標說明</h2>
+    <h2>總經 × 牛熊市判斷指標</h2>
     <p>
-      本網站為總體經濟與牛熊市判斷工具，
-      透過基準利率、殖利率曲線、量化緊縮（QT）、
-      流動性與金融條件指標，
-      協助投資人理解經濟循環與市場多空結構。
+      本網站聚焦「總經 × 牛熊市判斷指標」。
+      內容包含基準利率、殖利率曲線、量化緊縮（QT）、流動性與金融條件（NFCI、信用利差、VIX），
+      用於判斷股市與總體經濟多空方向，並提供 PDF 手冊與官方資料連結。
     </p>
   </section>
 
 </main>
 
 <footer class="footer">
-  <p>© <span id="year"></span> Macro Dashboard</p>
+  <div class="container footer-inner">
+    <div class="foot-left">© <span id="year"></span> Macro Dashboard</div>
+    <div class="foot-right">可自由分享連結（建議標注來源）</div>
+  </div>
 </footer>
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
-  document.getElementById("copyLinkBtn").onclick = () =>
-    navigator.clipboard.writeText(location.href).then(()=>alert("已複製網址"));
+
+  document.getElementById("copyLinkBtn").addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      alert("已複製分享網址！");
+    } catch (e) {
+      prompt("請手動複製網址：", window.location.href);
+    }
+  });
 </script>
 
 </body>
