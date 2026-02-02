@@ -3,37 +3,46 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+
   <title>總經 × 牛熊市判斷指標</title>
-  <p class="muted">
-  Version 1.0｜Last update: 2026-02
-</p>
-  <meta name="description" content="基準利率、量化緊縮（QT)、流動性、金融條件：一眼判讀。附官方資料連結與PDF線上預覽。" />
+
+  <meta name="description" content="基準利率、量化緊縮（QT）、流動性、金融條件：一眼判讀。附官方資料連結與 PDF 線上預覽。" />
   <meta property="og:title" content="總經 × 牛熊市判斷指標" />
-  <meta property="og:description" content="基準利率｜量化緊縮（QT)｜流動性｜金融條件" />
+  <meta property="og:description" content="基準利率｜量化緊縮（QT）｜流動性｜金融條件" />
   <meta property="og:type" content="website" />
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+
+  <!-- ================= HEADER ================= -->
   <header class="header">
     <div class="container">
+
       <div class="badge">Macro Dashboard</div>
-      <h1>
-        總經 × 牛熊市判斷指標
-      </h1>
+
+      <p class="muted version">
+        Version 1.0｜Last update: 2026-02
+      </p>
+
+      <h1>總經 × 牛熊市判斷指標</h1>
 
       <p class="sub">
-         基準利率｜量化緊縮（QT）｜流動性｜金融條件
+        基準利率｜量化緊縮（QT）｜流動性｜金融條件
       </p>
 
       <div class="actions">
-        <a class="btn ghost" href="handbook.pdf" download>下載 PDF</a>
+        <a class="btn ghost btn-small" href="handbook.pdf" download>下載 PDF</a>
         <button class="btn ghost" id="copyLinkBtn">複製分享網址</button>
       </div>
-        
+
+    </div>
   </header>
 
+  <!-- ================= MAIN ================= -->
   <main class="container">
+
     <section class="grid">
       <article class="card" id="rate">
         <h2>① 基準利率</h2>
@@ -44,11 +53,11 @@
       </article>
 
       <article class="card" id="qt">
-        <h2>② 量化緊縮 QT</h2>
+        <h2>② 量化緊縮（QT）</h2>
         <ul>
           <li><b>Fed 總資產</b>：↓ QT｜→ 停止｜↑ QE</li>
           <li><b>Runoff</b>：&gt;600 億 強 QT｜&lt;200 億 幾乎無</li>
-          <li><b>準備金</b>：↓ 缺血｜↑ 回流</li>
+          <li><b>銀行準備金</b>：↓ 缺血｜↑ 回流</li>
           <li><b>RRP</b>：RRP↓ + 準備金↓ → 真 QT</li>
         </ul>
       </article>
@@ -63,15 +72,16 @@
       </article>
 
       <article class="card" id="sources">
-        <h2>資料來源（官方/常用）</h2>
+        <h2>資料來源（官方）</h2>
         <ul class="links">
-          <li><a target="_blank" rel="noopener" href="https://fred.stlouisfed.org/">FRED（Fed/市場數據）</a></li>
+          <li><a target="_blank" rel="noopener" href="https://fred.stlouisfed.org/">FRED（Fed / 市場數據）</a></li>
           <li><a target="_blank" rel="noopener" href="https://www.federalreserve.gov/releases/h41/">Fed H.4.1（資產負債表）</a></li>
           <li><a target="_blank" rel="noopener" href="https://www.chicagofed.org/publications/nfci/index">Chicago Fed NFCI</a></li>
         </ul>
       </article>
     </section>
 
+    <!-- ================= PDF VIEWER ================= -->
     <section class="viewer" id="viewer">
       <div class="viewer-head">
         <h2>PDF 線上預覽</h2>
@@ -83,27 +93,35 @@
 
       <object data="handbook.pdf" type="application/pdf" class="pdf">
         <p class="muted">
-          你的瀏覽器不支援內嵌 PDF。
-          <a href="handbook.pdf" target="_blank" rel="noopener">點我開啟 PDF</a>
+          你的瀏覽器不支援內嵌 PDF，
+          <a href="handbook.pdf" target="_blank" rel="noopener">點我開啟</a>
         </p>
       </object>
     </section>
 
+    <!-- ================= FOOTER ================= -->
     <footer class="footer">
-      <p class="muted">© <span id="year"></span> Macro Dashboard｜可自由分享連結（建議標注來源）。</p>
+      <p class="muted">
+        © <span id="year"></span> Macro Dashboard｜可自由分享連結（建議標注來源）
+      </p>
     </footer>
+
   </main>
 
+  <!-- ================= SCRIPT ================= -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
     document.getElementById("copyLinkBtn").addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText(window.location.href);
         alert("已複製分享網址！");
       } catch (e) {
-        prompt("你的瀏覽器不允許自動複製，請手動複製：", window.location.href);
+        prompt("請手動複製網址：", window.location.href);
       }
     });
   </script>
+
 </body>
 </html>
+
