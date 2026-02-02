@@ -88,11 +88,12 @@
         </li>
 
         <li>
-          <b>Runoff（億/月）</b><br/>
-          <span class="metric-meta" data-prev="600" data-now="450">
+          <b>Fed 資產單週變動（億）</b><br/>
+          <span class="metric-meta" data-prev="9.58" data-now="76.17">
             前值：9.58 ｜ 目前：76.17
           </span>
         </li>
+
 
         <li>
           <b>銀行準備金（兆美元）</b><br/>
@@ -176,24 +177,7 @@
     await navigator.clipboard.writeText(window.location.href);
     alert("已複製分享網址！");
   });
-
-  // ===== 自動箭頭 =====
-  document.querySelectorAll(".metric-meta").forEach(el => {
-    const prev = parseFloat(el.dataset.prev);
-    const now  = parseFloat(el.dataset.now);
-
-    let arrow = "→";
-    let cls = "flat";
-
-    if (now > prev) { arrow = "↑"; cls = "up"; }
-    else if (now < prev) { arrow = "↓"; cls = "down"; }
-
-    const span = document.createElement("span");
-    span.className = "trend " + cls;
-    span.textContent = " " + arrow;
-
-    el.appendChild(span);
-  });
+  
 </script>
 
 </body>
