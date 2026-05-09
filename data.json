@@ -31,5 +31,9 @@
   "vix": {
     "prev": 17.39,
     "current": 17.08
+  },
+  "fed_assets_month_change": {
+    "prev": 246.06,
+    "current": 156.34
   }
 }
