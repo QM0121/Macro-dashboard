@@ -16,14 +16,14 @@ SERIES = {
     "vix": "VIXCLS"
 }
 
-def fetch_latest_two(series_id):
+def fetch_fed_assets_month_change():
     url = "https://api.stlouisfed.org/fred/series/observations"
     params = {
-        "series_id": series_id,
+        "series_id": "WALCL",
         "api_key": FRED_API_KEY,
         "file_type": "json",
         "sort_order": "desc",
-        "limit": 10
+        "limit": 12
     }
 
     r = requests.get(url, params=params, timeout=30)
@@ -36,12 +36,22 @@ def fetch_latest_two(series_id):
         if value != ".":
             values.append(float(value))
 
-        if len(values) >= 2:
-            break
+    # WALCL 原始單位是「百萬美元」
+    # 單月變動抓約 4 週差額
+    # 換成「億美元」：百萬美元 ÷ 100
+    current_change = None
+    prev_change = None
+
+    if len(values) >= 5:
+        current_change = round((values[0] - values[4]) / 100, 2)
+
+    if len(values) >= 6:
+        prev_change = round((values[1] - values[5]) / 100, 2)
 
     return {
-        "prev": values[1] if len(values) > 1 else None,
-        "current": values[0] if len(values) > 0 else None
+        "prev": prev_change,
+        "current": current_change
+    }
     }
 
 def round_value(key, value):
@@ -62,11 +72,23 @@ def main():
     taipei_time = datetime.now(timezone.utc) + timedelta(hours=8)
     data["last_update"] = taipei_time.strftime("%Y-%m-%d")
 
+    def main():
+    data = {}
+
+    taipei_time = datetime.now(timezone.utc) + timedelta(hours=8)
+    data["last_update"] = taipei_time.strftime("%Y-%m-%d")
+
     for key, series_id in SERIES.items():
         item = fetch_latest_two(series_id)
         data[key] = {
             "prev": round_value(key, item["prev"]),
             "current": round_value(key, item["current"])
+        }
+
+    data["fed_assets_month_change"] = fetch_fed_assets_month_change()
+
+    with open("data.json", "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
         }
 
     with open("data.json", "w", encoding="utf-8") as f:
