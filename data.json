@@ -1,35 +1,35 @@
 {
-  "last_update": "",
+  "last_update": "2026-05-09",
   "rate": {
-    "prev": null,
-    "current": null
+    "prev": 3.64,
+    "current": 3.63
   },
   "yield_curve": {
-    "prev": null,
-    "current": null
+    "prev": 0.49,
+    "current": 0.48
   },
   "fed_assets": {
-    "prev": null,
-    "current": null
+    "prev": 6.7,
+    "current": 6.71
   },
   "reserves": {
-    "prev": null,
-    "current": null
+    "prev": 2.919,
+    "current": 3.033
   },
   "rrp": {
-    "prev": null,
-    "current": null
+    "prev": 0.0,
+    "current": 0.0
   },
   "nfci": {
-    "prev": null,
-    "current": null
+    "prev": -0.49,
+    "current": -0.51
   },
   "hy_spread": {
-    "prev": null,
-    "current": null
+    "prev": 2.75,
+    "current": 2.79
   },
   "vix": {
-    "prev": null,
-    "current": null
+    "prev": 17.39,
+    "current": 17.08
   }
 }
