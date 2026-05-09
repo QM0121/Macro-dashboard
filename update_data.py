@@ -48,8 +48,11 @@ def round_value(key, value):
     if value is None:
         return None
 
-    if key in ["fed_assets", "reserves", "rrp"]:
+    if key in ["fed_assets", "reserves"]:
         return round(value / 1_000_000, 3)
+
+    if key == "rrp":
+        return round(value / 1000, 3)
 
     return round(value, 2)
 
