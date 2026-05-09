@@ -375,6 +375,47 @@
       prompt("請手動複製網址：", window.location.href);
     }
   });
+
+  async function loadMacroData() {
+    try {
+      const res = await fetch("data.json?ts=" + Date.now());
+      const data = await res.json();
+
+      const replaceMetric = (titleText, prevValue, currentValue) => {
+        const metrics = document.querySelectorAll(".metric");
+
+        metrics.forEach(metric => {
+          const title = metric.querySelector(".metric-title");
+          if (!title) return;
+
+          if (title.textContent.trim() === titleText) {
+            const values = metric.querySelectorAll(".metric-values .chip b");
+            if (values[0]) values[0].textContent = prevValue ?? "--";
+            if (values[1]) values[1].textContent = currentValue ?? "--";
+          }
+        });
+      };
+
+      const lastUpdateEl = document.getElementById("last-update");
+      if (lastUpdateEl) {
+        lastUpdateEl.textContent = data.last_update ?? "--";
+      }
+
+      replaceMetric("聯邦基金利率（%）", data.rate.prev, data.rate.current);
+      replaceMetric("10Y − 2Y（%）", data.yield_curve.prev, data.yield_curve.current);
+      replaceMetric("Fed 總資產（兆美元）", data.fed_assets.prev, data.fed_assets.current);
+      replaceMetric("銀行準備金（兆美元）", data.reserves.prev, data.reserves.current);
+      replaceMetric("逆回購 RRP（兆美元）", data.rrp.prev, data.rrp.current);
+      replaceMetric("NFCI", data.nfci.prev, data.nfci.current);
+      replaceMetric("高收益債利差（%）", data.hy_spread.prev, data.hy_spread.current);
+      replaceMetric("VIX", data.vix.prev, data.vix.current);
+
+    } catch (err) {
+      console.error("資料載入失敗：", err);
+    }
+  }
+
+  loadMacroData();
 </script>
 
 </body>
