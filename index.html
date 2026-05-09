@@ -382,19 +382,22 @@
       const data = await res.json();
 
       const replaceMetric = (titleText, prevValue, currentValue) => {
-        const metrics = document.querySelectorAll(".metric");
+  const metrics = document.querySelectorAll(".metric");
 
-        metrics.forEach(metric => {
-          const title = metric.querySelector(".metric-title");
-          if (!title) return;
+  metrics.forEach(metric => {
+    const title = metric.querySelector(".metric-title");
+    if (!title) return;
 
-          if (title.textContent.trim() === titleText) {
-            const values = metric.querySelectorAll(".metric-values .chip b");
-            if (values[0]) values[0].textContent = prevValue ?? "--";
-            if (values[1]) values[1].textContent = currentValue ?? "--";
-          }
-        });
-      };
+    const cleanTitle = title.textContent.replace(/\s+/g, "").trim();
+    const cleanTarget = titleText.replace(/\s+/g, "").trim();
+
+    if (cleanTitle.includes(cleanTarget) || cleanTarget.includes(cleanTitle)) {
+      const values = metric.querySelectorAll(".metric-values .chip b");
+      if (values[0]) values[0].textContent = prevValue ?? "--";
+      if (values[1]) values[1].textContent = currentValue ?? "--";
+    }
+  });
+};
 
       const lastUpdateEl = document.getElementById("last-update");
       if (lastUpdateEl) {
