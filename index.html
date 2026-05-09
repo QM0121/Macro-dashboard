@@ -357,17 +357,29 @@
     </div>
   </footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+ <script>
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
 
-    document.getElementById("copyLinkBtn").addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(window.location.href);
-        alert("已複製分享網址！");
-      } catch (e) {
-        prompt("請手動複製網址：", window.location.href);
-      }
-    });
+  window.addEventListener("load", () => {
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  document.getElementById("copyLinkBtn").addEventListener("click", async () => {
+    const cleanUrl = window.location.origin + window.location.pathname;
+
+    try {
+      await navigator.clipboard.writeText(cleanUrl);
+      alert("已複製分享網址！");
+    } catch (e) {
+      prompt("請手動複製網址：", cleanUrl);
+    }
+  });
 
     const setText = (id, value) => {
       const el = document.getElementById(id);
