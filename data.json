@@ -1,0 +1,35 @@
+{
+  "last_update": "",
+  "rate": {
+    "prev": null,
+    "current": null
+  },
+  "yield_curve": {
+    "prev": null,
+    "current": null
+  },
+  "fed_assets": {
+    "prev": null,
+    "current": null
+  },
+  "reserves": {
+    "prev": null,
+    "current": null
+  },
+  "rrp": {
+    "prev": null,
+    "current": null
+  },
+  "nfci": {
+    "prev": null,
+    "current": null
+  },
+  "hy_spread": {
+    "prev": null,
+    "current": null
+  },
+  "vix": {
+    "prev": null,
+    "current": null
+  }
+}
