@@ -32,8 +32,29 @@
     "prev": 17.19,
     "current": 18.38
   },
+  "initial_claims": {
+    "prev": 190000,
+    "current": 200000
+  },
+  "sahm_rule": {
+    "prev": 0.2,
+    "current": 0.13
+  },
+  "leading_index": {
+    "prev": 1.57,
+    "current": 1.72
+  },
   "fed_assets_month_change": {
     "prev": 246.06,
     "current": 156.34
+  },
+  "sp500_trend": {
+    "prev": 7412.84,
+    "current": 7400.96,
+    "ma200": 6763.72,
+    "high_52w": 7412.84,
+    "drawdown_from_high": -0.16,
+    "above_ma200": true,
+    "distance_from_ma200": 9.42
   }
 }
