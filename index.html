@@ -6,9 +6,9 @@
 
   <title>總經 × 牛熊市判斷指標｜Macro Intelligence Dashboard</title>
 
-  <meta name="description" content="總經 × 牛熊市判斷指標：以基準利率、殖利率曲線、QT、流動性、金融條件、信用利差與 VIX 建立一眼判讀的總經監控面板。" />
+  <meta name="description" content="總經 × 牛熊市判斷指標：以利率、殖利率曲線、QT、流動性、金融壓力、就業數據、Sahm Rule、景氣領先指標與 S&P 500 趨勢建立一眼判讀的市場監控面板。" />
   <meta property="og:title" content="總經 × 牛熊市判斷指標" />
-  <meta property="og:description" content="Macro Intelligence Dashboard｜利率、曲線、QT、流動性、金融條件、信用利差、VIX" />
+  <meta property="og:description" content="利率、流動性、金融壓力、就業、衰退警報、領先指標與市場趨勢，一站判讀牛熊市。" />
   <meta property="og:type" content="website" />
 
   <link rel="stylesheet" href="styles.css" />
@@ -25,7 +25,7 @@
           <div class="brand-mark">M</div>
           <div>
             <div class="brand-title">Macro Intelligence</div>
-            <div class="brand-sub">Auto-updated dashboard</div>
+            <div class="brand-sub">Auto-updated macro dashboard</div>
           </div>
         </div>
 
@@ -43,13 +43,12 @@
           <div class="eyebrow">Macro Dashboard</div>
           <h1>總經 × 牛熊市判斷指標</h1>
           <p class="subtitle">
-            用利率、殖利率曲線、QT、流動性與金融壓力，快速判斷目前市場偏多、偏空，還是只是短期雜訊。
+            從資金成本、景氣循環、流動性、金融壓力、勞動市場與股價趨勢，
+            一眼判斷現在是偏多、偏空，還是需要等待更多確認。
           </p>
 
           <div class="hero-actions">
             <a class="btn primary" href="#dashboard">查看儀表板</a>
-            <a class="btn ghost" href="handbook.pdf" download>下載 PDF 手冊</a>
-            <a class="btn ghost" href="#viewer">PDF 預覽</a>
           </div>
         </div>
 
@@ -63,7 +62,7 @@
           </div>
 
           <div class="regime-note" id="market-note">
-            正在讀取最新總經資料，並依照利率、曲線、流動性與風險壓力進行初步判讀。
+            正在讀取最新總經資料，並依照利率、流動性、景氣、就業與股價趨勢進行判讀。
           </div>
 
           <div class="mini-stats">
@@ -111,7 +110,23 @@
         <div class="signal-card" id="signal-risk">
           <span class="signal-dot"></span>
           <div>
-            <p>風險壓力</p>
+            <p>金融壓力</p>
+            <b>讀取中</b>
+          </div>
+        </div>
+
+        <div class="signal-card" id="signal-labor">
+          <span class="signal-dot"></span>
+          <div>
+            <p>就業 / 衰退</p>
+            <b>讀取中</b>
+          </div>
+        </div>
+
+        <div class="signal-card" id="signal-trend">
+          <span class="signal-dot"></span>
+          <div>
+            <p>市場趨勢</p>
             <b>讀取中</b>
           </div>
         </div>
@@ -124,16 +139,17 @@
     <section class="section-head" id="dashboard">
       <div>
         <div class="eyebrow">Dashboard</div>
-        <h2>核心監控指標</h2>
+        <h2>核心牛熊市監控</h2>
       </div>
       <p>
-        先看大方向，再看是否有風險裂縫。綠色代表偏有利，黃色代表中性觀察，紅色代表壓力升高。
+        綠色代表偏有利，黃色代表中性觀察，紅色代表壓力升高。
+        不看單一數字，而是看各指標是否同方向共振。
       </p>
     </section>
 
     <section class="dashboard-grid">
 
-      <article class="card metric-card color-blue" id="rate">
+      <article class="card metric-card color-blue">
         <div class="card-top">
           <div>
             <span class="card-icon">R</span>
@@ -159,12 +175,12 @@
 
         <div class="insight-list">
           <div class="insight good">降息且金融條件寬鬆：偏多環境</div>
-          <div class="insight warn">降息但利差擴大：可能是衰退型降息</div>
-          <div class="insight bad">高利率維持太久：估值壓力上升</div>
+          <div class="insight warn">降息但信用利差擴大：可能是衰退型降息</div>
+          <div class="insight bad">高利率維持過久：估值壓力升高</div>
         </div>
       </article>
 
-      <article class="card metric-card color-purple" id="yield">
+      <article class="card metric-card color-purple">
         <div class="card-top">
           <div>
             <span class="card-icon">Y</span>
@@ -190,12 +206,12 @@
 
         <div class="insight-list">
           <div class="insight good">曲線轉正且信用穩定：復甦機率提升</div>
-          <div class="insight warn">倒掛縮小但信用惡化：仍需保守</div>
-          <div class="insight bad">長端飆升造成轉正：風險資產可能承壓</div>
+          <div class="insight warn">倒掛縮小但金融壓力惡化：仍需保守</div>
+          <div class="insight bad">長端殖利率急升造成轉正：風險資產可能承壓</div>
         </div>
       </article>
 
-      <article class="card metric-card color-teal wide" id="qt">
+      <article class="card metric-card color-teal wide">
         <div class="card-top">
           <div>
             <span class="card-icon">Q</span>
@@ -231,15 +247,9 @@
         </div>
 
         <div class="status-line" id="liquidity-status">資料載入中</div>
-
-        <div class="insight-list compact">
-          <div class="insight good">準備金穩定：市場資金不緊</div>
-          <div class="insight warn">Fed 資產下降但準備金穩：偏中性</div>
-          <div class="insight bad">Fed 資產與準備金同步下降：QT 壓力升高</div>
-        </div>
       </article>
 
-      <article class="card metric-card color-amber wide" id="risk">
+      <article class="card metric-card color-amber wide">
         <div class="card-top">
           <div>
             <span class="card-icon">S</span>
@@ -269,12 +279,75 @@
         </div>
 
         <div class="status-line" id="risk-status">資料載入中</div>
+      </article>
 
-        <div class="insight-list compact">
-          <div class="insight good">NFCI 小於 0：金融條件偏寬鬆</div>
-          <div class="insight warn">VIX 15–30：常態波動區</div>
-          <div class="insight bad">信用利差快速擴大：風險裂縫升高</div>
+      <article class="card metric-card color-rose wide">
+        <div class="card-top">
+          <div>
+            <span class="card-icon">L</span>
+            <h3>就業與衰退警報</h3>
+          </div>
+          <span class="tag">Labor</span>
         </div>
+
+        <div class="labor-grid">
+          <div class="submetric">
+            <p>初領失業金</p>
+            <div><b id="claims-current">--</b><small>人</small></div>
+            <span>前值 <strong id="claims-prev">--</strong></span>
+          </div>
+
+          <div class="submetric">
+            <p>Sahm Rule</p>
+            <div><b id="sahm-current">--</b></div>
+            <span>前值 <strong id="sahm-prev">--</strong></span>
+          </div>
+        </div>
+
+        <div class="status-line" id="labor-status">資料載入中</div>
+
+        <div class="insight-list compact-two">
+          <div class="insight good">初領失業金低檔：就業市場仍具韌性</div>
+          <div class="insight bad">Sahm Rule ≥ 0.50：衰退警報明顯升高</div>
+        </div>
+      </article>
+
+      <article class="card metric-card color-indigo wide">
+        <div class="card-top">
+          <div>
+            <span class="card-icon">M</span>
+            <h3>景氣領先與股市趨勢確認</h3>
+          </div>
+          <span class="tag">Trend</span>
+        </div>
+
+        <div class="trend-grid">
+          <div class="submetric">
+            <p>美國領先指標</p>
+            <div><b id="leading-current">--</b></div>
+            <span>前值 <strong id="leading-prev">--</strong></span>
+          </div>
+
+          <div class="submetric">
+            <p>S&P 500</p>
+            <div><b id="sp-current">--</b></div>
+            <span>前值 <strong id="sp-prev">--</strong></span>
+          </div>
+
+          <div class="submetric">
+            <p>200 日均線</p>
+            <div><b id="sp-ma200">--</b></div>
+            <span id="sp-ma-status">判讀中</span>
+          </div>
+
+          <div class="submetric">
+            <p>距 52 週高點</p>
+            <div><b id="sp-drawdown">--</b><small>%</small></div>
+            <span>高點 <strong id="sp-high52">--</strong></span>
+          </div>
+        </div>
+
+        <div class="status-line" id="trend-status">資料載入中</div>
       </article>
 
     </section>
@@ -283,42 +356,20 @@
       <article class="guide-card">
         <h3>如何快速判讀？</h3>
         <div class="steps">
-          <div><span>01</span><p>先看利率與曲線，確認大環境是寬鬆還是緊縮。</p></div>
-          <div><span>02</span><p>再看 Fed 資產、準備金與 RRP，判斷流動性是否真的回到市場。</p></div>
-          <div><span>03</span><p>最後看 NFCI、信用利差與 VIX，確認風險壓力是否擴散。</p></div>
+          <div><span>01</span><p>先看利率與殖利率曲線，確認總體資金環境。</p></div>
+          <div><span>02</span><p>再看 Fed 資產、準備金與金融壓力，確認流動性是否惡化。</p></div>
+          <div><span>03</span><p>最後看就業、Sahm Rule、領先指標與 S&P 500 趨勢，確認牛熊市是否互相驗證。</p></div>
         </div>
       </article>
 
       <article class="guide-card">
-        <h3>本網站適合用來回答</h3>
+        <h3>這個面板可以幫你回答</h3>
         <div class="question-list">
-          <p>現在股市環境偏多、偏空，還是中性？</p>
-          <p>QT 還在進行時，為什麼股市仍可能上漲？</p>
-          <p>信用市場有沒有比股市更早出現壓力？</p>
+          <p>現在是健康牛市，還是流動性撐出的假多頭？</p>
+          <p>經濟已經轉弱了嗎？還是只是短期市場震盪？</p>
+          <p>總經環境偏多，但股價趨勢是否真的確認？</p>
         </div>
       </article>
-    </section>
-
-    <section class="viewer" id="viewer">
-      <div class="section-head">
-        <div>
-          <div class="eyebrow">Handbook</div>
-          <h2>PDF 線上預覽</h2>
-        </div>
-        <p>
-          若無法內嵌顯示，可以使用
-          <a class="inline-link" href="handbook.pdf" target="_blank" rel="noopener">新分頁開啟</a>
-          或
-          <a class="inline-link" href="handbook.pdf" download>下載 PDF</a>。
-        </p>
-      </div>
-
-      <object class="pdf" data="handbook.pdf" type="application/pdf">
-        <p class="fallback">
-          你的瀏覽器不支援內嵌 PDF，請
-          <a href="handbook.pdf" target="_blank" rel="noopener">點此開啟</a>。
-        </p>
-      </object>
     </section>
 
     <section class="sources">
@@ -327,18 +378,18 @@
           <div class="eyebrow">Sources</div>
           <h2>官方資料來源</h2>
         </div>
-        <p>資料主要透過 FRED API 自動更新，並可回溯至官方資料發布頁面。</p>
+        <p>資料透過 FRED API 自動更新，主要源自美國聯準會、芝加哥聯準銀行與美國勞工相關機構。</p>
       </div>
 
       <div class="sources-grid">
         <a class="source" href="https://www.federalreserve.gov/releases/h41/" target="_blank" rel="noopener">
           <div class="source-title">Fed H.4.1</div>
-          <div class="source-desc">Fed 資產負債表、總資產、準備金與流動性資料</div>
+          <div class="source-desc">Fed 資產負債表、總資產與準備金資料</div>
         </a>
 
         <a class="source" href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">
           <div class="source-title">FRED</div>
-          <div class="source-desc">利率、殖利率曲線、信用利差、VIX 等資料庫</div>
+          <div class="source-desc">利率、曲線、RRP、Sahm Rule、領先指標與股價資料</div>
         </a>
 
         <a class="source" href="https://www.chicagofed.org/publications/nfci/index" target="_blank" rel="noopener">
@@ -357,29 +408,29 @@
     </div>
   </footer>
 
- <script>
-  if ("scrollRestoration" in history) {
-    history.scrollRestoration = "manual";
-  }
-
-  window.addEventListener("load", () => {
-    if (!window.location.hash) {
-      window.scrollTo(0, 0);
+  <script>
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
     }
-  });
 
-  document.getElementById("year").textContent = new Date().getFullYear();
+    window.addEventListener("load", () => {
+      if (!window.location.hash) {
+        window.scrollTo(0, 0);
+      }
+    });
 
-  document.getElementById("copyLinkBtn").addEventListener("click", async () => {
-    const cleanUrl = window.location.origin + window.location.pathname;
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-    try {
-      await navigator.clipboard.writeText(cleanUrl);
-      alert("已複製分享網址！");
-    } catch (e) {
-      prompt("請手動複製網址：", cleanUrl);
-    }
-  });
+    document.getElementById("copyLinkBtn").addEventListener("click", async () => {
+      const cleanUrl = window.location.origin + window.location.pathname;
+
+      try {
+        await navigator.clipboard.writeText(cleanUrl);
+        alert("已複製分享網址！");
+      } catch (e) {
+        prompt("請手動複製網址：", cleanUrl);
+      }
+    });
 
     const setText = (id, value) => {
       const el = document.getElementById(id);
@@ -387,10 +438,13 @@
     };
 
     const formatNumber = (value, digits = 2) => {
-      if (value === null || value === undefined || value === "--") return "--";
+      if (value === null || value === undefined) return "--";
       const num = Number(value);
-      if (Number.isNaN(num)) return value;
-      return num.toFixed(digits).replace(/\.?0+$/, "");
+      if (Number.isNaN(num)) return "--";
+      return num.toLocaleString("en-US", {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: digits
+      });
     };
 
     const setSignal = (id, level, text) => {
@@ -422,6 +476,11 @@
       const nfci = Number(data.nfci?.current);
       const hy = Number(data.hy_spread?.current);
       const vix = Number(data.vix?.current);
+      const claims = Number(data.initial_claims?.current);
+      const sahm = Number(data.sahm_rule?.current);
+      const leading = Number(data.leading_index?.current);
+      const aboveMA = data.sp500_trend?.above_ma200;
+      const drawdown = Number(data.sp500_trend?.drawdown_from_high);
 
       if (!Number.isNaN(rateNow) && !Number.isNaN(ratePrev)) {
         if (rateNow < ratePrev) score += 1;
@@ -458,21 +517,43 @@
         if (vix > 30) score -= 1;
       }
 
+      if (!Number.isNaN(claims)) {
+        if (claims < 250000) score += 1;
+        if (claims > 300000) score -= 1;
+      }
+
+      if (!Number.isNaN(sahm)) {
+        if (sahm < 0.5) score += 1;
+        if (sahm >= 0.5) score -= 2;
+      }
+
+      if (!Number.isNaN(leading)) {
+        if (leading > 0) score += 1;
+        if (leading < 0) score -= 1;
+      }
+
+      if (aboveMA === true) score += 1;
+      if (aboveMA === false) score -= 1;
+
+      if (!Number.isNaN(drawdown) && drawdown <= -20) {
+        score -= 1;
+      }
+
       const regime = document.getElementById("market-regime");
       const note = document.getElementById("market-note");
       const orb = document.getElementById("regime-orb");
 
-      if (score >= 4) {
+      if (score >= 7) {
         regime.textContent = "偏多環境";
-        note.textContent = "多數指標顯示金融條件仍偏寬鬆，市場風險承受度較佳，但仍需觀察信用利差與 VIX 是否突然惡化。";
+        note.textContent = "多數總經、流動性、勞動市場與價格趨勢指標互相支持，市場環境偏向多方。";
         orb.className = "regime-orb good";
-      } else if (score <= 0) {
+      } else if (score <= 2) {
         regime.textContent = "偏空 / 風險升高";
-        note.textContent = "多項指標顯示資金條件或風險壓力轉弱，應降低過度槓桿與追高風險。";
+        note.textContent = "多項指標顯示景氣、流動性或市場趨勢壓力升高，應提高風險意識。";
         orb.className = "regime-orb bad";
       } else {
         regime.textContent = "中性觀察";
-        note.textContent = "目前指標呈現多空混合，建議等待利率、流動性與信用市場方向更一致後再提高曝險。";
+        note.textContent = "目前多空訊號交錯，建議觀察就業、信用市場與 S&P 500 趨勢是否進一步確認。";
         orb.className = "regime-orb warn";
       }
     }
@@ -481,62 +562,83 @@
       const rateNow = Number(data.rate?.current);
       const ratePrev = Number(data.rate?.prev);
 
-      if (!Number.isNaN(rateNow) && !Number.isNaN(ratePrev)) {
-        if (rateNow < ratePrev) {
-          setSignal("signal-rate", "good", "利率下降");
-          setStatus("rate-status", "good", "利率較前值下降，資金成本壓力略為降低。");
-        } else if (rateNow > ratePrev) {
-          setSignal("signal-rate", "bad", "利率上升");
-          setStatus("rate-status", "bad", "利率較前值上升，估值壓力可能提高。");
-        } else {
-          setSignal("signal-rate", "warn", "利率持平");
-          setStatus("rate-status", "warn", "利率維持不變，需搭配通膨與金融條件判斷。");
-        }
+      if (rateNow < ratePrev) {
+        setSignal("signal-rate", "good", "利率下降");
+        setStatus("rate-status", "good", "利率較前值下降，資金成本壓力略為降低。");
+      } else if (rateNow > ratePrev) {
+        setSignal("signal-rate", "bad", "利率上升");
+        setStatus("rate-status", "bad", "利率較前值上升，估值壓力可能提高。");
+      } else {
+        setSignal("signal-rate", "warn", "利率持平");
+        setStatus("rate-status", "warn", "利率維持不變，需搭配通膨與金融條件判斷。");
       }
 
       const curveNow = Number(data.yield_curve?.current);
-      if (!Number.isNaN(curveNow)) {
-        if (curveNow > 0) {
-          setSignal("signal-curve", "good", "曲線轉正");
-          setStatus("yield-status", "good", "10Y−2Y 為正值，曲線結構相對健康。");
-        } else {
-          setSignal("signal-curve", "bad", "曲線倒掛");
-          setStatus("yield-status", "bad", "10Y−2Y 仍為負值，需留意衰退風險。");
-        }
+      if (curveNow > 0) {
+        setSignal("signal-curve", "good", "曲線轉正");
+        setStatus("yield-status", "good", "10Y−2Y 為正值，曲線結構相對健康。");
+      } else {
+        setSignal("signal-curve", "bad", "曲線倒掛");
+        setStatus("yield-status", "bad", "10Y−2Y 為負值，仍需留意衰退風險。");
       }
 
       const assetsChange = Number(data.fed_assets_month_change?.current);
       const reservesNow = Number(data.reserves?.current);
       const reservesPrev = Number(data.reserves?.prev);
 
-      if (!Number.isNaN(assetsChange) && !Number.isNaN(reservesNow) && !Number.isNaN(reservesPrev)) {
-        if (assetsChange > 0 && reservesNow >= reservesPrev) {
-          setSignal("signal-liquidity", "good", "流動性穩定");
-          setStatus("liquidity-status", "good", "Fed 資產近月增加，且準備金未明顯下降，流動性壓力較低。");
-        } else if (assetsChange < 0 && reservesNow < reservesPrev) {
-          setSignal("signal-liquidity", "bad", "QT 壓力升高");
-          setStatus("liquidity-status", "bad", "Fed 資產與準備金同步下降，代表流動性壓力升高。");
-        } else {
-          setSignal("signal-liquidity", "warn", "中性觀察");
-          setStatus("liquidity-status", "warn", "流動性訊號不完全一致，需搭配信用利差與 VIX 判斷。");
-        }
+      if (assetsChange > 0 && reservesNow >= reservesPrev) {
+        setSignal("signal-liquidity", "good", "流動性穩定");
+        setStatus("liquidity-status", "good", "Fed 資產近月增加，且準備金未明顯下降，流動性壓力較低。");
+      } else if (assetsChange < 0 && reservesNow < reservesPrev) {
+        setSignal("signal-liquidity", "bad", "QT 壓力升高");
+        setStatus("liquidity-status", "bad", "Fed 資產與準備金同步下降，代表流動性壓力升高。");
+      } else {
+        setSignal("signal-liquidity", "warn", "中性觀察");
+        setStatus("liquidity-status", "warn", "流動性訊號不完全一致，需搭配信用利差與 VIX 判斷。");
       }
 
       const nfci = Number(data.nfci?.current);
       const hy = Number(data.hy_spread?.current);
       const vix = Number(data.vix?.current);
 
-      if (!Number.isNaN(nfci) && !Number.isNaN(hy) && !Number.isNaN(vix)) {
-        if (nfci < 0 && hy < 4 && vix < 20) {
-          setSignal("signal-risk", "good", "壓力偏低");
-          setStatus("risk-status", "good", "NFCI、信用利差與 VIX 顯示金融壓力仍偏低。");
-        } else if (nfci > 0 || hy > 5 || vix > 30) {
-          setSignal("signal-risk", "bad", "壓力升高");
-          setStatus("risk-status", "bad", "至少一項風險指標明顯惡化，需留意信用或波動風險。");
-        } else {
-          setSignal("signal-risk", "warn", "正常波動");
-          setStatus("risk-status", "warn", "風險指標仍在可控範圍，但波動或信用壓力已有升溫跡象。");
-        }
+      if (nfci < 0 && hy < 4 && vix < 20) {
+        setSignal("signal-risk", "good", "壓力偏低");
+        setStatus("risk-status", "good", "NFCI、信用利差與 VIX 顯示金融壓力仍偏低。");
+      } else if (nfci > 0 || hy > 5 || vix > 30) {
+        setSignal("signal-risk", "bad", "壓力升高");
+        setStatus("risk-status", "bad", "至少一項風險指標明顯惡化，需留意信用或波動風險。");
+      } else {
+        setSignal("signal-risk", "warn", "正常波動");
+        setStatus("risk-status", "warn", "金融壓力仍在可控範圍，但市場波動可能升高。");
+      }
+
+      const claims = Number(data.initial_claims?.current);
+      const sahm = Number(data.sahm_rule?.current);
+
+      if (sahm >= 0.5 || claims > 300000) {
+        setSignal("signal-labor", "bad", "衰退風險升高");
+        setStatus("labor-status", "bad", "Sahm Rule 或失業申請數顯示勞動市場轉弱風險升高。");
+      } else if (sahm >= 0.3 || claims > 250000) {
+        setSignal("signal-labor", "warn", "就業轉弱觀察");
+        setStatus("labor-status", "warn", "勞動市場出現轉弱跡象，但尚未形成明確衰退訊號。");
+      } else {
+        setSignal("signal-labor", "good", "就業仍穩");
+        setStatus("labor-status", "good", "初領失業金仍偏低，Sahm Rule 未觸發，勞動市場仍具韌性。");
+      }
+
+      const aboveMA = data.sp500_trend?.above_ma200;
+      const drawdown = Number(data.sp500_trend?.drawdown_from_high);
+      const leading = Number(data.leading_index?.current);
+
+      if (aboveMA === true && drawdown > -10 && leading > 0) {
+        setSignal("signal-trend", "good", "趨勢偏多");
+        setStatus("trend-status", "good", "S&P 500 站上 200 日均線，距高點回落有限，領先指標亦偏正向。");
+      } else if (aboveMA === false || drawdown <= -20 || leading < 0) {
+        setSignal("signal-trend", "bad", "趨勢轉弱");
+        setStatus("trend-status", "bad", "價格趨勢或領先景氣指標轉弱，需留意熊市風險。");
+      } else {
+        setSignal("signal-trend", "warn", "趨勢待確認");
+        setStatus("trend-status", "warn", "市場尚未明確轉空，但價格或領先指標缺乏一致性。");
       }
     }
 
@@ -573,6 +675,28 @@
 
         setText("vix-prev", formatNumber(data.vix?.prev, 2));
         setText("vix-current", formatNumber(data.vix?.current, 2));
+
+        setText("claims-prev", formatNumber(data.initial_claims?.prev, 0));
+        setText("claims-current", formatNumber(data.initial_claims?.current, 0));
+
+        setText("sahm-prev", formatNumber(data.sahm_rule?.prev, 2));
+        setText("sahm-current", formatNumber(data.sahm_rule?.current, 2));
+
+        setText("leading-prev", formatNumber(data.leading_index?.prev, 2));
+        setText("leading-current", formatNumber(data.leading_index?.current, 2));
+
+        setText("sp-prev", formatNumber(data.sp500_trend?.prev, 2));
+        setText("sp-current", formatNumber(data.sp500_trend?.current, 2));
+        setText("sp-ma200", formatNumber(data.sp500_trend?.ma200, 2));
+        setText("sp-drawdown", formatNumber(data.sp500_trend?.drawdown_from_high, 2));
+        setText("sp-high52", formatNumber(data.sp500_trend?.high_52w, 2));
+
+        const maStatus = document.getElementById("sp-ma-status");
+        if (maStatus) {
+          maStatus.textContent = data.sp500_trend?.above_ma200
+            ? "站上 200 日均線"
+            : "跌破 200 日均線";
+        }
 
         judgeMarket(data);
         updateSignals(data);
