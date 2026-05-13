@@ -403,6 +403,9 @@ h1 {
 }
 
 .big-number {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
   font-size: 72px;
   font-weight: 950;
   letter-spacing: -0.08em;
