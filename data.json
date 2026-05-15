@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-05-14",
+  "last_update": "2026-05-15",
   "rate": {
     "prev": 3.63,
     "current": 3.63
@@ -9,32 +9,32 @@
     "current": 0.48
   },
   "fed_assets": {
-    "prev": 6.7,
-    "current": 6.71
+    "prev": 6.71,
+    "current": 6.729
   },
   "reserves": {
-    "prev": 2.919,
-    "current": 3.033
+    "prev": 3.033,
+    "current": 3.103
   },
   "rrp": {
-    "prev": 1.199,
-    "current": 3.719
+    "prev": 3.719,
+    "current": 2.034
   },
   "nfci": {
     "prev": -0.51,
     "current": -0.52
   },
   "hy_spread": {
-    "prev": 2.79,
+    "prev": 2.82,
     "current": 2.82
   },
   "vix": {
-    "prev": 18.38,
-    "current": 17.99
+    "prev": 17.99,
+    "current": 17.87
   },
   "initial_claims": {
-    "prev": 190000,
-    "current": 200000
+    "prev": 199000,
+    "current": 211000
   },
   "sahm_rule": {
     "prev": 0.2,
@@ -45,8 +45,8 @@
     "current": 1.72
   },
   "fed_assets_month_change": {
-    "prev": 246.06,
-    "current": 156.34
+    "prev": 156.34,
+    "current": 228.06
   },
   "sp500_trend": {
     "prev": 7400.96,
