@@ -2,7 +2,13 @@ name: Update macro data
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    # 台灣時間每日 08:30
+    - cron: "30 8 * * *"
+      timezone: "Asia/Taipei"
+
+    # 台灣時間每日 21:30
+    - cron: "30 21 * * *"
+      timezone: "Asia/Taipei"
 
   workflow_dispatch:
 
