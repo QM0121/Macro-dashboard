@@ -1,6 +1,6 @@
 {
   "last_update": "2026-05-19",
-  "last_update_time": "2026-05-19 12:44:08",
+  "last_update_time": "2026-05-19 21:30:31",
   "rate": {
     "prev": 3.63,
     "current": 3.63
@@ -50,12 +50,12 @@
     "current": 228.06
   },
   "sp500_trend": {
-    "prev": 7501.24,
-    "current": 7408.5,
-    "ma200": 6779.87,
+    "prev": 7408.5,
+    "current": 7403.05,
+    "ma200": 6785.19,
     "high_52w": 7501.24,
-    "drawdown_from_high": -1.24,
+    "drawdown_from_high": -1.31,
     "above_ma200": true,
-    "distance_from_ma200": 9.27
+    "distance_from_ma200": 9.11
   }
 }
