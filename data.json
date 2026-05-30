@@ -1,6 +1,6 @@
 {
   "last_update": "2026-05-30",
-  "last_update_time": "2026-05-30 00:56:39",
+  "last_update_time": "2026-05-30 08:30:25",
   "rate": {
     "prev": 3.62,
     "current": 3.62
@@ -18,8 +18,8 @@
     "current": 3.067
   },
   "rrp": {
-    "prev": 1.853,
-    "current": 1.163
+    "prev": 1.163,
+    "current": 11.677
   },
   "nfci": {
     "prev": -0.51,
@@ -50,12 +50,12 @@
     "current": 44.33
   },
   "sp500_trend": {
-    "prev": 7519.12,
-    "current": 7520.36,
-    "ma200": 6819.21,
-    "high_52w": 7520.36,
+    "prev": 7520.36,
+    "current": 7563.63,
+    "ma200": 6825.16,
+    "high_52w": 7563.63,
     "drawdown_from_high": 0.0,
     "above_ma200": true,
-    "distance_from_ma200": 10.28
+    "distance_from_ma200": 10.82
   }
 }
