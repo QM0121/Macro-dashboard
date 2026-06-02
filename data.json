@@ -1,13 +1,13 @@
 {
   "last_update": "2026-06-02",
-  "last_update_time": "2026-06-02 03:06:32",
+  "last_update_time": "2026-06-02 08:30:27",
   "rate": {
     "prev": 3.62,
     "current": 3.62
   },
   "yield_curve": {
-    "prev": 0.46,
-    "current": 0.47
+    "prev": 0.47,
+    "current": 0.42
   },
   "fed_assets": {
     "prev": 6.714,
@@ -50,12 +50,12 @@
     "current": 44.33
   },
   "sp500_trend": {
-    "prev": 7563.63,
-    "current": 7580.06,
-    "ma200": 6830.83,
-    "high_52w": 7580.06,
+    "prev": 7580.06,
+    "current": 7599.96,
+    "ma200": 6836.5,
+    "high_52w": 7599.96,
     "drawdown_from_high": 0.0,
     "above_ma200": true,
-    "distance_from_ma200": 10.97
+    "distance_from_ma200": 11.17
   }
 }
