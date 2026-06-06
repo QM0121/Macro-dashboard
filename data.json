@@ -1,13 +1,13 @@
 {
   "last_update": "2026-06-06",
-  "last_update_time": "2026-06-06 00:12:27",
+  "last_update_time": "2026-06-06 08:30:24",
   "rate": {
     "prev": 3.62,
     "current": 3.62
   },
   "yield_curve": {
-    "prev": 0.41,
-    "current": 0.42
+    "prev": 0.42,
+    "current": 0.38
   },
   "fed_assets": {
     "prev": 6.704,
@@ -18,8 +18,8 @@
     "current": 3.014
   },
   "rrp": {
-    "prev": 2.062,
-    "current": 1.122
+    "prev": 1.122,
+    "current": 0.761
   },
   "nfci": {
     "prev": -0.5,
