@@ -1,6 +1,6 @@
 {
   "last_update": "2026-06-10",
-  "last_update_time": "2026-06-10 13:02:28",
+  "last_update_time": "2026-06-10 21:30:33",
   "rate": {
     "prev": 3.62,
     "current": 3.62
@@ -22,8 +22,8 @@
     "current": 0.577
   },
   "nfci": {
-    "prev": -0.5,
-    "current": -0.49
+    "prev": -0.51,
+    "current": -0.51
   },
   "hy_spread": {
     "prev": 2.76,
