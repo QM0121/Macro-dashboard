@@ -1,25 +1,25 @@
 {
   "last_update": "2026-06-12",
-  "last_update_time": "2026-06-12 01:05:43",
+  "last_update_time": "2026-06-12 08:30:29",
   "rate": {
     "prev": 3.62,
     "current": 3.62
   },
   "yield_curve": {
-    "prev": 0.4,
-    "current": 0.42
+    "prev": 0.42,
+    "current": 0.4
   },
   "fed_assets": {
-    "prev": 6.704,
-    "current": 6.711
+    "prev": 6.711,
+    "current": 6.725
   },
   "reserves": {
-    "prev": 3.067,
-    "current": 3.014
+    "prev": 3.014,
+    "current": 3.081
   },
   "rrp": {
-    "prev": 0.577,
-    "current": 0.387
+    "prev": 0.387,
+    "current": 0.46
   },
   "nfci": {
     "prev": -0.51,
@@ -46,8 +46,8 @@
     "current": 1.72
   },
   "fed_assets_month_change": {
-    "prev": 44.33,
-    "current": 19.9
+    "prev": 19.9,
+    "current": -31.05
   },
   "sp500_trend": {
     "prev": 7386.65,
