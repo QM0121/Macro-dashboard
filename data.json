@@ -1,6 +1,6 @@
 {
-  "last_update": "2026-06-15",
-  "last_update_time": "2026-06-15 21:30:43",
+  "last_update": "2026-06-16",
+  "last_update_time": "2026-06-16 02:07:46",
   "rate": {
     "prev": 3.62,
     "current": 3.62
@@ -18,20 +18,20 @@
     "current": 3.081
   },
   "rrp": {
-    "prev": 0.46,
-    "current": 0.454
+    "prev": 0.454,
+    "current": 0.581
   },
   "nfci": {
     "prev": -0.51,
     "current": -0.51
   },
   "hy_spread": {
-    "prev": 2.8,
-    "current": 2.78
+    "prev": 2.78,
+    "current": 2.71
   },
   "vix": {
-    "prev": 22.22,
-    "current": 19.44
+    "prev": 19.44,
+    "current": 17.68
   },
   "initial_claims": {
     "prev": 225000,
