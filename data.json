@@ -1,6 +1,6 @@
 {
   "last_update": "2026-07-02",
-  "last_update_time": "2026-07-02 12:42:55",
+  "last_update_time": "2026-07-02 21:30:37",
   "rate": {
     "prev": 3.63,
     "current": 3.63
@@ -34,7 +34,7 @@
     "current": 16.45
   },
   "initial_claims": {
-    "prev": 227000,
+    "prev": 216000,
     "current": 215000
   },
   "sahm_rule": {
