@@ -1,6 +1,6 @@
 {
   "last_update": "2026-07-15",
-  "last_update_time": "2026-07-15 21:30:42",
+  "last_update_time": "2026-07-15 23:07:03",
   "rate": {
     "prev": 3.62,
     "current": 3.62
@@ -27,11 +27,11 @@
   },
   "hy_spread": {
     "prev": 2.69,
-    "current": 2.69
+    "current": 2.72
   },
   "vix": {
-    "prev": 15.03,
-    "current": 17.16
+    "prev": 17.16,
+    "current": 16.5
   },
   "initial_claims": {
     "prev": 217000,
