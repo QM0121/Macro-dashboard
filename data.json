@@ -1,13 +1,13 @@
 {
-  "last_update": "2026-07-17",
-  "last_update_time": "2026-07-17 22:57:16",
+  "last_update": "2026-07-18",
+  "last_update_time": "2026-07-18 08:30:29",
   "rate": {
     "prev": 3.63,
     "current": 3.63
   },
   "yield_curve": {
-    "prev": 0.42,
-    "current": 0.41
+    "prev": 0.41,
+    "current": 0.37
   },
   "fed_assets": {
     "prev": 6.736,
@@ -18,15 +18,15 @@
     "current": 3.143
   },
   "rrp": {
-    "prev": 0.151,
-    "current": 0.125
+    "prev": 0.125,
+    "current": 0.1
   },
   "nfci": {
     "prev": -0.52,
     "current": -0.54
   },
   "hy_spread": {
-    "prev": 2.72,
+    "prev": 2.71,
     "current": 2.71
   },
   "vix": {
@@ -50,12 +50,12 @@
     "current": 66.04
   },
   "sp500_trend": {
-    "prev": 7572.4,
-    "current": 7533.77,
-    "ma200": 6983.25,
+    "prev": 7533.77,
+    "current": 7457.69,
+    "ma200": 6987.23,
     "high_52w": 7609.78,
-    "drawdown_from_high": -1.0,
+    "drawdown_from_high": -2.0,
     "above_ma200": true,
-    "distance_from_ma200": 7.88
+    "distance_from_ma200": 6.73
   }
 }
