@@ -1105,3 +1105,107 @@ h1 span + span {
     font-size: 27px;
   }
 }
+
+/* =========================================================
+   Expanded macro modules — v5.0
+   ========================================================= */
+
+:root {
+  --orange: #fb923c;
+  --cyan: #22d3ee;
+}
+
+.signal-strip {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.inflation-grid,
+.consumption-grid {
+  display: grid;
+  gap: 14px;
+  margin-top: 26px;
+}
+
+.inflation-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.labor-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.consumption-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.featured-metric {
+  border-color: rgba(148, 163, 184, 0.30);
+  background:
+    linear-gradient(145deg, rgba(78, 167, 255, 0.10), rgba(2, 6, 23, 0.34));
+}
+
+.color-orange {
+  border-color: rgba(251, 146, 60, 0.22);
+}
+
+.color-orange .card-icon {
+  color: #fed7aa;
+  border-color: rgba(251, 146, 60, 0.30);
+  background: rgba(251, 146, 60, 0.10);
+}
+
+.color-cyan {
+  border-color: rgba(34, 211, 238, 0.22);
+}
+
+.color-cyan .card-icon {
+  color: #a5f3fc;
+  border-color: rgba(34, 211, 238, 0.30);
+  background: rgba(34, 211, 238, 0.10);
+}
+
+.inflation-grid .submetric,
+.labor-grid .submetric,
+.consumption-grid .submetric {
+  min-height: 142px;
+}
+
+.inflation-grid .submetric b,
+.labor-grid .submetric b,
+.consumption-grid .submetric b {
+  font-size: clamp(27px, 2.4vw, 35px);
+}
+
+@media (max-width: 1260px) {
+  .signal-strip {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .labor-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 980px) {
+  .signal-strip,
+  .inflation-grid,
+  .labor-grid,
+  .consumption-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .signal-strip,
+  .inflation-grid,
+  .labor-grid,
+  .consumption-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .inflation-grid .submetric,
+  .labor-grid .submetric,
+  .consumption-grid .submetric {
+    min-height: auto;
+  }
+}

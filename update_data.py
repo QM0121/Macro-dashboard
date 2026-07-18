@@ -12,6 +12,7 @@ FRED_API_KEY = os.environ.get("FRED_API_KEY", "").strip()
 FRED_URL = "https://api.stlouisfed.org/fred/series/observations"
 DATA_FILE = "data.json"
 
+# 直接顯示最新值／前值的系列。
 SERIES = {
     "rate": "DFF",
     "yield_curve": "T10Y2Y",
@@ -21,9 +22,22 @@ SERIES = {
     "nfci": "NFCI",
     "hy_spread": "BAMLH0A0HYM2",
     "vix": "VIXCLS",
-    "initial_claims": "ICSA",
     "sahm_rule": "SAHMREALTIME",
     "leading_index": "USSLIND",
+}
+
+# 需要自行計算月增率、年增率或動能的系列。
+MACRO_SERIES = {
+    "nonfarm_payrolls": "PAYEMS",
+    "unemployment_rate": "UNRATE",
+    "initial_claims": "ICSA",
+    "cpi": "CPIAUCSL",
+    "core_cpi": "CPILFESL",
+    "ppi": "PPIFIS",
+    "pce": "PCEPI",
+    "core_pce": "PCEPILFE",
+    "retail_sales": "RSAFS",
+    "real_pce": "PCEC96",
 }
 
 
@@ -45,7 +59,7 @@ def build_session() -> requests.Session:
     session.mount("http://", adapter)
     session.headers.update(
         {
-            "User-Agent": "QM0121-Macro-Dashboard/2.0",
+            "User-Agent": "QM0121-Macro-Dashboard/5.0",
             "Accept": "application/json",
         }
     )
@@ -60,8 +74,8 @@ def load_old_data() -> Dict[str, Any]:
         return {}
 
     try:
-        with open(DATA_FILE, "r", encoding="utf-8") as f:
-            content = json.load(f)
+        with open(DATA_FILE, "r", encoding="utf-8") as file:
+            content = json.load(file)
             return content if isinstance(content, dict) else {}
     except (OSError, json.JSONDecodeError) as error:
         print(f"[警告] 讀取舊的 {DATA_FILE} 失敗：{error}")
@@ -100,7 +114,7 @@ def fetch_observations(series_id: str, limit: int) -> List[Dict[str, Any]]:
 def extract_numeric_observations(
     observations: List[Dict[str, Any]],
 ) -> List[Dict[str, Any]]:
-    """保留有效數值與其實際觀察日期，避免把更新日期誤認為資料日期。"""
+    """保留有效數值與實際觀察日期，避免把更新日誤認為資料日期。"""
     points: List[Dict[str, Any]] = []
 
     for observation in observations:
@@ -113,12 +127,7 @@ def extract_numeric_observations(
         except (TypeError, ValueError):
             continue
 
-        points.append(
-            {
-                "date": observation.get("date"),
-                "value": value,
-            }
-        )
+        points.append({"date": observation.get("date"), "value": value})
 
     return points
 
@@ -127,6 +136,10 @@ def pct_change(current: float, previous: float) -> Optional[float]:
     if previous == 0:
         return None
     return ((current / previous) - 1) * 100
+
+
+def round_optional(value: Optional[float], digits: int = 2) -> Optional[float]:
+    return round(value, digits) if value is not None else None
 
 
 def fetch_latest_two(series_id: str) -> Dict[str, Any]:
@@ -188,6 +201,100 @@ def fetch_market_snapshot(series_id: str, change_mode: str) -> Dict[str, Any]:
             raise ValueError(f"不支援的 change_mode：{change_mode}")
 
     return result
+
+
+def fetch_growth_snapshot(series_id: str) -> Dict[str, Any]:
+    """計算月頻指標的月增率、年增率與三個月年化率。"""
+    points = extract_numeric_observations(
+        fetch_observations(series_id=series_id, limit=30)
+    )
+    values = [point["value"] for point in points]
+
+    if len(values) < 2:
+        raise ValueError(f"{series_id} 找不到足夠資料。")
+
+    mom = pct_change(values[0], values[1])
+    prev_mom = pct_change(values[1], values[2]) if len(values) > 2 else None
+    yoy = pct_change(values[0], values[12]) if len(values) > 12 else None
+    prev_yoy = pct_change(values[1], values[13]) if len(values) > 13 else None
+
+    annualized_3m = None
+    if len(values) > 3 and values[0] > 0 and values[3] > 0:
+        annualized_3m = ((values[0] / values[3]) ** 4 - 1) * 100
+
+    return {
+        "current_level": round_optional(values[0], 3),
+        "prev_level": round_optional(values[1], 3),
+        "mom": round_optional(mom, 2),
+        "prev_mom": round_optional(prev_mom, 2),
+        "yoy": round_optional(yoy, 2),
+        "prev_yoy": round_optional(prev_yoy, 2),
+        "annualized_3m": round_optional(annualized_3m, 2),
+        "current_date": points[0]["date"],
+        "prev_date": points[1]["date"],
+    }
+
+
+def fetch_payroll_snapshot(series_id: str) -> Dict[str, Any]:
+    """PAYEMS 單位為千人；以月差計算非農新增就業與三個月平均。"""
+    points = extract_numeric_observations(
+        fetch_observations(series_id=series_id, limit=12)
+    )
+    values = [point["value"] for point in points]
+
+    if len(values) < 4:
+        raise ValueError(f"{series_id} 找不到足夠資料。")
+
+    changes = [values[index] - values[index + 1] for index in range(3)]
+
+    return {
+        "current": int(round(changes[0])),
+        "prev": int(round(changes[1])),
+        "avg_3m": round(sum(changes) / len(changes), 1),
+        "level": int(round(values[0])),
+        "current_date": points[0]["date"],
+        "prev_date": points[1]["date"],
+    }
+
+
+def fetch_unemployment_snapshot(series_id: str) -> Dict[str, Any]:
+    points = extract_numeric_observations(
+        fetch_observations(series_id=series_id, limit=12)
+    )
+    values = [point["value"] for point in points]
+
+    if len(values) < 4:
+        raise ValueError(f"{series_id} 找不到足夠資料。")
+
+    return {
+        "current": round(values[0], 2),
+        "prev": round(values[1], 2),
+        "change_3m": round(values[0] - values[3], 2),
+        "current_date": points[0]["date"],
+        "prev_date": points[1]["date"],
+    }
+
+
+def fetch_claims_snapshot(series_id: str) -> Dict[str, Any]:
+    points = extract_numeric_observations(
+        fetch_observations(series_id=series_id, limit=12)
+    )
+    values = [point["value"] for point in points]
+
+    if len(values) < 5:
+        raise ValueError(f"{series_id} 找不到足夠資料。")
+
+    avg_4w = sum(values[:4]) / 4
+    prev_avg_4w = sum(values[1:5]) / 4
+
+    return {
+        "current": int(round(values[0])),
+        "prev": int(round(values[1])),
+        "avg_4w": int(round(avg_4w)),
+        "prev_avg_4w": int(round(prev_avg_4w)),
+        "current_date": points[0]["date"],
+        "prev_date": points[1]["date"],
+    }
 
 
 def fetch_fed_assets_month_change() -> Dict[str, Any]:
@@ -263,42 +370,28 @@ def fetch_sp500_trend() -> Dict[str, Any]:
     if current is not None and high_52w not in (None, 0):
         drawdown_from_high = ((current / high_52w) - 1) * 100
 
+    returns = {lookback: period_return(values, lookback) for lookback in (1, 5, 20, 60)}
+
     return {
-        "prev": round(previous, 2) if previous is not None else None,
-        "current": round(current, 2) if current is not None else None,
+        "prev": round_optional(previous, 2),
+        "current": round_optional(current, 2),
         "prev_date": points[1]["date"] if len(points) > 1 else None,
         "current_date": points[0]["date"] if points else None,
-        "return_1d": round(period_return(values, 1), 2)
-        if period_return(values, 1) is not None
-        else None,
-        "return_5d": round(period_return(values, 5), 2)
-        if period_return(values, 5) is not None
-        else None,
-        "return_20d": round(period_return(values, 20), 2)
-        if period_return(values, 20) is not None
-        else None,
-        "return_60d": round(period_return(values, 60), 2)
-        if period_return(values, 60) is not None
-        else None,
-        "ma20": round(ma20, 2) if ma20 is not None else None,
-        "ma50": round(ma50, 2) if ma50 is not None else None,
-        "ma200": round(ma200, 2) if ma200 is not None else None,
+        "return_1d": round_optional(returns[1], 2),
+        "return_5d": round_optional(returns[5], 2),
+        "return_20d": round_optional(returns[20], 2),
+        "return_60d": round_optional(returns[60], 2),
+        "ma20": round_optional(ma20, 2),
+        "ma50": round_optional(ma50, 2),
+        "ma200": round_optional(ma200, 2),
         "above_ma20": above_ma(ma20),
         "above_ma50": above_ma(ma50),
         "above_ma200": above_ma(ma200),
-        "distance_from_ma20": round(distance_from_ma(ma20), 2)
-        if distance_from_ma(ma20) is not None
-        else None,
-        "distance_from_ma50": round(distance_from_ma(ma50), 2)
-        if distance_from_ma(ma50) is not None
-        else None,
-        "distance_from_ma200": round(distance_from_ma(ma200), 2)
-        if distance_from_ma(ma200) is not None
-        else None,
-        "high_52w": round(high_52w, 2) if high_52w is not None else None,
-        "drawdown_from_high": round(drawdown_from_high, 2)
-        if drawdown_from_high is not None
-        else None,
+        "distance_from_ma20": round_optional(distance_from_ma(ma20), 2),
+        "distance_from_ma50": round_optional(distance_from_ma(ma50), 2),
+        "distance_from_ma200": round_optional(distance_from_ma(ma200), 2),
+        "high_52w": round_optional(high_52w, 2),
+        "drawdown_from_high": round_optional(drawdown_from_high, 2),
     }
 
 
@@ -311,9 +404,6 @@ def round_value(key: str, value: Optional[float]) -> Optional[float | int]:
 
     if key == "rrp":
         return round(value, 3)
-
-    if key == "initial_claims":
-        return int(round(value, 0))
 
     return round(value, 2)
 
@@ -334,26 +424,31 @@ def serialize_series_item(key: str, item: Dict[str, Any]) -> Dict[str, Any]:
     return result
 
 
-def fallback_or_raise(
+def fallback_or_default(
     key: str,
     old_data: Dict[str, Any],
     error: Exception,
+    default: Dict[str, Any],
 ) -> Dict[str, Any]:
     if key in old_data:
         print(f"[警告] {key} 更新失敗，保留舊資料。原因：{error}")
         return old_data[key]
 
-    raise RuntimeError(f"{key} 更新失敗，且無舊資料可回填。原因：{error}") from error
+    print(f"[警告] {key} 更新失敗，先寫入空值。原因：{error}")
+    return default
 
 
 def main() -> None:
+    if not FRED_API_KEY:
+        raise RuntimeError("找不到 FRED_API_KEY，請先在 GitHub Actions Secrets 設定。")
+
     old_data = load_old_data()
     data: Dict[str, Any] = {}
 
     taipei_time = datetime.now(timezone.utc) + timedelta(hours=8)
     data["last_update"] = taipei_time.strftime("%Y-%m-%d")
     data["last_update_time"] = taipei_time.strftime("%Y-%m-%d %H:%M:%S")
-    data["schema_version"] = 4
+    data["schema_version"] = 5
 
     print(f"[開始] 更新總經資料：{data['last_update_time']} Asia/Taipei")
 
@@ -368,29 +463,91 @@ def main() -> None:
 
             data[key] = serialize_series_item(key, item)
             print(f"[完成] {key} ({series_id})")
-            time.sleep(0.4)
+            time.sleep(0.25)
         except Exception as error:
-            data[key] = fallback_or_raise(key, old_data, error)
+            data[key] = fallback_or_default(
+                key,
+                old_data,
+                error,
+                {"prev": None, "current": None, "prev_date": None, "current_date": None},
+            )
+
+    custom_fetchers = {
+        "nonfarm_payrolls": lambda: fetch_payroll_snapshot(MACRO_SERIES["nonfarm_payrolls"]),
+        "unemployment_rate": lambda: fetch_unemployment_snapshot(MACRO_SERIES["unemployment_rate"]),
+        "initial_claims": lambda: fetch_claims_snapshot(MACRO_SERIES["initial_claims"]),
+        "cpi": lambda: fetch_growth_snapshot(MACRO_SERIES["cpi"]),
+        "core_cpi": lambda: fetch_growth_snapshot(MACRO_SERIES["core_cpi"]),
+        "ppi": lambda: fetch_growth_snapshot(MACRO_SERIES["ppi"]),
+        "pce": lambda: fetch_growth_snapshot(MACRO_SERIES["pce"]),
+        "core_pce": lambda: fetch_growth_snapshot(MACRO_SERIES["core_pce"]),
+        "retail_sales": lambda: fetch_growth_snapshot(MACRO_SERIES["retail_sales"]),
+        "real_pce": lambda: fetch_growth_snapshot(MACRO_SERIES["real_pce"]),
+    }
+
+    custom_defaults: Dict[str, Dict[str, Any]] = {
+        "nonfarm_payrolls": {"current": None, "prev": None, "avg_3m": None, "level": None},
+        "unemployment_rate": {"current": None, "prev": None, "change_3m": None},
+        "initial_claims": {"current": None, "prev": None, "avg_4w": None, "prev_avg_4w": None},
+    }
+    growth_default = {
+        "current_level": None,
+        "prev_level": None,
+        "mom": None,
+        "prev_mom": None,
+        "yoy": None,
+        "prev_yoy": None,
+        "annualized_3m": None,
+    }
+
+    for key, fetcher in custom_fetchers.items():
+        try:
+            data[key] = fetcher()
+            print(f"[完成] {key} ({MACRO_SERIES[key]})")
+            time.sleep(0.25)
+        except Exception as error:
+            default = custom_defaults.get(key, growth_default.copy())
+            data[key] = fallback_or_default(key, old_data, error, default)
 
     try:
         data["fed_assets_month_change"] = fetch_fed_assets_month_change()
         print("[完成] fed_assets_month_change")
-        time.sleep(0.4)
+        time.sleep(0.25)
     except Exception as error:
-        data["fed_assets_month_change"] = fallback_or_raise(
+        data["fed_assets_month_change"] = fallback_or_default(
             "fed_assets_month_change",
             old_data,
             error,
+            {"prev": None, "current": None, "current_date": None, "reference_date": None},
         )
 
     try:
         data["sp500_trend"] = fetch_sp500_trend()
         print("[完成] sp500_trend")
     except Exception as error:
-        data["sp500_trend"] = fallback_or_raise(
+        data["sp500_trend"] = fallback_or_default(
             "sp500_trend",
             old_data,
             error,
+            {
+                "prev": None,
+                "current": None,
+                "return_1d": None,
+                "return_5d": None,
+                "return_20d": None,
+                "return_60d": None,
+                "ma20": None,
+                "ma50": None,
+                "ma200": None,
+                "above_ma20": None,
+                "above_ma50": None,
+                "above_ma200": None,
+                "distance_from_ma20": None,
+                "distance_from_ma50": None,
+                "distance_from_ma200": None,
+                "high_52w": None,
+                "drawdown_from_high": None,
+            },
         )
 
     with open(DATA_FILE, "w", encoding="utf-8") as file:

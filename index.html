@@ -6,9 +6,9 @@
 
   <title>總經 × 牛熊市判斷指標｜Macro Intelligence Dashboard</title>
 
-  <meta name="description" content="總經 × 牛熊市判斷指標：以利率、殖利率曲線、QT、流動性、金融壓力、就業數據、Sahm Rule、景氣領先指標與 S&P 500 趨勢建立一眼判讀的市場監控面板。" />
+  <meta name="description" content="總經 × 牛熊市判斷指標：以利率、通膨、就業、消費、殖利率曲線、流動性、金融壓力與 S&P 500 趨勢建立一眼判讀的市場監控面板。" />
   <meta property="og:title" content="總經 × 牛熊市判斷指標" />
-  <meta property="og:description" content="利率、流動性、金融壓力、就業、衰退警報、領先指標與市場趨勢，一站判讀牛熊市。" />
+  <meta property="og:description" content="利率、通膨、非農、失業率、消費、流動性、金融壓力與市場趨勢，一站判讀牛熊市。" />
   <meta property="og:type" content="website" />
 
   <link rel="stylesheet" href="styles.css" />
@@ -43,7 +43,7 @@
           <div class="eyebrow">Macro Dashboard</div>
           <h1><span>總經 ×</span><span>牛熊市判斷指標</span></h1>
           <p class="subtitle">
-            從資金成本、景氣循環、流動性、金融壓力、勞動市場與股價趨勢，
+            從資金成本、通膨、勞動市場、消費需求、流動性、金融壓力與股價趨勢，
             一眼判斷現在是偏多、偏空，還是需要等待更多確認。
           </p>
 
@@ -72,7 +72,7 @@
                 <b id="macro-score">--</b>
               </div>
               <strong id="macro-regime">資料載入中</strong>
-              <p id="macro-detail">利率、曲線、流動性、金融條件、就業與領先指標。</p>
+              <p id="macro-detail">利率、通膨、曲線、流動性、金融條件、就業、消費與領先指標。</p>
             </div>
 
             <div class="regime-score-card" id="tactical-regime-card">
@@ -92,7 +92,7 @@
             </div>
             <div class="mini-stat">
               <span>Version</span>
-              <b>4.1</b>
+              <b>5.0</b>
             </div>
             <div class="mini-stat">
               <span>Mode</span>
@@ -105,50 +105,42 @@
       <section class="signal-strip">
         <div class="signal-card" id="signal-rate">
           <span class="signal-dot"></span>
-          <div>
-            <p>利率環境</p>
-            <b>讀取中</b>
-          </div>
+          <div><p>利率政策</p><b>讀取中</b></div>
         </div>
 
-        <div class="signal-card" id="signal-curve">
+        <div class="signal-card" id="signal-inflation">
           <span class="signal-dot"></span>
-          <div>
-            <p>殖利率曲線</p>
-            <b>讀取中</b>
-          </div>
-        </div>
-
-        <div class="signal-card" id="signal-liquidity">
-          <span class="signal-dot"></span>
-          <div>
-            <p>流動性 / QT</p>
-            <b>讀取中</b>
-          </div>
-        </div>
-
-        <div class="signal-card" id="signal-risk">
-          <span class="signal-dot"></span>
-          <div>
-            <p>金融壓力</p>
-            <b>讀取中</b>
-          </div>
+          <div><p>通膨壓力</p><b>讀取中</b></div>
         </div>
 
         <div class="signal-card" id="signal-labor">
           <span class="signal-dot"></span>
-          <div>
-            <p>就業 / 衰退</p>
-            <b>讀取中</b>
-          </div>
+          <div><p>勞動市場</p><b>讀取中</b></div>
+        </div>
+
+        <div class="signal-card" id="signal-consumption">
+          <span class="signal-dot"></span>
+          <div><p>消費動能</p><b>讀取中</b></div>
+        </div>
+
+        <div class="signal-card" id="signal-curve">
+          <span class="signal-dot"></span>
+          <div><p>殖利率曲線</p><b>讀取中</b></div>
+        </div>
+
+        <div class="signal-card" id="signal-liquidity">
+          <span class="signal-dot"></span>
+          <div><p>流動性 / QT</p><b>讀取中</b></div>
+        </div>
+
+        <div class="signal-card" id="signal-risk">
+          <span class="signal-dot"></span>
+          <div><p>金融壓力</p><b>讀取中</b></div>
         </div>
 
         <div class="signal-card" id="signal-trend">
           <span class="signal-dot"></span>
-          <div>
-            <p>市場趨勢</p>
-            <b>讀取中</b>
-          </div>
+          <div><p>市場趨勢</p><b>讀取中</b></div>
         </div>
       </section>
     </div>
@@ -200,6 +192,8 @@
         </div>
       </article>
 
+
+
       <article class="card metric-card color-purple">
         <div class="card-top">
           <div>
@@ -229,6 +223,56 @@
           <div class="insight warn">倒掛縮小但金融壓力惡化：仍需保守</div>
           <div class="insight bad">長端殖利率急升造成轉正：風險資產可能承壓</div>
         </div>
+      </article>
+
+      <article class="card metric-card color-orange wide">
+        <div class="card-top">
+          <div>
+            <span class="card-icon">I</span>
+            <h3>通膨壓力</h3>
+          </div>
+          <span class="tag">Inflation</span>
+        </div>
+
+        <div class="inflation-grid">
+          <div class="submetric featured-metric">
+            <p>核心 PCE 年增率</p>
+            <div><b id="core-pce-yoy">--</b><small>%</small></div>
+            <span>前值 <strong id="core-pce-prev-yoy">--</strong></span>
+          </div>
+
+          <div class="submetric featured-metric">
+            <p>核心 PCE 3月年化</p>
+            <div><b id="core-pce-3m">--</b><small>%</small></div>
+            <span>觀察近期通膨動能</span>
+          </div>
+
+          <div class="submetric">
+            <p>PCE 年增率</p>
+            <div><b id="pce-yoy">--</b><small>%</small></div>
+            <span>前值 <strong id="pce-prev-yoy">--</strong></span>
+          </div>
+
+          <div class="submetric">
+            <p>核心 CPI 年增率</p>
+            <div><b id="core-cpi-yoy">--</b><small>%</small></div>
+            <span>前值 <strong id="core-cpi-prev-yoy">--</strong></span>
+          </div>
+
+          <div class="submetric">
+            <p>CPI 年增率</p>
+            <div><b id="cpi-yoy">--</b><small>%</small></div>
+            <span>月增 <strong id="cpi-mom">--</strong></span>
+          </div>
+
+          <div class="submetric">
+            <p>PPI 年增率</p>
+            <div><b id="ppi-yoy">--</b><small>%</small></div>
+            <span>月增 <strong id="ppi-mom">--</strong></span>
+          </div>
+        </div>
+
+        <div class="status-line" id="inflation-status">資料載入中</div>
       </article>
 
       <article class="card metric-card color-teal wide">
@@ -311,16 +355,46 @@
         <div class="card-top">
           <div>
             <span class="card-icon">L</span>
-            <h3>就業與衰退警報</h3>
+            <h3>勞動市場與衰退警報</h3>
           </div>
           <span class="tag">Labor</span>
         </div>
 
         <div class="labor-grid">
+          <div class="submetric featured-metric">
+            <p>非農新增就業</p>
+            <div><b id="nonfarm-current">--</b><small>千人</small></div>
+            <span>前值 <strong id="nonfarm-prev">--</strong></span>
+          </div>
+
+          <div class="submetric featured-metric">
+            <p>非農 3 個月平均</p>
+            <div><b id="nonfarm-avg3m">--</b><small>千人</small></div>
+            <span>降低單月修正干擾</span>
+          </div>
+
+          <div class="submetric">
+            <p>失業率</p>
+            <div><b id="unemployment-current">--</b><small>%</small></div>
+            <span>前值 <strong id="unemployment-prev">--</strong></span>
+          </div>
+
+          <div class="submetric">
+            <p>失業率 3月變化</p>
+            <div><b id="unemployment-change3m">--</b><small>百分點</small></div>
+            <span>上升代表就業降溫</span>
+          </div>
+
           <div class="submetric">
             <p>初領失業金</p>
             <div><b id="claims-current">--</b><small>人</small></div>
             <span>前值 <strong id="claims-prev">--</strong></span>
+          </div>
+
+          <div class="submetric">
+            <p>初領 4 週平均</p>
+            <div><b id="claims-avg4w">--</b><small>人</small></div>
+            <span>平滑每週波動</span>
           </div>
 
           <div class="submetric">
@@ -331,11 +405,44 @@
         </div>
 
         <div class="status-line" id="labor-status">資料載入中</div>
+      </article>
 
-        <div class="insight-list compact-two">
-          <div class="insight good">初領失業金低檔：就業市場仍具韌性</div>
-          <div class="insight bad">Sahm Rule ≥ 0.50：衰退警報明顯升高</div>
+      <article class="card metric-card color-cyan wide">
+        <div class="card-top">
+          <div>
+            <span class="card-icon">C</span>
+            <h3>消費與需求動能</h3>
+          </div>
+          <span class="tag">Consumption</span>
         </div>
+
+        <div class="consumption-grid">
+          <div class="submetric featured-metric">
+            <p>零售銷售月增率</p>
+            <div><b id="retail-mom">--</b><small>%</small></div>
+            <span>前值 <strong id="retail-prev-mom">--</strong></span>
+          </div>
+
+          <div class="submetric">
+            <p>零售銷售年增率</p>
+            <div><b id="retail-yoy">--</b><small>%</small></div>
+            <span>名目消費金額</span>
+          </div>
+
+          <div class="submetric featured-metric">
+            <p>實質個人消費月增率</p>
+            <div><b id="real-pce-mom">--</b><small>%</small></div>
+            <span>前值 <strong id="real-pce-prev-mom">--</strong></span>
+          </div>
+
+          <div class="submetric">
+            <p>實質個人消費年增率</p>
+            <div><b id="real-pce-yoy">--</b><small>%</small></div>
+            <span>扣除物價後需求</span>
+          </div>
+        </div>
+
+        <div class="status-line" id="consumption-status">資料載入中</div>
       </article>
 
       <article class="card metric-card color-indigo wide">
@@ -406,9 +513,9 @@
       <article class="guide-card">
         <h3>如何快速判讀？</h3>
         <div class="steps">
-          <div><span>01</span><p>先看利率與殖利率曲線，確認總體資金環境。</p></div>
-          <div><span>02</span><p>再看 Fed 資產、準備金與金融壓力，確認流動性是否惡化。</p></div>
-          <div><span>03</span><p>最後看就業、Sahm Rule、領先指標與 S&P 500 趨勢，確認牛熊市是否互相驗證。</p></div>
+          <div><span>01</span><p>先看核心 PCE、核心 CPI 與 PPI，確認通膨是否限制降息空間。</p></div>
+          <div><span>02</span><p>再看非農、失業率、初領失業金與消費，確認經濟是軟著陸還是衰退。</p></div>
+          <div><span>03</span><p>最後用殖利率曲線、流動性、信用壓力與 S&amp;P 500 趨勢確認市場方向。</p></div>
         </div>
       </article>
 
@@ -428,18 +535,33 @@
           <div class="eyebrow">Sources</div>
           <h2>官方資料來源</h2>
         </div>
-        <p>資料透過 FRED API 自動更新，主要源自美國聯準會、芝加哥聯準銀行與美國勞工相關機構。</p>
+        <p>資料透過 FRED API 自動更新，原始來源涵蓋聯準會、BLS、BEA、Census Bureau 與芝加哥聯準銀行。</p>
       </div>
 
       <div class="sources-grid">
+        <a class="source" href="https://www.bls.gov/" target="_blank" rel="noopener">
+          <div class="source-title">BLS</div>
+          <div class="source-desc">非農就業、失業率、CPI、PPI 與初領失業相關資料</div>
+        </a>
+
+        <a class="source" href="https://www.bea.gov/" target="_blank" rel="noopener">
+          <div class="source-title">BEA</div>
+          <div class="source-desc">PCE、核心 PCE 與實質個人消費支出</div>
+        </a>
+
+        <a class="source" href="https://www.census.gov/retail/" target="_blank" rel="noopener">
+          <div class="source-title">U.S. Census Bureau</div>
+          <div class="source-desc">美國零售銷售與消費需求資料</div>
+        </a>
+
         <a class="source" href="https://www.federalreserve.gov/releases/h41/" target="_blank" rel="noopener">
-          <div class="source-title">Fed H.4.1</div>
-          <div class="source-desc">Fed 資產負債表、總資產與準備金資料</div>
+          <div class="source-title">Federal Reserve</div>
+          <div class="source-desc">政策利率、資產負債表、準備金與金融環境</div>
         </a>
 
         <a class="source" href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">
           <div class="source-title">FRED</div>
-          <div class="source-desc">利率、曲線、RRP、Sahm Rule、領先指標與股價資料</div>
+          <div class="source-desc">統一取得官方時間序列並自動更新 data.json</div>
         </a>
 
         <a class="source" href="https://www.chicagofed.org/publications/nfci/index" target="_blank" rel="noopener">
@@ -537,9 +659,186 @@
       setText(detailId, result.reasons.slice(0, 3).join("；") || "資料不足，暫不判斷。");
     };
 
+    function scoreInflation(data) {
+      const inputs = [
+        [data.core_pce, 0.40],
+        [data.core_cpi, 0.25],
+        [data.pce, 0.15],
+        [data.cpi, 0.10],
+        [data.ppi, 0.10]
+      ];
+
+      let weightedLevel = 0;
+      let weightedTrend = 0;
+      let levelWeight = 0;
+      let trendWeight = 0;
+
+      inputs.forEach(([item, weight]) => {
+        const current = toValidNumber(item?.yoy);
+        const previous = toValidNumber(item?.prev_yoy);
+        if (current !== null) {
+          weightedLevel += current * weight;
+          levelWeight += weight;
+        }
+        if (current !== null && previous !== null) {
+          weightedTrend += (current - previous) * weight;
+          trendWeight += weight;
+        }
+      });
+
+      const inflationLevel = levelWeight > 0 ? weightedLevel / levelWeight : null;
+      const inflationTrend = trendWeight > 0 ? weightedTrend / trendWeight : null;
+      const corePce3m = toValidNumber(data.core_pce?.annualized_3m);
+      let score = 0;
+      let label = "資料不足";
+      let level = "warn";
+      const reasons = [];
+
+      if (inflationLevel === null) {
+        reasons.push("通膨資料尚未完成更新");
+      } else if (
+        inflationLevel >= 4 ||
+        (corePce3m !== null && corePce3m >= 4.5) ||
+        (inflationTrend !== null && inflationTrend >= 0.4)
+      ) {
+        score = -2;
+        label = "通膨壓力高";
+        level = "bad";
+        reasons.push(`加權通膨約 ${formatNumber(inflationLevel, 2)}%，降息空間受限`);
+      } else if (
+        inflationLevel >= 3 ||
+        (corePce3m !== null && corePce3m >= 3.5) ||
+        (inflationTrend !== null && inflationTrend > 0.1)
+      ) {
+        score = -1;
+        label = "通膨仍偏高";
+        level = "bad";
+        reasons.push("通膨高於政策目標或近期動能重新升溫");
+      } else if (
+        inflationLevel <= 2.5 &&
+        (corePce3m === null || corePce3m <= 2.75) &&
+        (inflationTrend === null || inflationTrend <= 0.1)
+      ) {
+        score = 2;
+        label = "通膨明顯降溫";
+        level = "good";
+        reasons.push("核心與整體通膨接近目標，政策彈性提高");
+      } else if (
+        inflationLevel <= 3 &&
+        (inflationTrend === null || inflationTrend <= 0)
+      ) {
+        score = 1;
+        label = "通膨溫和降溫";
+        level = "good";
+        reasons.push("通膨水位下降，但仍需觀察核心 PCE 動能");
+      } else {
+        label = "通膨中性觀察";
+        reasons.push("通膨水位與趨勢尚未形成明確方向");
+      }
+
+      return { score, maxScore: 2, label, level, reasons, inflationLevel, inflationTrend };
+    }
+
+    function scoreLabor(data) {
+      const payrollAvg = toValidNumber(data.nonfarm_payrolls?.avg_3m);
+      const unemployment = toValidNumber(data.unemployment_rate?.current);
+      const unemploymentChange = toValidNumber(data.unemployment_rate?.change_3m);
+      const claimsAvg = toValidNumber(data.initial_claims?.avg_4w);
+      const sahm = toValidNumber(data.sahm_rule?.current);
+      const available = [payrollAvg, unemployment, unemploymentChange, claimsAvg, sahm]
+        .filter(value => value !== null).length;
+
+      let score = 0;
+      let label = "資料不足";
+      let level = "warn";
+      const reasons = [];
+
+      if (available < 3) {
+        reasons.push("勞動市場資料尚未完成更新");
+      } else if (
+        (sahm !== null && sahm >= 0.5) ||
+        (payrollAvg !== null && payrollAvg < 0) ||
+        (unemploymentChange !== null && unemploymentChange >= 0.5)
+      ) {
+        score = -2;
+        label = "衰退風險升高";
+        level = "bad";
+        reasons.push("Sahm Rule、非農或失業率出現明顯衰退訊號");
+      } else if (
+        (payrollAvg !== null && payrollAvg < 75) ||
+        (unemploymentChange !== null && unemploymentChange >= 0.25) ||
+        (claimsAvg !== null && claimsAvg >= 275000)
+      ) {
+        score = -1;
+        label = "就業明顯降溫";
+        level = "bad";
+        reasons.push("非農動能偏弱或失業相關指標持續上升");
+      } else if (
+        payrollAvg !== null && payrollAvg >= 150 &&
+        unemployment !== null && unemployment <= 4.5 &&
+        claimsAvg !== null && claimsAvg < 250000 &&
+        (sahm === null || sahm < 0.3)
+      ) {
+        score = 2;
+        label = "就業具韌性";
+        level = "good";
+        reasons.push("非農三月平均穩健，失業率與申請數仍受控");
+      } else if (
+        (payrollAvg === null || payrollAvg >= 75) &&
+        (unemploymentChange === null || unemploymentChange <= 0.15) &&
+        (claimsAvg === null || claimsAvg < 275000) &&
+        (sahm === null || sahm < 0.3)
+      ) {
+        score = 1;
+        label = "就業仍穩";
+        level = "good";
+        reasons.push("勞動市場放緩，但尚未形成衰退警報");
+      } else {
+        label = "就業轉弱觀察";
+        reasons.push("就業訊號分歧，需持續觀察三個月趨勢");
+      }
+
+      return { score, maxScore: 2, label, level, reasons };
+    }
+
+    function scoreConsumption(data) {
+      const retailMom = toValidNumber(data.retail_sales?.mom);
+      const retailYoy = toValidNumber(data.retail_sales?.yoy);
+      const realPceMom = toValidNumber(data.real_pce?.mom);
+      const realPceYoy = toValidNumber(data.real_pce?.yoy);
+      const reasons = [];
+
+      if ([retailMom, retailYoy, realPceMom, realPceYoy].filter(value => value !== null).length < 2) {
+        return { score: 0, maxScore: 1, label: "資料不足", level: "warn", reasons: ["消費資料尚未完成更新"] };
+      }
+
+      if (
+        (realPceYoy !== null && realPceYoy < 0) ||
+        (retailMom !== null && retailMom <= -0.5 && realPceMom !== null && realPceMom < 0)
+      ) {
+        reasons.push("名目零售與實質消費同步轉弱");
+        return { score: -1, maxScore: 1, label: "需求轉弱", level: "bad", reasons };
+      }
+
+      if (
+        realPceMom !== null && realPceMom > 0 &&
+        realPceYoy !== null && realPceYoy > 1 &&
+        (retailMom === null || retailMom >= 0)
+      ) {
+        reasons.push("零售銷售與實質消費仍維持成長");
+        return { score: 1, maxScore: 1, label: "消費具韌性", level: "good", reasons };
+      }
+
+      reasons.push("名目與實質消費方向不一致");
+      return { score: 0, maxScore: 1, label: "消費中性", level: "warn", reasons };
+    }
+
     function scoreMacro(data) {
       let score = 0;
       const reasons = [];
+      const inflation = scoreInflation(data);
+      const labor = scoreLabor(data);
+      const consumption = scoreConsumption(data);
 
       const rateNow = toValidNumber(data.rate?.current);
       const ratePrev = toValidNumber(data.rate?.prev);
@@ -554,6 +853,9 @@
           reasons.push("政策利率持平");
         }
       }
+
+      score += inflation.score;
+      reasons.push(`通膨：${inflation.label}`);
 
       const curveNow = toValidNumber(data.yield_curve?.current);
       if (curveNow !== null) {
@@ -598,19 +900,11 @@
         }
       }
 
-      const claims = toValidNumber(data.initial_claims?.current);
-      const sahm = toValidNumber(data.sahm_rule?.current);
-      if (claims !== null && sahm !== null) {
-        if (sahm >= 0.5 || claims > 300000) {
-          score -= 1;
-          reasons.push("勞動市場衰退風險升高");
-        } else if (sahm < 0.3 && claims < 250000) {
-          score += 1;
-          reasons.push("勞動市場仍具韌性");
-        } else {
-          reasons.push("就業轉弱但未觸發衰退警報");
-        }
-      }
+      score += labor.score;
+      reasons.push(`就業：${labor.label}`);
+
+      score += consumption.score;
+      reasons.push(`消費：${consumption.label}`);
 
       const leading = toValidNumber(data.leading_index?.current);
       if (leading !== null) {
@@ -625,13 +919,24 @@
         }
       }
 
-      if (score >= 3) {
-        return { score, maxScore: 6, label: "結構偏多", level: "good", reasons };
+      const result = {
+        score,
+        maxScore: 10,
+        label: "結構中性",
+        level: "warn",
+        reasons,
+        modules: { inflation, labor, consumption }
+      };
+
+      if (score >= 4) {
+        result.label = "結構偏多";
+        result.level = "good";
+      } else if (score <= -3) {
+        result.label = "結構偏空";
+        result.level = "bad";
       }
-      if (score <= -2) {
-        return { score, maxScore: 6, label: "結構偏空", level: "bad", reasons };
-      }
-      return { score, maxScore: 6, label: "結構中性", level: "warn", reasons };
+
+      return result;
     }
 
     function scoreTactical(data) {
@@ -795,14 +1100,26 @@
         setStatus("rate-status", "warn", "政策利率資料不足，暫不計分。");
       } else if (rateNow < ratePrev - 0.01) {
         setSignal("signal-rate", "good", "利率下降");
-        setStatus("rate-status", "good", "利率較前值下降，資金成本壓力略為降低。");
+        setStatus("rate-status", "good", "利率較前值下降；是否偏多仍需搭配通膨與就業判斷。");
       } else if (rateNow > ratePrev + 0.01) {
         setSignal("signal-rate", "bad", "利率上升");
-        setStatus("rate-status", "bad", "利率較前值上升，估值壓力可能提高。");
+        setStatus("rate-status", "bad", "利率較前值上升，估值與融資成本壓力提高。");
       } else {
         setSignal("signal-rate", "warn", "利率持平");
-        setStatus("rate-status", "warn", "利率維持不變，需搭配通膨與金融條件判斷。");
+        setStatus("rate-status", "warn", "利率維持不變，需搭配通膨、非農與金融條件判斷。");
       }
+
+      const inflation = assessment.macro.modules.inflation;
+      setSignal("signal-inflation", inflation.level, inflation.label);
+      setStatus("inflation-status", inflation.level, inflation.reasons[0] || "通膨訊號中性。");
+
+      const labor = assessment.macro.modules.labor;
+      setSignal("signal-labor", labor.level, labor.label);
+      setStatus("labor-status", labor.level, labor.reasons[0] || "勞動市場訊號中性。");
+
+      const consumption = assessment.macro.modules.consumption;
+      setSignal("signal-consumption", consumption.level, consumption.label);
+      setStatus("consumption-status", consumption.level, consumption.reasons[0] || "消費動能訊號中性。");
 
       const curveNow = toValidNumber(data.yield_curve?.current);
       if (curveNow === null) {
@@ -810,10 +1127,10 @@
         setStatus("yield-status", "warn", "殖利率曲線資料不足，暫不計分。");
       } else if (curveNow >= 0.25) {
         setSignal("signal-curve", "good", "曲線轉正");
-        setStatus("yield-status", "good", "10Y−2Y 明顯為正，曲線結構相對健康；仍需辨識長端急升風險。");
+        setStatus("yield-status", "good", "10Y−2Y 明顯為正；仍需辨識是短端降息或長端殖利率急升造成。");
       } else if (curveNow <= -0.25) {
         setSignal("signal-curve", "bad", "曲線倒掛");
-        setStatus("yield-status", "bad", "10Y−2Y 明顯為負，衰退風險尚未解除。");
+        setStatus("yield-status", "bad", "10Y−2Y 明顯為負，景氣與信用風險尚未解除。");
       } else {
         setSignal("signal-curve", "warn", "接近中性");
         setStatus("yield-status", "warn", "殖利率曲線接近零，尚不足以單獨判定多空。");
@@ -865,23 +1182,6 @@
         setStatus("risk-status", "warn", "絕對水位可能仍低，但短期變化需持續確認。");
       }
 
-      const claims = toValidNumber(data.initial_claims?.current);
-      const sahm = toValidNumber(data.sahm_rule?.current);
-
-      if (claims === null || sahm === null) {
-        setSignal("signal-labor", "warn", "資料不足");
-        setStatus("labor-status", "warn", "就業資料不足，暫不計分。");
-      } else if (sahm >= 0.5 || claims > 300000) {
-        setSignal("signal-labor", "bad", "衰退風險升高");
-        setStatus("labor-status", "bad", "Sahm Rule 或失業申請數顯示勞動市場轉弱風險升高。");
-      } else if (sahm >= 0.3 || claims > 250000) {
-        setSignal("signal-labor", "warn", "就業轉弱觀察");
-        setStatus("labor-status", "warn", "勞動市場出現轉弱跡象，但尚未形成明確衰退訊號。");
-      } else {
-        setSignal("signal-labor", "good", "就業仍穩");
-        setStatus("labor-status", "good", "初領失業金仍偏低，Sahm Rule 未觸發，勞動市場仍具韌性。");
-      }
-
       if (assessment.tactical.level === "good") {
         setSignal("signal-trend", "good", "短線偏多");
         setStatus("trend-status", "good", "均線、動能、回撤與市場風險指標整體偏多。");
@@ -914,6 +1214,32 @@
         setText("rate-current", formatNumber(data.rate?.current, 2));
         setText("yield-prev", formatNumber(data.yield_curve?.prev, 2));
         setText("yield-current", formatNumber(data.yield_curve?.current, 2));
+
+        setText("core-pce-yoy", formatNumber(data.core_pce?.yoy, 2));
+        setText("core-pce-prev-yoy", formatNumber(data.core_pce?.prev_yoy, 2));
+        setText("core-pce-3m", formatNumber(data.core_pce?.annualized_3m, 2));
+        setText("pce-yoy", formatNumber(data.pce?.yoy, 2));
+        setText("pce-prev-yoy", formatNumber(data.pce?.prev_yoy, 2));
+        setText("core-cpi-yoy", formatNumber(data.core_cpi?.yoy, 2));
+        setText("core-cpi-prev-yoy", formatNumber(data.core_cpi?.prev_yoy, 2));
+        setText("cpi-yoy", formatNumber(data.cpi?.yoy, 2));
+        setText("cpi-mom", formatSigned(data.cpi?.mom, 2));
+        setText("ppi-yoy", formatNumber(data.ppi?.yoy, 2));
+        setText("ppi-mom", formatSigned(data.ppi?.mom, 2));
+
+        setText("nonfarm-current", formatSigned(data.nonfarm_payrolls?.current, 0));
+        setText("nonfarm-prev", formatSigned(data.nonfarm_payrolls?.prev, 0));
+        setText("nonfarm-avg3m", formatSigned(data.nonfarm_payrolls?.avg_3m, 1));
+        setText("unemployment-current", formatNumber(data.unemployment_rate?.current, 2));
+        setText("unemployment-prev", formatNumber(data.unemployment_rate?.prev, 2));
+        setText("unemployment-change3m", formatSigned(data.unemployment_rate?.change_3m, 2));
+
+        setText("retail-mom", formatSigned(data.retail_sales?.mom, 2));
+        setText("retail-prev-mom", formatSigned(data.retail_sales?.prev_mom, 2));
+        setText("retail-yoy", formatSigned(data.retail_sales?.yoy, 2));
+        setText("real-pce-mom", formatSigned(data.real_pce?.mom, 2));
+        setText("real-pce-prev-mom", formatSigned(data.real_pce?.prev_mom, 2));
+        setText("real-pce-yoy", formatSigned(data.real_pce?.yoy, 2));
         setText("assets-prev", formatNumber(data.fed_assets?.prev, 3));
         setText("assets-current", formatNumber(data.fed_assets?.current, 3));
         setText("assets-change-prev", formatNumber(data.fed_assets_month_change?.prev, 2));
@@ -932,6 +1258,7 @@
         setText("vix-change5", formatSigned(data.vix?.change_5d_pct, 1));
         setText("claims-prev", formatNumber(data.initial_claims?.prev, 0));
         setText("claims-current", formatNumber(data.initial_claims?.current, 0));
+        setText("claims-avg4w", formatNumber(data.initial_claims?.avg_4w, 0));
         setText("sahm-prev", formatNumber(data.sahm_rule?.prev, 2));
         setText("sahm-current", formatNumber(data.sahm_rule?.current, 2));
         setText("leading-prev", formatNumber(data.leading_index?.prev, 2));
