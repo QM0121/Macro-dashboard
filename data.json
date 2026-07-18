@@ -1,76 +1,102 @@
 {
   "last_update": "2026-07-18",
-  "last_update_time": "2026-07-18 11:42:10",
+  "last_update_time": "2026-07-18 20:01:41",
+  "schema_version": 4,
   "rate": {
     "prev": 3.63,
-    "current": 3.63
+    "current": 3.63,
+    "prev_date": "2026-07-15",
+    "current_date": "2026-07-16"
   },
   "yield_curve": {
     "prev": 0.41,
-    "current": 0.37
+    "current": 0.37,
+    "prev_date": "2026-07-16",
+    "current_date": "2026-07-17"
   },
   "fed_assets": {
     "prev": 6.736,
-    "current": 6.743
+    "current": 6.743,
+    "prev_date": "2026-07-08",
+    "current_date": "2026-07-15"
   },
   "reserves": {
     "prev": 3.099,
-    "current": 3.143
+    "current": 3.143,
+    "prev_date": "2026-07-08",
+    "current_date": "2026-07-15"
   },
   "rrp": {
     "prev": 0.125,
-    "current": 0.1
+    "current": 0.1,
+    "prev_date": "2026-07-16",
+    "current_date": "2026-07-17"
   },
   "nfci": {
     "prev": -0.52,
-    "current": -0.54
+    "current": -0.54,
+    "prev_date": "2026-07-03",
+    "current_date": "2026-07-10"
   },
   "hy_spread": {
     "prev": 2.71,
     "current": 2.71,
-    "change_5d_abs": null,
-    "change_20d_abs": null
+    "prev_date": "2026-07-15",
+    "current_date": "2026-07-16",
+    "change_5d_abs": 0.01,
+    "change_20d_abs": 0.05
   },
   "vix": {
     "prev": 15.67,
     "current": 16.73,
-    "change_5d_pct": null,
-    "change_20d_pct": null
+    "prev_date": "2026-07-15",
+    "current_date": "2026-07-16",
+    "change_5d_pct": 5.62,
+    "change_20d_pct": 2.01
   },
   "initial_claims": {
     "prev": 216000,
-    "current": 208000
+    "current": 208000,
+    "prev_date": "2026-07-04",
+    "current_date": "2026-07-11"
   },
   "sahm_rule": {
     "prev": 0.1,
-    "current": 0.07
+    "current": 0.07,
+    "prev_date": "2026-05-01",
+    "current_date": "2026-06-01"
   },
   "leading_index": {
     "prev": 1.57,
-    "current": 1.72
+    "current": 1.72,
+    "prev_date": "2020-01-01",
+    "current_date": "2020-02-01"
   },
   "fed_assets_month_change": {
     "prev": 102.12,
-    "current": 66.04
+    "current": 66.04,
+    "current_date": "2026-07-15",
+    "reference_date": "2026-06-17"
   },
   "sp500_trend": {
     "prev": 7533.77,
     "current": 7457.69,
-    "ma200": 6987.23,
-    "high_52w": 7609.78,
-    "drawdown_from_high": -2.0,
-    "above_ma200": true,
-    "distance_from_ma200": 6.73,
+    "prev_date": "2026-07-16",
+    "current_date": "2026-07-17",
     "return_1d": -1.01,
-    "return_5d": null,
-    "return_20d": null,
-    "return_60d": null,
-    "ma20": null,
-    "ma50": null,
-    "distance_from_ma20": null,
-    "distance_from_ma50": null,
-    "above_ma20": null,
-    "above_ma50": null
-  },
-  "schema_version": 4
+    "return_5d": -1.55,
+    "return_20d": 0.51,
+    "return_60d": 5.57,
+    "ma20": 7479.03,
+    "ma50": 7464.88,
+    "ma200": 6987.23,
+    "above_ma20": false,
+    "above_ma50": false,
+    "above_ma200": true,
+    "distance_from_ma20": -0.29,
+    "distance_from_ma50": -0.1,
+    "distance_from_ma200": 6.73,
+    "high_52w": 7609.78,
+    "drawdown_from_high": -2.0
+  }
 }
