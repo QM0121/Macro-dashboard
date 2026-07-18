@@ -40,6 +40,17 @@ MACRO_SERIES = {
     "real_pce": "PCEC96",
 }
 
+# 主牛熊市場分數使用的股票指數。總經資料不直接參與主分數。
+MARKET_SERIES = {
+    "sp500_trend": "SP500",
+    "nasdaq100_trend": "NASDAQ100",
+    "nasdaq_composite_trend": "NASDAQCOM",
+    "largecap_equal_weight_trend": "NASDAQNQUS500LCET",
+    "nasdaq100_equal_weight_trend": "NASDAQNETR",
+    "nasdaq_tech_trend": "NASDAQNDXT",
+    "semiconductor_trend": "NASDAQXSOX",
+}
+
 
 def build_session() -> requests.Session:
     retry = Retry(
@@ -59,7 +70,7 @@ def build_session() -> requests.Session:
     session.mount("http://", adapter)
     session.headers.update(
         {
-            "User-Agent": "QM0121-Macro-Dashboard/5.0",
+            "User-Agent": "QM0121-Macro-Dashboard/6.0",
             "Accept": "application/json",
         }
     )
@@ -336,15 +347,15 @@ def period_return(values: List[float], lookback: int) -> Optional[float]:
     return pct_change(values[0], values[lookback])
 
 
-def fetch_sp500_trend() -> Dict[str, Any]:
+def fetch_index_trend(series_id: str) -> Dict[str, Any]:
     """
-    建立短線與長線價格趨勢資料：
+    建立單一股票指數的短線與長線價格趨勢資料：
     - 20／50／200 日均線
     - 1／5／20／60 日報酬
     - 52 週高點與回撤
     """
     points = extract_numeric_observations(
-        fetch_observations(series_id="SP500", limit=420)
+        fetch_observations(series_id=series_id, limit=420)
     )
     values = [point["value"] for point in points]
 
@@ -448,9 +459,9 @@ def main() -> None:
     taipei_time = datetime.now(timezone.utc) + timedelta(hours=8)
     data["last_update"] = taipei_time.strftime("%Y-%m-%d")
     data["last_update_time"] = taipei_time.strftime("%Y-%m-%d %H:%M:%S")
-    data["schema_version"] = 5
+    data["schema_version"] = 6
 
-    print(f"[開始] 更新總經資料：{data['last_update_time']} Asia/Taipei")
+    print(f"[開始] 更新股市與總經資料：{data['last_update_time']} Asia/Taipei")
 
     for key, series_id in SERIES.items():
         try:
@@ -521,34 +532,40 @@ def main() -> None:
             {"prev": None, "current": None, "current_date": None, "reference_date": None},
         )
 
-    try:
-        data["sp500_trend"] = fetch_sp500_trend()
-        print("[完成] sp500_trend")
-    except Exception as error:
-        data["sp500_trend"] = fallback_or_default(
-            "sp500_trend",
-            old_data,
-            error,
-            {
-                "prev": None,
-                "current": None,
-                "return_1d": None,
-                "return_5d": None,
-                "return_20d": None,
-                "return_60d": None,
-                "ma20": None,
-                "ma50": None,
-                "ma200": None,
-                "above_ma20": None,
-                "above_ma50": None,
-                "above_ma200": None,
-                "distance_from_ma20": None,
-                "distance_from_ma50": None,
-                "distance_from_ma200": None,
-                "high_52w": None,
-                "drawdown_from_high": None,
-            },
-        )
+    market_default = {
+        "prev": None,
+        "current": None,
+        "return_1d": None,
+        "return_5d": None,
+        "return_20d": None,
+        "return_60d": None,
+        "ma20": None,
+        "ma50": None,
+        "ma200": None,
+        "above_ma20": None,
+        "above_ma50": None,
+        "above_ma200": None,
+        "distance_from_ma20": None,
+        "distance_from_ma50": None,
+        "distance_from_ma200": None,
+        "high_52w": None,
+        "drawdown_from_high": None,
+        "current_date": None,
+        "prev_date": None,
+    }
+
+    for key, series_id in MARKET_SERIES.items():
+        try:
+            data[key] = fetch_index_trend(series_id)
+            print(f"[完成] {key} ({series_id})")
+            time.sleep(0.25)
+        except Exception as error:
+            data[key] = fallback_or_default(
+                key,
+                old_data,
+                error,
+                market_default.copy(),
+            )
 
     with open(DATA_FILE, "w", encoding="utf-8") as file:
         json.dump(data, file, ensure_ascii=False, indent=2)

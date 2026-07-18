@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <title>總經 × 牛熊市判斷指標｜Macro Intelligence Dashboard</title>
+  <title>美股牛熊市場判斷｜Equity Regime Intelligence</title>
 
-  <meta name="description" content="總經 × 牛熊市判斷指標：以利率、通膨、就業、消費、殖利率曲線、流動性、金融壓力與 S&P 500 趨勢建立一眼判讀的市場監控面板。" />
-  <meta property="og:title" content="總經 × 牛熊市判斷指標" />
-  <meta property="og:description" content="利率、通膨、非農、失業率、消費、流動性、金融壓力與市場趨勢，一站判讀牛熊市。" />
+  <meta name="description" content="美股牛熊市場判斷：以 S&P 500、Nasdaq-100、科技股、半導體、等權重廣度、VIX 與信用市場建立股票市場強弱分數；總經資料僅作背景解讀。" />
+  <meta property="og:title" content="美股牛熊市場判斷" />
+  <meta property="og:description" content="先用多個美股指數判斷深度熊市、熊市、牛熊分界、牛市或強勢牛市，再查看總經背景。" />
   <meta property="og:type" content="website" />
 
   <link rel="stylesheet" href="styles.css" />
@@ -24,8 +24,8 @@
         <div class="brand">
           <div class="brand-mark">M</div>
           <div>
-            <div class="brand-title">Macro Intelligence</div>
-            <div class="brand-sub">Auto-updated macro dashboard</div>
+            <div class="brand-title">Equity Regime Intelligence</div>
+            <div class="brand-sub">Stock-market regime dashboard</div>
           </div>
         </div>
 
@@ -40,11 +40,11 @@
 
       <section class="hero-grid">
         <div class="hero-copy">
-          <div class="eyebrow">Macro Dashboard</div>
-          <h1><span>總經 ×</span><span>牛熊市判斷指標</span></h1>
+          <div class="eyebrow">U.S. Equity Market Regime</div>
+          <h1><span>美股牛熊市場</span><span>判斷儀表板</span></h1>
           <p class="subtitle">
-            先回答投資人最在意的問題：市場只是回檔，還是已經出現熊市訊號？
-            再用趨勢、回撤、VIX、信用利差與總經資料交叉確認。
+            第一眼先判斷股市位於深度熊市、熊市、牛熊分界、牛市或強勢牛市。
+            主分數只看股價趨勢、回撤、科技領導、等權重廣度、VIX 與信用壓力；總經資料不會把價格訊號沖淡。
           </p>
 
           <div class="hero-actions">
@@ -55,118 +55,80 @@
         <aside class="market-panel bear-panel" id="bear-panel">
           <div class="panel-head bear-head">
             <div>
-              <div class="panel-k">Bear Market Alert</div>
+              <div class="panel-k">U.S. Equity Market Regime</div>
               <div class="panel-v" id="market-regime">資料載入中</div>
             </div>
             <div class="bear-score-ring" id="bear-score-ring">
-              <span id="bear-risk-score">--</span>
+              <span id="market-strength-score">--</span>
               <small>/ 100</small>
             </div>
           </div>
 
-          <div class="bear-meter" aria-label="熊市風險量表">
+          <div class="bear-meter" aria-label="美股牛熊市場位置量表">
             <div class="bear-meter-fill" id="bear-meter-fill"></div>
           </div>
           <div class="bear-scale">
-            <span>牛市穩定</span><span>修正警戒</span><span>風險升高</span><span>熊市警報</span>
+            <span>深度熊市</span><span>熊市</span><span>牛熊分界</span><span>牛市</span><span>強勢牛市</span>
           </div>
 
           <div class="regime-note" id="market-note">
-            正在檢查價格趨勢、回撤幅度、波動率、信用市場與衰退訊號。
+            正在檢查大型股、科技股、半導體、等權重廣度、回撤與長期均線。
           </div>
-          <div class="score-disclaimer">風險分數是訊號強度量表，不是熊市發生機率。</div>
+          <div class="score-disclaimer">主分數只判斷股票市場。總經、通膨與就業放在下方解釋市場背景，不直接加減牛熊分數。</div>
 
-          <div class="bear-check-grid">
-            <div class="bear-check" id="bear-check-trend">
-              <span>價格趨勢</span>
-              <b id="bear-check-trend-label">讀取中</b>
-              <small id="bear-check-trend-note">20／50／200 日均線</small>
+          <div class="bear-check-grid market-index-grid">
+            <div class="bear-check" id="market-check-sp500">
+              <span>S&amp;P 500</span><b id="market-check-sp500-label">讀取中</b><small id="market-check-sp500-note">大型股廣泛市場</small>
             </div>
-            <div class="bear-check" id="bear-check-drawdown">
-              <span>高點回撤</span>
-              <b id="bear-check-drawdown-label">讀取中</b>
-              <small id="bear-check-drawdown-note">距 52 週高點</small>
+            <div class="bear-check" id="market-check-nasdaq100">
+              <span>Nasdaq-100</span><b id="market-check-nasdaq100-label">讀取中</b><small id="market-check-nasdaq100-note">大型科技與成長股</small>
             </div>
-            <div class="bear-check" id="bear-check-vix">
-              <span>市場恐慌</span>
-              <b id="bear-check-vix-label">讀取中</b>
-              <small id="bear-check-vix-note">VIX 水位與變化</small>
+            <div class="bear-check" id="market-check-nasdaqcomp">
+              <span>Nasdaq Composite</span><b id="market-check-nasdaqcomp-label">讀取中</b><small id="market-check-nasdaqcomp-note">科技市場整體廣度</small>
             </div>
-            <div class="bear-check" id="bear-check-credit">
-              <span>信用壓力</span>
-              <b id="bear-check-credit-label">讀取中</b>
-              <small id="bear-check-credit-note">高收益債利差</small>
+            <div class="bear-check" id="market-check-equalweight">
+              <span>Large Cap Equal Weight</span><b id="market-check-equalweight-label">讀取中</b><small id="market-check-equalweight-note">降低巨頭權重扭曲</small>
             </div>
-            <div class="bear-check" id="bear-check-recession">
-              <span>衰退訊號</span>
-              <b id="bear-check-recession-label">讀取中</b>
-              <small id="bear-check-recession-note">就業與領先指標</small>
+            <div class="bear-check" id="market-check-tech">
+              <span>Nasdaq-100 Technology</span><b id="market-check-tech-label">讀取中</b><small id="market-check-tech-note">科技板塊本身</small>
+            </div>
+            <div class="bear-check" id="market-check-semi">
+              <span>Semiconductors</span><b id="market-check-semi-label">讀取中</b><small id="market-check-semi-note">半導體領導循環</small>
             </div>
           </div>
 
-          <div class="regime-split compact-context">
-            <div class="regime-score-card" id="tactical-regime-card">
-              <div class="regime-score-head">
-                <span>價格／風險訊號</span>
-                <b id="tactical-score">--</b>
-              </div>
-              <strong id="tactical-regime">資料載入中</strong>
-              <p id="tactical-detail">均線、動能、回撤、VIX 與信用利差。</p>
+          <div class="regime-split market-split-three">
+            <div class="regime-score-card" id="broad-market-card">
+              <div class="regime-score-head"><span>廣泛市場</span><b id="broad-market-score">--</b></div>
+              <strong id="broad-market-regime">資料載入中</strong>
+              <p id="broad-market-detail">S&amp;P 500、Nasdaq Composite 與大型股等權重。</p>
             </div>
-
-            <div class="regime-score-card" id="macro-regime-card">
-              <div class="regime-score-head">
-                <span>總經背景</span>
-                <b id="macro-score">--</b>
-              </div>
-              <strong id="macro-regime">資料載入中</strong>
-              <p id="macro-detail">通膨、就業、消費、流動性與領先指標。</p>
+            <div class="regime-score-card" id="tech-market-card">
+              <div class="regime-score-head"><span>科技／成長股</span><b id="tech-market-score">--</b></div>
+              <strong id="tech-market-regime">資料載入中</strong>
+              <p id="tech-market-detail">Nasdaq-100、科技板塊與半導體。</p>
+            </div>
+            <div class="regime-score-card" id="breadth-market-card">
+              <div class="regime-score-head"><span>市場廣度</span><b id="breadth-market-score">--</b></div>
+              <strong id="breadth-market-regime">資料載入中</strong>
+              <p id="breadth-market-detail">等權重與綜合指數是否同步確認。</p>
             </div>
           </div>
 
           <div class="mini-stats">
-            <div class="mini-stat">
-              <span>Last update</span>
-              <b id="last-update">--</b>
-            </div>
-            <div class="mini-stat">
-              <span>Version</span>
-              <b>5.1</b>
-            </div>
-            <div class="mini-stat">
-              <span>Mode</span>
-              <b>Auto</b>
-            </div>
+            <div class="mini-stat"><span>Last update</span><b id="last-update">--</b></div>
+            <div class="mini-stat"><span>Version</span><b>6.0</b></div>
+            <div class="mini-stat"><span>Primary mode</span><b>Equity</b></div>
           </div>
         </aside>
       </section>
 
-      <section class="investor-snapshot" aria-label="投資人快速檢查">
-        <article class="snapshot-card" id="snapshot-ma200-card">
-          <span>長期趨勢</span>
-          <b id="snapshot-ma200-value">--</b>
-          <small id="snapshot-ma200-note">S&amp;P 500 vs. 200 日線</small>
-        </article>
-        <article class="snapshot-card" id="snapshot-drawdown-card">
-          <span>高點回撤</span>
-          <b id="snapshot-drawdown-value">--</b>
-          <small id="snapshot-drawdown-note">距 52 週高點</small>
-        </article>
-        <article class="snapshot-card" id="snapshot-vix-card">
-          <span>VIX 恐慌指數</span>
-          <b id="snapshot-vix-value">--</b>
-          <small id="snapshot-vix-note">低於 20 通常較穩定</small>
-        </article>
-        <article class="snapshot-card" id="snapshot-credit-card">
-          <span>高收益債利差</span>
-          <b id="snapshot-credit-value">--</b>
-          <small id="snapshot-credit-note">信用市場壓力</small>
-        </article>
-        <article class="snapshot-card" id="snapshot-momentum-card">
-          <span>20 日動能</span>
-          <b id="snapshot-momentum-value">--</b>
-          <small id="snapshot-momentum-note">短線趨勢速度</small>
-        </article>
+      <section class="investor-snapshot market-snapshot" aria-label="美股市場快速檢查">
+        <article class="snapshot-card" id="snapshot-sp500-card"><span>S&amp;P 500</span><b id="snapshot-sp500-value">--</b><small id="snapshot-sp500-note">等待市場資料</small></article>
+        <article class="snapshot-card" id="snapshot-ndx-card"><span>Nasdaq-100</span><b id="snapshot-ndx-value">--</b><small id="snapshot-ndx-note">等待市場資料</small></article>
+        <article class="snapshot-card" id="snapshot-tech-card"><span>科技板塊</span><b id="snapshot-tech-value">--</b><small id="snapshot-tech-note">等待市場資料</small></article>
+        <article class="snapshot-card" id="snapshot-semi-card"><span>半導體</span><b id="snapshot-semi-value">--</b><small id="snapshot-semi-note">等待市場資料</small></article>
+        <article class="snapshot-card" id="snapshot-breadth-card"><span>市場廣度</span><b id="snapshot-breadth-value">--</b><small id="snapshot-breadth-note">等待市場資料</small></article>
       </section>
     </div>
   </header>
@@ -176,10 +138,10 @@
     <section class="section-head" id="dashboard">
       <div>
         <div class="eyebrow">Dashboard</div>
-        <h2>先確認熊市，再找總經原因</h2>
+        <h2>先判斷股市，再查看經濟背景</h2>
       </div>
       <p>
-        投資人先看價格是否跌破長期趨勢、回撤是否擴大，以及 VIX 與信用利差是否同步惡化；總經資料用來確認這是一般修正，還是景氣型熊市。
+        首頁牛熊分數由多個美股指數、科技領導、等權重廣度、VIX 與信用壓力決定。下方利率、通膨、就業與消費只用來解釋市場為何轉強或轉弱。
       </p>
     </section>
 
@@ -703,157 +665,233 @@
       setText(noteId, note);
     };
 
-    function scoreBearRisk(data, macro) {
-      const trend = data.sp500_trend || {};
-      let raw = 0;
-      let availableMax = 0;
-      const components = {};
+    function classifyMarketScore(score) {
+      if (score === null || score === undefined) return { label: "資料不足", level: "warn" };
+      if (score >= 80) return { label: "強勢牛市", level: "good" };
+      if (score >= 60) return { label: "牛市", level: "good" };
+      if (score >= 40) return { label: "牛熊分界", level: "warn" };
+      if (score >= 20) return { label: "熊市", level: "bad" };
+      return { label: "深度熊市", level: "bad" };
+    }
 
-      let trendRisk = 0;
-      let trendMax = 0;
-      if (typeof trend.above_ma20 === "boolean") {
-        trendMax += 5;
-        if (!trend.above_ma20) trendRisk += 5;
-      }
-      if (typeof trend.above_ma50 === "boolean") {
-        trendMax += 10;
-        if (!trend.above_ma50) trendRisk += 10;
-      }
+    function scoreIndexTrend(trend) {
+      trend = trend || {};
+      let points = 0;
+      let maxPoints = 0;
+
       if (typeof trend.above_ma200 === "boolean") {
-        trendMax += 20;
-        if (!trend.above_ma200) trendRisk += 20;
+        maxPoints += 25;
+        if (trend.above_ma200) points += 25;
       }
+
       const ma50 = toValidNumber(trend.ma50);
       const ma200 = toValidNumber(trend.ma200);
       if (ma50 !== null && ma200 !== null) {
-        trendMax += 10;
-        if (ma50 < ma200) trendRisk += 10;
+        maxPoints += 15;
+        if (ma50 >= ma200) points += 15;
       }
-      raw += trendRisk;
-      availableMax += trendMax;
-      const belowCount = [trend.above_ma20, trend.above_ma50, trend.above_ma200].filter(value => value === false).length;
-      components.trend = trendMax === 0
-        ? { level: "warn", label: "資料不足", note: "均線資料尚未完成更新" }
-        : trendRisk >= Math.max(20, trendMax * 0.55)
-          ? { level: "bad", label: "趨勢破壞", note: `已有 ${belowCount} 條主要均線失守` }
-          : trendRisk > 0
-            ? { level: "warn", label: "短線轉弱", note: `已有 ${belowCount} 條均線失守` }
-            : { level: "good", label: "趨勢完整", note: "主要均線尚未出現破壞" };
+
+      if (typeof trend.above_ma50 === "boolean") {
+        maxPoints += 10;
+        if (trend.above_ma50) points += 10;
+      }
 
       const drawdown = toValidNumber(trend.drawdown_from_high);
-      let drawdownRisk = 0;
       if (drawdown !== null) {
-        availableMax += 20;
-        if (drawdown <= -20) drawdownRisk = 20;
-        else if (drawdown <= -15) drawdownRisk = 15;
-        else if (drawdown <= -10) drawdownRisk = 10;
-        else if (drawdown <= -5) drawdownRisk = 5;
-        raw += drawdownRisk;
+        maxPoints += 25;
+        if (drawdown > -5) points += 25;
+        else if (drawdown > -10) points += 18;
+        else if (drawdown > -15) points += 10;
+        else if (drawdown > -20) points += 5;
       }
-      components.drawdown = drawdown === null
-        ? { level: "warn", label: "資料不足", note: "等待 52 週高點資料" }
-        : drawdown <= -20
-          ? { level: "bad", label: "熊市幅度", note: `${formatSigned(drawdown, 1)}%，已達傳統熊市門檻` }
-          : drawdown <= -10
-            ? { level: "elevated", label: "修正擴大", note: `${formatSigned(drawdown, 1)}%，進入兩位數回撤` }
-            : drawdown <= -5
-              ? { level: "warn", label: "一般修正", note: `${formatSigned(drawdown, 1)}%，尚未達熊市門檻` }
-              : { level: "good", label: "回撤有限", note: `${formatSigned(drawdown, 1)}%，仍接近高點` };
 
-      const vix = toValidNumber(data.vix?.current);
-      const vixChange5 = toValidNumber(data.vix?.change_5d_pct);
-      let vixRisk = 0;
-      if (vix !== null) {
-        availableMax += 15;
-        if (vix >= 35) vixRisk = 15;
-        else if (vix >= 30) vixRisk = 12;
-        else if (vix >= 25) vixRisk = 8;
-        else if (vix >= 20) vixRisk = 4;
-        if (vixChange5 !== null && vixChange5 >= 25) vixRisk = Math.min(15, vixRisk + 3);
-        raw += vixRisk;
+      const return60 = toValidNumber(trend.return_60d);
+      if (return60 !== null) {
+        maxPoints += 15;
+        if (return60 >= 5) points += 15;
+        else if (return60 >= 0) points += 10;
+        else if (return60 >= -10) points += 5;
       }
-      components.vix = vix === null
-        ? { level: "warn", label: "資料不足", note: "等待 VIX 更新" }
-        : vix >= 30
-          ? { level: "bad", label: "恐慌升高", note: `VIX ${formatNumber(vix, 1)}，市場避險需求明顯` }
-          : vix >= 20
-            ? { level: "warn", label: "波動升高", note: `VIX ${formatNumber(vix, 1)}，進入警戒區` }
-            : { level: "good", label: "恐慌偏低", note: `VIX ${formatNumber(vix, 1)}，尚未出現恐慌` };
+
+      const return20 = toValidNumber(trend.return_20d);
+      if (return20 !== null) {
+        maxPoints += 10;
+        if (return20 >= 3) points += 10;
+        else if (return20 >= 0) points += 7;
+        else if (return20 >= -5) points += 3;
+      }
+
+      if (maxPoints < 50) {
+        return {
+          score: null,
+          label: "資料不足",
+          level: "warn",
+          note: "均線或回撤資料尚未完成更新",
+          drawdown,
+          distance200: toValidNumber(trend.distance_from_ma200),
+          above200: trend.above_ma200
+        };
+      }
+
+      const score = Math.round((points / maxPoints) * 100);
+      const state = classifyMarketScore(score);
+      const distance200 = toValidNumber(trend.distance_from_ma200);
+      const noteParts = [];
+      if (drawdown !== null) noteParts.push(`距高點 ${formatSigned(drawdown, 1)}%`);
+      if (distance200 !== null) noteParts.push(`距 200 日線 ${formatSigned(distance200, 1)}%`);
+      return {
+        score,
+        label: state.label,
+        level: state.level,
+        note: noteParts.join("；") || "市場資料已更新",
+        drawdown,
+        distance200,
+        above200: trend.above_ma200
+      };
+    }
+
+    function weightedSubScore(items) {
+      let total = 0;
+      let weightSum = 0;
+      items.forEach(([result, weight]) => {
+        if (result?.score !== null && result?.score !== undefined) {
+          total += result.score * weight;
+          weightSum += weight;
+        }
+      });
+      return weightSum >= 0.5 ? Math.round(total / weightSum) : null;
+    }
+
+    function scoreMarketRegime(data) {
+      const indexResults = {
+        sp500: scoreIndexTrend(data.sp500_trend),
+        nasdaq100: scoreIndexTrend(data.nasdaq100_trend),
+        nasdaqcomp: scoreIndexTrend(data.nasdaq_composite_trend),
+        largecapEqual: scoreIndexTrend(data.largecap_equal_weight_trend),
+        nasdaqEqual: scoreIndexTrend(data.nasdaq100_equal_weight_trend),
+        tech: scoreIndexTrend(data.nasdaq_tech_trend),
+        semi: scoreIndexTrend(data.semiconductor_trend)
+      };
+
+      const configs = [
+        [indexResults.sp500, 25],
+        [indexResults.nasdaq100, 20],
+        [indexResults.nasdaqcomp, 15],
+        [indexResults.largecapEqual, 15],
+        [indexResults.nasdaqEqual, 10],
+        [indexResults.tech, 10],
+        [indexResults.semi, 5]
+      ];
+
+      let weighted = 0;
+      let availableWeight = 0;
+      configs.forEach(([result, weight]) => {
+        if (result.score !== null) {
+          weighted += result.score * weight;
+          availableWeight += weight;
+        }
+      });
+
+      const broadScore = weightedSubScore([
+        [indexResults.sp500, 0.50],
+        [indexResults.nasdaqcomp, 0.20],
+        [indexResults.largecapEqual, 0.30]
+      ]);
+      const techScore = weightedSubScore([
+        [indexResults.nasdaq100, 0.35],
+        [indexResults.nasdaqEqual, 0.25],
+        [indexResults.tech, 0.25],
+        [indexResults.semi, 0.15]
+      ]);
+      const breadthScore = weightedSubScore([
+        [indexResults.largecapEqual, 0.45],
+        [indexResults.nasdaqEqual, 0.35],
+        [indexResults.nasdaqcomp, 0.20]
+      ]);
+
+      if (availableWeight < 55) {
+        return {
+          score: null,
+          label: "資料不足",
+          level: "warn",
+          note: "至少需要三個以上主要股價指數完成更新，才能判斷美股牛熊市場。",
+          broadScore,
+          techScore,
+          breadthScore,
+          components: indexResults
+        };
+      }
+
+      let score = Math.round(weighted / availableWeight);
+
+      // VIX 與信用只作股票市場風險修正，不使用通膨、非農或利率加減主分數。
+      const vix = toValidNumber(data.vix?.current);
+      if (vix !== null) {
+        if (vix >= 35) score -= 10;
+        else if (vix >= 30) score -= 8;
+        else if (vix >= 25) score -= 5;
+        else if (vix >= 20) score -= 2;
+        else if (vix < 15) score += 2;
+      }
 
       const hy = toValidNumber(data.hy_spread?.current);
-      const hyChange20 = toValidNumber(data.hy_spread?.change_20d_abs);
-      let creditRisk = 0;
       if (hy !== null) {
-        availableMax += 10;
-        if (hy >= 6) creditRisk = 10;
-        else if (hy >= 5) creditRisk = 8;
-        else if (hy >= 4) creditRisk = 4;
-        if (hyChange20 !== null && hyChange20 >= 0.75) creditRisk = Math.min(10, creditRisk + 4);
-        else if (hyChange20 !== null && hyChange20 >= 0.4) creditRisk = Math.min(10, creditRisk + 2);
-        raw += creditRisk;
-      }
-      components.credit = hy === null
-        ? { level: "warn", label: "資料不足", note: "等待信用利差更新" }
-        : hy >= 5
-          ? { level: "bad", label: "信用緊縮", note: `利差 ${formatNumber(hy, 2)}%，企業融資壓力升高` }
-          : hy >= 4
-            ? { level: "elevated", label: "信用警戒", note: `利差 ${formatNumber(hy, 2)}%，需觀察是否持續擴大` }
-            : { level: "good", label: "信用穩定", note: `利差 ${formatNumber(hy, 2)}%，尚未出現信用危機` };
-
-      const sahm = toValidNumber(data.sahm_rule?.current);
-      const unemploymentChange = toValidNumber(data.unemployment_rate?.change_3m);
-      const leading = toValidNumber(data.leading_index?.current);
-      let recessionRisk = 0;
-      const recessionAvailable = sahm !== null || unemploymentChange !== null || leading !== null;
-      if (recessionAvailable) {
-        availableMax += 10;
-        if (sahm !== null && sahm >= 0.5) recessionRisk = 10;
-        else {
-          if (unemploymentChange !== null && unemploymentChange >= 0.5) recessionRisk += 6;
-          else if (unemploymentChange !== null && unemploymentChange >= 0.25) recessionRisk += 3;
-          if (leading !== null && leading < 0) recessionRisk += 4;
-          if (macro?.modules?.labor?.level === "bad") recessionRisk = Math.max(recessionRisk, 6);
-          recessionRisk = Math.min(10, recessionRisk);
-        }
-        raw += recessionRisk;
-      }
-      components.recession = !recessionAvailable
-        ? { level: "warn", label: "資料不足", note: "等待就業與領先指標更新" }
-        : recessionRisk >= 8
-          ? { level: "bad", label: "衰退警報", note: "就業或 Sahm Rule 出現明顯惡化" }
-          : recessionRisk >= 4
-            ? { level: "elevated", label: "景氣轉弱", note: "就業與領先指標開始降溫" }
-            : { level: "good", label: "尚無衰退", note: "就業與領先指標未形成衰退共振" };
-
-      const score = availableMax >= 40 ? Math.round((raw / availableMax) * 100) : null;
-      let label = "資料不足";
-      let level = "warn";
-      let note = "可用訊號不足，暫時無法形成熊市判斷。";
-      if (score !== null) {
-        if (score >= 75) {
-          label = "熊市確認度高";
-          level = "bad";
-          note = "長期趨勢、回撤與市場壓力多項共振，應以風險控管為優先。";
-        } else if (score >= 55) {
-          label = "熊市警報";
-          level = "bad";
-          note = "多項核心訊號已轉弱，市場可能由修正進入熊市階段。";
-        } else if (score >= 35) {
-          label = "熊市風險升高";
-          level = "elevated";
-          note = "跌勢已不只是單日波動，需確認 200 日線、信用利差與就業是否續惡化。";
-        } else if (score >= 18) {
-          label = "回檔／修正警戒";
-          level = "warn";
-          note = "市場正在修正，但尚未形成完整熊市共振；控制槓桿並等待趨勢確認。";
-        } else {
-          label = "尚未確認熊市";
-          level = "good";
-          note = "市場可能震盪或回檔，但長期趨勢、信用與衰退訊號尚未同步轉壞。";
-        }
+        if (hy >= 6) score -= 7;
+        else if (hy >= 5) score -= 5;
+        else if (hy >= 4) score -= 2;
+        else if (hy < 3) score += 1;
       }
 
-      return { score, label, level, note, components, raw, availableMax };
+      const allResults = Object.values(indexResults).filter(item => item.score !== null);
+      const below200Count = allResults.filter(item => item.above200 === false).length;
+      const validCount = allResults.length;
+      const spDrawdown = indexResults.sp500.drawdown;
+      const compDrawdown = indexResults.nasdaqcomp.drawdown;
+
+      // 硬性限制：科技股已在熊市時，整體不能顯示強勢牛市；市場廣度差時也不能顯示強勢牛市。
+      if (techScore !== null && techScore < 40 && broadScore !== null && broadScore >= 60) score = Math.min(score, 59);
+      if (breadthScore !== null && breadthScore < 45) score = Math.min(score, 59);
+
+      // 只有廣泛市場與科技市場同步轉空，才把整體判為熊市；避免科技板塊單獨下跌就誤判全市場深熊。
+      if (broadScore !== null && broadScore < 40 && techScore !== null && techScore < 40) score = Math.min(score, 39);
+      if (spDrawdown !== null && compDrawdown !== null && spDrawdown <= -20 && compDrawdown <= -20) score = Math.min(score, 39);
+      if (
+        broadScore !== null && broadScore < 20 &&
+        techScore !== null && techScore < 20 &&
+        validCount >= 5 && below200Count >= 5
+      ) score = Math.min(score, 19);
+
+      // 強勢牛市必須由廣泛市場、科技領導與市場廣度共同確認。
+      if (score >= 80 && !(
+        broadScore !== null && broadScore >= 75 &&
+        techScore !== null && techScore >= 70 &&
+        breadthScore !== null && breadthScore >= 65 &&
+        below200Count <= 1
+      )) {
+        score = 79;
+      }
+
+      score = Math.max(0, Math.min(100, Math.round(score)));
+      const state = classifyMarketScore(score);
+      let note = `廣泛市場 ${broadScore ?? "--"} 分、科技／成長股 ${techScore ?? "--"} 分、市場廣度 ${breadthScore ?? "--"} 分。`;
+      if (broadScore !== null && techScore !== null && Math.abs(broadScore - techScore) >= 20) {
+        note += broadScore > techScore
+          ? "大型廣泛指數明顯強於科技股，市場內部分化。"
+          : "科技股明顯強於廣泛市場，需留意漲勢集中。";
+      } else {
+        note += "主要市場分項方向大致一致。";
+      }
+
+      return {
+        score,
+        label: state.label,
+        level: state.level,
+        note,
+        broadScore,
+        techScore,
+        breadthScore,
+        components: indexResults
+      };
     }
 
     function scoreInflation(data) {
@@ -1245,45 +1283,64 @@
       return { score, maxScore: 8, label: "震盪／觀察", level: "warn", reasons };
     }
 
+    function renderSubMarketCard(cardId, regimeId, scoreId, detailId, score, detail) {
+      const state = classifyMarketScore(score);
+      const card = document.getElementById(cardId);
+      if (card) {
+        card.classList.remove("good", "warn", "bad", "elevated");
+        card.classList.add(state.level);
+      }
+      setText(regimeId, state.label);
+      setText(scoreId, score === null ? "--" : `${score} / 100`);
+      setText(detailId, detail);
+    }
+
     function judgeMarket(data) {
       const macro = scoreMacro(data);
       const tactical = scoreTactical(data);
-      const bear = scoreBearRisk(data, macro);
+      const market = scoreMarketRegime(data);
       const regime = document.getElementById("market-regime");
       const note = document.getElementById("market-note");
       const panel = document.getElementById("bear-panel");
       const scoreRing = document.getElementById("bear-score-ring");
       const meterFill = document.getElementById("bear-meter-fill");
 
-      setRegimeCard("macro-regime-card", "macro-regime", "macro-score", "macro-detail", macro);
-      setRegimeCard("tactical-regime-card", "tactical-regime", "tactical-score", "tactical-detail", tactical);
+      renderSubMarketCard("broad-market-card", "broad-market-regime", "broad-market-score", "broad-market-detail",
+        market.broadScore, "S&P 500、Nasdaq Composite 與大型股等權重。" );
+      renderSubMarketCard("tech-market-card", "tech-market-regime", "tech-market-score", "tech-market-detail",
+        market.techScore, "Nasdaq-100、科技板塊、等權重科技與半導體。" );
+      renderSubMarketCard("breadth-market-card", "breadth-market-regime", "breadth-market-score", "breadth-market-detail",
+        market.breadthScore, "等權重與綜合指數是否跟上大型權值股。" );
 
-      if (regime) regime.textContent = bear.label;
-      if (note) note.textContent = bear.note;
-      setText("bear-risk-score", bear.score === null ? "--" : bear.score);
+      if (regime) regime.textContent = market.label;
+      if (note) note.textContent = market.note;
+      setText("market-strength-score", market.score === null ? "--" : market.score);
 
       [panel, scoreRing].forEach(el => {
         if (!el) return;
         el.classList.remove("good", "warn", "elevated", "bad");
-        el.classList.add(bear.level);
+        el.classList.add(market.level);
       });
       if (meterFill) {
-        meterFill.style.width = `${bear.score === null ? 0 : Math.max(0, Math.min(100, bear.score))}%`;
-        meterFill.className = `bear-meter-fill ${bear.level}`;
+        meterFill.style.width = `${market.score === null ? 0 : market.score}%`;
+        meterFill.className = `bear-meter-fill ${market.level}`;
       }
 
-      setBearCheck("bear-check-trend", "bear-check-trend-label", "bear-check-trend-note",
-        bear.components.trend.level, bear.components.trend.label, bear.components.trend.note);
-      setBearCheck("bear-check-drawdown", "bear-check-drawdown-label", "bear-check-drawdown-note",
-        bear.components.drawdown.level, bear.components.drawdown.label, bear.components.drawdown.note);
-      setBearCheck("bear-check-vix", "bear-check-vix-label", "bear-check-vix-note",
-        bear.components.vix.level, bear.components.vix.label, bear.components.vix.note);
-      setBearCheck("bear-check-credit", "bear-check-credit-label", "bear-check-credit-note",
-        bear.components.credit.level, bear.components.credit.label, bear.components.credit.note);
-      setBearCheck("bear-check-recession", "bear-check-recession-label", "bear-check-recession-note",
-        bear.components.recession.level, bear.components.recession.label, bear.components.recession.note);
+      const components = market.components;
+      setBearCheck("market-check-sp500", "market-check-sp500-label", "market-check-sp500-note",
+        components.sp500.level, components.sp500.label, components.sp500.note);
+      setBearCheck("market-check-nasdaq100", "market-check-nasdaq100-label", "market-check-nasdaq100-note",
+        components.nasdaq100.level, components.nasdaq100.label, components.nasdaq100.note);
+      setBearCheck("market-check-nasdaqcomp", "market-check-nasdaqcomp-label", "market-check-nasdaqcomp-note",
+        components.nasdaqcomp.level, components.nasdaqcomp.label, components.nasdaqcomp.note);
+      setBearCheck("market-check-equalweight", "market-check-equalweight-label", "market-check-equalweight-note",
+        components.largecapEqual.level, components.largecapEqual.label, components.largecapEqual.note);
+      setBearCheck("market-check-tech", "market-check-tech-label", "market-check-tech-note",
+        components.tech.level, components.tech.label, components.tech.note);
+      setBearCheck("market-check-semi", "market-check-semi-label", "market-check-semi-note",
+        components.semi.level, components.semi.label, components.semi.note);
 
-      return { macro, tactical, bear };
+      return { macro, tactical, market };
     }
 
     function updateSignals(data, assessment) {
@@ -1377,56 +1434,32 @@
         setStatus("risk-status", "warn", "絕對水位可能仍低，但短期變化需持續確認。");
       }
 
-      if (assessment.tactical.level === "good") {
-        setSignal("signal-trend", "good", "短線偏多");
-        setStatus("trend-status", "good", "均線、動能、回撤與市場風險指標整體偏多。");
-      } else if (assessment.tactical.level === "bad") {
-        setSignal("signal-trend", "bad", "短線偏空");
-        setStatus("trend-status", "bad", "價格動能、均線或風險指標已形成偏空共振。");
+      if (assessment.market.level === "good") {
+        setSignal("signal-trend", "good", assessment.market.label);
+        setStatus("trend-status", "good", "多個美股指數與市場廣度共同確認牛市狀態。" );
+      } else if (assessment.market.level === "bad") {
+        setSignal("signal-trend", "bad", assessment.market.label);
+        setStatus("trend-status", "bad", "多個美股指數的長期趨勢、回撤或科技領導已進入熊市區間。" );
       } else {
-        setSignal("signal-trend", "warn", "震盪觀察");
-        setStatus("trend-status", "warn", "長期趨勢可能尚未破壞，但短線訊號不足以判定偏多。");
+        setSignal("signal-trend", "warn", assessment.market.label);
+        setStatus("trend-status", "warn", "股市位於牛熊分界，廣泛市場、科技股或市場廣度尚未同步確認。" );
       }
 
-      const trend = data.sp500_trend || {};
-      const distance200 = toValidNumber(trend.distance_from_ma200);
-      const drawdown = toValidNumber(trend.drawdown_from_high);
-      const return20 = toValidNumber(trend.return_20d);
+      const renderIndexSnapshot = (cardId, valueId, noteId, result) => {
+        setSnapshot(cardId, valueId, noteId, result.level,
+          result.score === null ? "--" : `${result.score} 分`,
+          result.note || "等待市場資料");
+      };
 
-      setSnapshot(
-        "snapshot-ma200-card", "snapshot-ma200-value", "snapshot-ma200-note",
-        trend.above_ma200 === false ? "bad" : trend.above_ma200 === true ? "good" : "warn",
-        distance200 === null ? "--" : `${formatSigned(distance200, 1)}%`,
-        trend.above_ma200 === false ? "已跌破 200 日線" : trend.above_ma200 === true ? "仍站上 200 日線" : "等待均線資料"
-      );
+      renderIndexSnapshot("snapshot-sp500-card", "snapshot-sp500-value", "snapshot-sp500-note", assessment.market.components.sp500);
+      renderIndexSnapshot("snapshot-ndx-card", "snapshot-ndx-value", "snapshot-ndx-note", assessment.market.components.nasdaq100);
+      renderIndexSnapshot("snapshot-tech-card", "snapshot-tech-value", "snapshot-tech-note", assessment.market.components.tech);
+      renderIndexSnapshot("snapshot-semi-card", "snapshot-semi-value", "snapshot-semi-note", assessment.market.components.semi);
 
-      setSnapshot(
-        "snapshot-drawdown-card", "snapshot-drawdown-value", "snapshot-drawdown-note",
-        drawdown === null ? "warn" : drawdown <= -20 ? "bad" : drawdown <= -10 ? "elevated" : drawdown <= -5 ? "warn" : "good",
-        drawdown === null ? "--" : `${formatSigned(drawdown, 1)}%`,
-        drawdown === null ? "等待高點資料" : drawdown <= -20 ? "已達傳統熊市幅度" : drawdown <= -10 ? "兩位數修正" : "距 52 週高點"
-      );
-
-      setSnapshot(
-        "snapshot-vix-card", "snapshot-vix-value", "snapshot-vix-note",
-        vix === null ? "warn" : vix >= 30 ? "bad" : vix >= 20 ? "warn" : "good",
-        vix === null ? "--" : formatNumber(vix, 1),
-        vix === null ? "等待 VIX 更新" : vix >= 30 ? "恐慌明顯升高" : vix >= 20 ? "波動進入警戒" : "市場恐慌仍低"
-      );
-
-      setSnapshot(
-        "snapshot-credit-card", "snapshot-credit-value", "snapshot-credit-note",
-        hy === null ? "warn" : hy >= 5 ? "bad" : hy >= 4 ? "elevated" : "good",
-        hy === null ? "--" : `${formatNumber(hy, 2)}%`,
-        hy === null ? "等待信用資料" : hy >= 5 ? "信用緊縮警報" : hy >= 4 ? "信用壓力升高" : "信用市場穩定"
-      );
-
-      setSnapshot(
-        "snapshot-momentum-card", "snapshot-momentum-value", "snapshot-momentum-note",
-        return20 === null ? "warn" : return20 <= -5 ? "bad" : return20 < 0 ? "warn" : "good",
-        return20 === null ? "--" : `${formatSigned(return20, 1)}%`,
-        return20 === null ? "等待 20 日資料" : return20 <= -5 ? "短線跌勢明顯" : return20 < 0 ? "短線動能偏弱" : "短線動能為正"
-      );
+      const breadthState = classifyMarketScore(assessment.market.breadthScore);
+      setSnapshot("snapshot-breadth-card", "snapshot-breadth-value", "snapshot-breadth-note", breadthState.level,
+        assessment.market.breadthScore === null ? "--" : `${assessment.market.breadthScore} 分`,
+        assessment.market.breadthScore === null ? "等待等權重資料" : breadthState.label);
     }
 
     const setMAStatus = (id, value, label) => {
