@@ -265,6 +265,60 @@ h1 {
   margin-top: 22px;
 }
 
+.regime-split {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.regime-score-card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 15px;
+  background: rgba(2, 6, 23, 0.34);
+}
+
+.regime-score-card.good {
+  border-color: rgba(34, 197, 94, 0.34);
+  background: rgba(34, 197, 94, 0.08);
+}
+
+.regime-score-card.warn {
+  border-color: rgba(251, 191, 36, 0.34);
+  background: rgba(251, 191, 36, 0.08);
+}
+
+.regime-score-card.bad {
+  border-color: rgba(239, 68, 68, 0.34);
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.regime-score-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.regime-score-head b {
+  color: var(--text);
+}
+
+.regime-score-card > strong {
+  display: block;
+  margin-top: 9px;
+  font-size: 18px;
+}
+
+.regime-score-card > p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
 .mini-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -495,7 +549,7 @@ h1 {
 }
 
 .liquidity-grid { grid-template-columns: repeat(4, 1fr); }
-.risk-grid { grid-template-columns: repeat(3, 1fr); }
+.risk-grid { grid-template-columns: repeat(4, 1fr); }
 .labor-grid { grid-template-columns: repeat(2, 1fr); }
 .trend-grid { grid-template-columns: repeat(4, 1fr); }
 
@@ -667,6 +721,7 @@ h1 {
 
   .signal-strip,
   .mini-stats,
+  .regime-split,
   .liquidity-grid,
   .trend-grid {
     grid-template-columns: 1fr;

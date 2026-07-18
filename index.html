@@ -62,7 +62,27 @@
           </div>
 
           <div class="regime-note" id="market-note">
-            正在讀取最新總經資料，並依照利率、流動性、景氣、就業與股價趨勢進行判讀。
+            正在分別判讀中期總經結構與短線市場風險，避免長短週期訊號互相抵銷。
+          </div>
+
+          <div class="regime-split">
+            <div class="regime-score-card" id="macro-regime-card">
+              <div class="regime-score-head">
+                <span>中期總經結構</span>
+                <b id="macro-score">--</b>
+              </div>
+              <strong id="macro-regime">資料載入中</strong>
+              <p id="macro-detail">利率、曲線、流動性、金融條件、就業與領先指標。</p>
+            </div>
+
+            <div class="regime-score-card" id="tactical-regime-card">
+              <div class="regime-score-head">
+                <span>短線市場風險</span>
+                <b id="tactical-score">--</b>
+              </div>
+              <strong id="tactical-regime">資料載入中</strong>
+              <p id="tactical-detail">均線、短期報酬、回撤、VIX 與信用利差變化。</p>
+            </div>
           </div>
 
           <div class="mini-stats">
@@ -72,7 +92,7 @@
             </div>
             <div class="mini-stat">
               <span>Version</span>
-              <b>3.2</b>
+              <b>4.0</b>
             </div>
             <div class="mini-stat">
               <span>Mode</span>
@@ -276,6 +296,12 @@
             <div><b id="vix-current">--</b></div>
             <span>前值 <strong id="vix-prev">--</strong></span>
           </div>
+
+          <div class="submetric">
+            <p>VIX 5日變化</p>
+            <div><b id="vix-change5">--</b><small>%</small></div>
+            <span>HY 20日變化 <strong id="hy-change20">--</strong></span>
+          </div>
         </div>
 
         <div class="status-line" id="risk-status">資料載入中</div>
@@ -335,15 +361,39 @@
           </div>
 
           <div class="submetric">
+            <p>5 日報酬</p>
+            <div><b id="sp-return5">--</b><small>%</small></div>
+            <span>20 日報酬 <strong id="sp-return20">--</strong></span>
+          </div>
+
+          <div class="submetric">
+            <p>20 日均線</p>
+            <div><b id="sp-ma20">--</b></div>
+            <span id="sp-ma20-status">判讀中</span>
+          </div>
+
+          <div class="submetric">
+            <p>50 日均線</p>
+            <div><b id="sp-ma50">--</b></div>
+            <span id="sp-ma50-status">判讀中</span>
+          </div>
+
+          <div class="submetric">
             <p>200 日均線</p>
             <div><b id="sp-ma200">--</b></div>
-            <span id="sp-ma-status">判讀中</span>
+            <span id="sp-ma200-status">判讀中</span>
           </div>
 
           <div class="submetric">
             <p>距 52 週高點</p>
             <div><b id="sp-drawdown">--</b><small>%</small></div>
             <span>高點 <strong id="sp-high52">--</strong></span>
+          </div>
+
+          <div class="submetric">
+            <p>距 200 日線</p>
+            <div><b id="sp-distance200">--</b><small>%</small></div>
+            <span>長期趨勢確認</span>
           </div>
         </div>
 
@@ -432,19 +482,31 @@
       }
     });
 
+    const toValidNumber = (value) => {
+      if (value === null || value === undefined || value === "") return null;
+      const number = Number(value);
+      return Number.isFinite(number) ? number : null;
+    };
+
     const setText = (id, value) => {
       const el = document.getElementById(id);
       if (el) el.textContent = value ?? "--";
     };
 
     const formatNumber = (value, digits = 2) => {
-      if (value === null || value === undefined) return "--";
-      const num = Number(value);
-      if (Number.isNaN(num)) return "--";
+      const num = toValidNumber(value);
+      if (num === null) return "--";
       return num.toLocaleString("en-US", {
         minimumFractionDigits: 0,
         maximumFractionDigits: digits
       });
+    };
+
+    const formatSigned = (value, digits = 1) => {
+      const num = toValidNumber(value);
+      if (num === null) return "--";
+      const sign = num > 0 ? "+" : "";
+      return `${sign}${formatNumber(num, digits)}`;
     };
 
     const setSignal = (id, level, text) => {
@@ -464,108 +526,277 @@
       el.textContent = text;
     };
 
-    function judgeMarket(data) {
+    const setRegimeCard = (cardId, regimeId, scoreId, detailId, result) => {
+      const card = document.getElementById(cardId);
+      if (card) {
+        card.classList.remove("good", "warn", "bad");
+        card.classList.add(result.level);
+      }
+      setText(regimeId, result.label);
+      setText(scoreId, `${result.score >= 0 ? "+" : ""}${result.score} / ${result.maxScore}`);
+      setText(detailId, result.reasons.slice(0, 3).join("；") || "資料不足，暫不判斷。");
+    };
+
+    function scoreMacro(data) {
       let score = 0;
+      const reasons = [];
 
-      const rateNow = Number(data.rate?.current);
-      const ratePrev = Number(data.rate?.prev);
-      const curveNow = Number(data.yield_curve?.current);
-      const assetsChange = Number(data.fed_assets_month_change?.current);
-      const reservesNow = Number(data.reserves?.current);
-      const reservesPrev = Number(data.reserves?.prev);
-      const nfci = Number(data.nfci?.current);
-      const hy = Number(data.hy_spread?.current);
-      const vix = Number(data.vix?.current);
-      const claims = Number(data.initial_claims?.current);
-      const sahm = Number(data.sahm_rule?.current);
-      const leading = Number(data.leading_index?.current);
-      const aboveMA = data.sp500_trend?.above_ma200;
-      const drawdown = Number(data.sp500_trend?.drawdown_from_high);
-
-      if (!Number.isNaN(rateNow) && !Number.isNaN(ratePrev)) {
-        if (rateNow < ratePrev) score += 1;
-        if (rateNow > ratePrev) score -= 1;
+      const rateNow = toValidNumber(data.rate?.current);
+      const ratePrev = toValidNumber(data.rate?.prev);
+      if (rateNow !== null && ratePrev !== null) {
+        if (rateNow < ratePrev - 0.01) {
+          score += 1;
+          reasons.push("政策利率下降");
+        } else if (rateNow > ratePrev + 0.01) {
+          score -= 1;
+          reasons.push("政策利率上升");
+        } else {
+          reasons.push("政策利率持平");
+        }
       }
 
-      if (!Number.isNaN(curveNow)) {
-        if (curveNow > 0) score += 1;
-        if (curveNow < 0) score -= 1;
+      const curveNow = toValidNumber(data.yield_curve?.current);
+      if (curveNow !== null) {
+        if (curveNow >= 0.25) {
+          score += 1;
+          reasons.push("殖利率曲線已明顯轉正");
+        } else if (curveNow <= -0.25) {
+          score -= 1;
+          reasons.push("殖利率曲線仍明顯倒掛");
+        } else {
+          reasons.push("殖利率曲線接近中性區");
+        }
       }
 
-      if (!Number.isNaN(assetsChange)) {
-        if (assetsChange > 0) score += 1;
-        if (assetsChange < 0) score -= 1;
+      const assetsChange = toValidNumber(data.fed_assets_month_change?.current);
+      const reservesNow = toValidNumber(data.reserves?.current);
+      const reservesPrev = toValidNumber(data.reserves?.prev);
+      if (assetsChange !== null && reservesNow !== null && reservesPrev !== null) {
+        const reservesChange = reservesNow - reservesPrev;
+        if (assetsChange > 0 && reservesChange > 0) {
+          score += 1;
+          reasons.push("Fed 資產與準備金同步增加");
+        } else if (assetsChange < 0 && reservesChange < 0) {
+          score -= 1;
+          reasons.push("Fed 資產與準備金同步下降");
+        } else {
+          reasons.push("流動性訊號分歧");
+        }
       }
 
-      if (!Number.isNaN(reservesNow) && !Number.isNaN(reservesPrev)) {
-        if (reservesNow >= reservesPrev) score += 1;
-        if (reservesNow < reservesPrev) score -= 1;
+      const nfci = toValidNumber(data.nfci?.current);
+      const hy = toValidNumber(data.hy_spread?.current);
+      if (nfci !== null && hy !== null) {
+        if (nfci < 0 && hy < 4) {
+          score += 1;
+          reasons.push("金融條件與信用利差仍寬鬆");
+        } else if (nfci > 0.25 || hy > 5) {
+          score -= 1;
+          reasons.push("金融條件或信用風險惡化");
+        } else {
+          reasons.push("金融條件處於中性區");
+        }
       }
 
-      if (!Number.isNaN(nfci)) {
-        if (nfci < 0) score += 1;
-        if (nfci > 0) score -= 1;
+      const claims = toValidNumber(data.initial_claims?.current);
+      const sahm = toValidNumber(data.sahm_rule?.current);
+      if (claims !== null && sahm !== null) {
+        if (sahm >= 0.5 || claims > 300000) {
+          score -= 1;
+          reasons.push("勞動市場衰退風險升高");
+        } else if (sahm < 0.3 && claims < 250000) {
+          score += 1;
+          reasons.push("勞動市場仍具韌性");
+        } else {
+          reasons.push("就業轉弱但未觸發衰退警報");
+        }
       }
 
-      if (!Number.isNaN(hy)) {
-        if (hy < 4) score += 1;
-        if (hy > 5) score -= 1;
+      const leading = toValidNumber(data.leading_index?.current);
+      if (leading !== null) {
+        if (leading > 0.5) {
+          score += 1;
+          reasons.push("領先指標維持正成長");
+        } else if (leading < 0) {
+          score -= 1;
+          reasons.push("領先指標轉為負值");
+        } else {
+          reasons.push("領先指標接近零成長");
+        }
       }
 
-      if (!Number.isNaN(vix)) {
-        if (vix < 20) score += 1;
-        if (vix > 30) score -= 1;
+      if (score >= 3) {
+        return { score, maxScore: 6, label: "結構偏多", level: "good", reasons };
+      }
+      if (score <= -2) {
+        return { score, maxScore: 6, label: "結構偏空", level: "bad", reasons };
+      }
+      return { score, maxScore: 6, label: "結構中性", level: "warn", reasons };
+    }
+
+    function scoreTactical(data) {
+      let score = 0;
+      const reasons = [];
+      const trend = data.sp500_trend || {};
+
+      const above20 = trend.above_ma20;
+      const above50 = trend.above_ma50;
+      const above200 = trend.above_ma200;
+      const hasShortMAs = typeof above20 === "boolean" && typeof above50 === "boolean";
+
+      if (hasShortMAs) {
+        if (above20 && above50 && above200 === true) {
+          score += 2;
+          reasons.push("股價站上 20／50／200 日均線");
+        } else if (!above20 && !above50) {
+          score -= 2;
+          reasons.push("股價跌破 20 與 50 日均線");
+        } else {
+          reasons.push("短中期均線訊號分歧");
+        }
+      } else if (typeof above200 === "boolean") {
+        score += above200 ? 1 : -1;
+        reasons.push(above200 ? "股價仍站上 200 日均線" : "股價已跌破 200 日均線");
       }
 
-      if (!Number.isNaN(claims)) {
-        if (claims < 250000) score += 1;
-        if (claims > 300000) score -= 1;
+      const return5 = toValidNumber(trend.return_5d);
+      const return20 = toValidNumber(trend.return_20d);
+      const return1 = toValidNumber(trend.return_1d);
+
+      if (return5 !== null) {
+        if (return5 >= 1) {
+          score += 1;
+          reasons.push("5 日動能轉強");
+        } else if (return5 <= -1) {
+          score -= 1;
+          reasons.push("5 日動能轉弱");
+        }
+      } else if (return1 !== null) {
+        if (return1 >= 1) {
+          score += 1;
+          reasons.push("單日漲幅超過 1%");
+        } else if (return1 <= -1) {
+          score -= 1;
+          reasons.push("單日跌幅超過 1%");
+        }
       }
 
-      if (!Number.isNaN(sahm)) {
-        if (sahm < 0.5) score += 1;
-        if (sahm >= 0.5) score -= 2;
+      if (return20 !== null) {
+        if (return20 >= 2) {
+          score += 1;
+          reasons.push("20 日動能偏多");
+        } else if (return20 <= -2) {
+          score -= 1;
+          reasons.push("20 日動能偏空");
+        }
       }
 
-      if (!Number.isNaN(leading)) {
-        if (leading > 0) score += 1;
-        if (leading < 0) score -= 1;
+      const drawdown = toValidNumber(trend.drawdown_from_high);
+      if (drawdown !== null) {
+        if (drawdown <= -10) {
+          score -= 2;
+          reasons.push("距 52 週高點回撤超過 10%");
+        } else if (drawdown <= -5) {
+          score -= 1;
+          reasons.push("距高點回撤超過 5%");
+        } else if (drawdown > -3) {
+          score += 1;
+          reasons.push("仍接近 52 週高點");
+        }
       }
 
-      if (aboveMA === true) score += 1;
-      if (aboveMA === false) score -= 1;
-
-      if (!Number.isNaN(drawdown) && drawdown <= -20) {
-        score -= 1;
+      const vix = toValidNumber(data.vix?.current);
+      const vixChange5 = toValidNumber(data.vix?.change_5d_pct);
+      let vixScore = 0;
+      if (vix !== null) {
+        if (vix >= 30) vixScore -= 2;
+        else if (vix >= 25) vixScore -= 1;
       }
+      if (vixChange5 !== null) {
+        if (vixChange5 >= 25) vixScore -= 1;
+        else if (vix !== null && vix < 18 && vixChange5 <= 0) vixScore += 1;
+      }
+      vixScore = Math.max(-2, Math.min(1, vixScore));
+      score += vixScore;
+      if (vixScore < 0) reasons.push("VIX 水位或短期升幅偏高");
+      if (vixScore > 0) reasons.push("VIX 低檔且未上升");
 
+      const hy = toValidNumber(data.hy_spread?.current);
+      const hyChange20 = toValidNumber(data.hy_spread?.change_20d_abs);
+      let creditScore = 0;
+      if (hy !== null && hy > 5) creditScore -= 1;
+      if (hyChange20 !== null) {
+        if (hyChange20 >= 0.5) creditScore -= 1;
+        else if (hyChange20 <= -0.25) creditScore += 1;
+      }
+      creditScore = Math.max(-2, Math.min(1, creditScore));
+      score += creditScore;
+      if (creditScore < 0) reasons.push("信用利差快速擴大");
+      if (creditScore > 0) reasons.push("信用利差收斂");
+
+      if (score >= 3) {
+        return { score, maxScore: 8, label: "短線偏多", level: "good", reasons };
+      }
+      if (score <= -3) {
+        return { score, maxScore: 8, label: "短線偏空", level: "bad", reasons };
+      }
+      return { score, maxScore: 8, label: "震盪／觀察", level: "warn", reasons };
+    }
+
+    function judgeMarket(data) {
+      const macro = scoreMacro(data);
+      const tactical = scoreTactical(data);
       const regime = document.getElementById("market-regime");
       const note = document.getElementById("market-note");
       const orb = document.getElementById("regime-orb");
 
-      if (score >= 7) {
+      setRegimeCard("macro-regime-card", "macro-regime", "macro-score", "macro-detail", macro);
+      setRegimeCard("tactical-regime-card", "tactical-regime", "tactical-score", "tactical-detail", tactical);
+
+      if (macro.level === "good" && tactical.level === "good") {
         regime.textContent = "偏多環境";
-        note.textContent = "多數總經、流動性、勞動市場與價格趨勢指標互相支持，市場環境偏向多方。";
+        note.textContent = "中期總經結構與短線價格趨勢同步偏多，屬於訊號一致的多方環境。";
         orb.className = "regime-orb good";
-      } else if (score <= 2) {
-        regime.textContent = "偏空 / 風險升高";
-        note.textContent = "多項指標顯示景氣、流動性或市場趨勢壓力升高，應提高風險意識。";
+      } else if (macro.level === "good" && tactical.level === "bad") {
+        regime.textContent = "中期偏多／短線偏空";
+        note.textContent = "總經尚未正式轉壞，但價格、波動或信用動能已轉弱，短線應優先控制部位。";
+        orb.className = "regime-orb bad";
+      } else if (macro.level === "good") {
+        regime.textContent = "中期偏多／短線震盪";
+        note.textContent = "總經結構仍具支撐，但短線市場尚未確認多頭，避免把中期利多誤判為立即買進訊號。";
+        orb.className = "regime-orb warn";
+      } else if (macro.level === "bad" && tactical.level === "bad") {
+        regime.textContent = "偏空環境";
+        note.textContent = "總經與短線市場同步轉弱，風險訊號共振，應採較高防禦性。";
+        orb.className = "regime-orb bad";
+      } else if (macro.level === "bad") {
+        regime.textContent = "總經轉弱";
+        note.textContent = "短線價格可能尚未完全反映，但中期景氣與金融條件已偏弱。";
+        orb.className = "regime-orb bad";
+      } else if (tactical.level === "bad") {
+        regime.textContent = "短線偏空";
+        note.textContent = "總經訊號尚未一致轉空，但價格趨勢與風險指標已偏弱，屬於戰術性防守環境。";
         orb.className = "regime-orb bad";
       } else {
         regime.textContent = "中性觀察";
-        note.textContent = "目前多空訊號交錯，建議觀察就業、信用市場與 S&P 500 趨勢是否進一步確認。";
+        note.textContent = "中期與短線訊號均未形成明確方向，等待均線、波動率與信用市場進一步確認。";
         orb.className = "regime-orb warn";
       }
+
+      return { macro, tactical };
     }
 
-    function updateSignals(data) {
-      const rateNow = Number(data.rate?.current);
-      const ratePrev = Number(data.rate?.prev);
+    function updateSignals(data, assessment) {
+      const rateNow = toValidNumber(data.rate?.current);
+      const ratePrev = toValidNumber(data.rate?.prev);
 
-      if (rateNow < ratePrev) {
+      if (rateNow === null || ratePrev === null) {
+        setSignal("signal-rate", "warn", "資料不足");
+        setStatus("rate-status", "warn", "政策利率資料不足，暫不計分。");
+      } else if (rateNow < ratePrev - 0.01) {
         setSignal("signal-rate", "good", "利率下降");
         setStatus("rate-status", "good", "利率較前值下降，資金成本壓力略為降低。");
-      } else if (rateNow > ratePrev) {
+      } else if (rateNow > ratePrev + 0.01) {
         setSignal("signal-rate", "bad", "利率上升");
         setStatus("rate-status", "bad", "利率較前值上升，估值壓力可能提高。");
       } else {
@@ -573,49 +804,74 @@
         setStatus("rate-status", "warn", "利率維持不變，需搭配通膨與金融條件判斷。");
       }
 
-      const curveNow = Number(data.yield_curve?.current);
-      if (curveNow > 0) {
+      const curveNow = toValidNumber(data.yield_curve?.current);
+      if (curveNow === null) {
+        setSignal("signal-curve", "warn", "資料不足");
+        setStatus("yield-status", "warn", "殖利率曲線資料不足，暫不計分。");
+      } else if (curveNow >= 0.25) {
         setSignal("signal-curve", "good", "曲線轉正");
-        setStatus("yield-status", "good", "10Y−2Y 為正值，曲線結構相對健康。");
-      } else {
+        setStatus("yield-status", "good", "10Y−2Y 明顯為正，曲線結構相對健康；仍需辨識長端急升風險。");
+      } else if (curveNow <= -0.25) {
         setSignal("signal-curve", "bad", "曲線倒掛");
-        setStatus("yield-status", "bad", "10Y−2Y 為負值，仍需留意衰退風險。");
+        setStatus("yield-status", "bad", "10Y−2Y 明顯為負，衰退風險尚未解除。");
+      } else {
+        setSignal("signal-curve", "warn", "接近中性");
+        setStatus("yield-status", "warn", "殖利率曲線接近零，尚不足以單獨判定多空。");
       }
 
-      const assetsChange = Number(data.fed_assets_month_change?.current);
-      const reservesNow = Number(data.reserves?.current);
-      const reservesPrev = Number(data.reserves?.prev);
+      const assetsChange = toValidNumber(data.fed_assets_month_change?.current);
+      const reservesNow = toValidNumber(data.reserves?.current);
+      const reservesPrev = toValidNumber(data.reserves?.prev);
 
-      if (assetsChange > 0 && reservesNow >= reservesPrev) {
+      if (assetsChange === null || reservesNow === null || reservesPrev === null) {
+        setSignal("signal-liquidity", "warn", "資料不足");
+        setStatus("liquidity-status", "warn", "流動性資料不足，暫不計分。");
+      } else if (assetsChange > 0 && reservesNow > reservesPrev) {
         setSignal("signal-liquidity", "good", "流動性穩定");
-        setStatus("liquidity-status", "good", "Fed 資產近月增加，且準備金未明顯下降，流動性壓力較低。");
+        setStatus("liquidity-status", "good", "Fed 資產近月增加，且準備金同步上升，流動性壓力較低。");
       } else if (assetsChange < 0 && reservesNow < reservesPrev) {
         setSignal("signal-liquidity", "bad", "QT 壓力升高");
         setStatus("liquidity-status", "bad", "Fed 資產與準備金同步下降，代表流動性壓力升高。");
       } else {
-        setSignal("signal-liquidity", "warn", "中性觀察");
-        setStatus("liquidity-status", "warn", "流動性訊號不完全一致，需搭配信用利差與 VIX 判斷。");
+        setSignal("signal-liquidity", "warn", "訊號分歧");
+        setStatus("liquidity-status", "warn", "Fed 資產與準備金方向不一致，不能直接視為偏多。");
       }
 
-      const nfci = Number(data.nfci?.current);
-      const hy = Number(data.hy_spread?.current);
-      const vix = Number(data.vix?.current);
+      const nfci = toValidNumber(data.nfci?.current);
+      const hy = toValidNumber(data.hy_spread?.current);
+      const vix = toValidNumber(data.vix?.current);
+      const vixChange5 = toValidNumber(data.vix?.change_5d_pct);
+      const hyChange20 = toValidNumber(data.hy_spread?.change_20d_abs);
 
-      if (nfci < 0 && hy < 4 && vix < 20) {
-        setSignal("signal-risk", "good", "壓力偏低");
-        setStatus("risk-status", "good", "NFCI、信用利差與 VIX 顯示金融壓力仍偏低。");
-      } else if (nfci > 0 || hy > 5 || vix > 30) {
+      const riskBad = (nfci !== null && nfci > 0.25) ||
+        (hy !== null && hy > 5) ||
+        (vix !== null && vix >= 25) ||
+        (vixChange5 !== null && vixChange5 >= 25) ||
+        (hyChange20 !== null && hyChange20 >= 0.5);
+
+      const riskGood = nfci !== null && hy !== null && vix !== null &&
+        nfci < 0 && hy < 4 && vix < 20 &&
+        (vixChange5 === null || vixChange5 < 15) &&
+        (hyChange20 === null || hyChange20 < 0.3);
+
+      if (riskBad) {
         setSignal("signal-risk", "bad", "壓力升高");
-        setStatus("risk-status", "bad", "至少一項風險指標明顯惡化，需留意信用或波動風險。");
+        setStatus("risk-status", "bad", "波動率、信用利差或金融條件至少一項明顯惡化。");
+      } else if (riskGood) {
+        setSignal("signal-risk", "good", "壓力偏低");
+        setStatus("risk-status", "good", "金融壓力水位仍低，且短期變化尚未形成明顯警報。");
       } else {
-        setSignal("signal-risk", "warn", "正常波動");
-        setStatus("risk-status", "warn", "金融壓力仍在可控範圍，但市場波動可能升高。");
+        setSignal("signal-risk", "warn", "風險觀察");
+        setStatus("risk-status", "warn", "絕對水位可能仍低，但短期變化需持續確認。");
       }
 
-      const claims = Number(data.initial_claims?.current);
-      const sahm = Number(data.sahm_rule?.current);
+      const claims = toValidNumber(data.initial_claims?.current);
+      const sahm = toValidNumber(data.sahm_rule?.current);
 
-      if (sahm >= 0.5 || claims > 300000) {
+      if (claims === null || sahm === null) {
+        setSignal("signal-labor", "warn", "資料不足");
+        setStatus("labor-status", "warn", "就業資料不足，暫不計分。");
+      } else if (sahm >= 0.5 || claims > 300000) {
         setSignal("signal-labor", "bad", "衰退風險升高");
         setStatus("labor-status", "bad", "Sahm Rule 或失業申請數顯示勞動市場轉弱風險升高。");
       } else if (sahm >= 0.3 || claims > 250000) {
@@ -626,81 +882,79 @@
         setStatus("labor-status", "good", "初領失業金仍偏低，Sahm Rule 未觸發，勞動市場仍具韌性。");
       }
 
-      const aboveMA = data.sp500_trend?.above_ma200;
-      const drawdown = Number(data.sp500_trend?.drawdown_from_high);
-      const leading = Number(data.leading_index?.current);
-
-      if (aboveMA === true && drawdown > -10 && leading > 0) {
-        setSignal("signal-trend", "good", "趨勢偏多");
-        setStatus("trend-status", "good", "S&P 500 站上 200 日均線，距高點回落有限，領先指標亦偏正向。");
-      } else if (aboveMA === false || drawdown <= -20 || leading < 0) {
-        setSignal("signal-trend", "bad", "趨勢轉弱");
-        setStatus("trend-status", "bad", "價格趨勢或領先景氣指標轉弱，需留意熊市風險。");
+      if (assessment.tactical.level === "good") {
+        setSignal("signal-trend", "good", "短線偏多");
+        setStatus("trend-status", "good", "均線、動能、回撤與市場風險指標整體偏多。");
+      } else if (assessment.tactical.level === "bad") {
+        setSignal("signal-trend", "bad", "短線偏空");
+        setStatus("trend-status", "bad", "價格動能、均線或風險指標已形成偏空共振。");
       } else {
-        setSignal("signal-trend", "warn", "趨勢待確認");
-        setStatus("trend-status", "warn", "市場尚未明確轉空，但價格或領先指標缺乏一致性。");
+        setSignal("signal-trend", "warn", "震盪觀察");
+        setStatus("trend-status", "warn", "長期趨勢可能尚未破壞，但短線訊號不足以判定偏多。");
       }
     }
+
+    const setMAStatus = (id, value, label) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      if (value === true) el.textContent = `站上 ${label}`;
+      else if (value === false) el.textContent = `跌破 ${label}`;
+      else el.textContent = "資料待更新";
+    };
 
     async function loadMacroData() {
       try {
         const res = await fetch("data.json?ts=" + Date.now());
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
 
         setText("last-update", data.last_update);
 
         setText("rate-prev", formatNumber(data.rate?.prev, 2));
         setText("rate-current", formatNumber(data.rate?.current, 2));
-
         setText("yield-prev", formatNumber(data.yield_curve?.prev, 2));
         setText("yield-current", formatNumber(data.yield_curve?.current, 2));
-
         setText("assets-prev", formatNumber(data.fed_assets?.prev, 3));
         setText("assets-current", formatNumber(data.fed_assets?.current, 3));
-
         setText("assets-change-prev", formatNumber(data.fed_assets_month_change?.prev, 2));
         setText("assets-change-current", formatNumber(data.fed_assets_month_change?.current, 2));
-
         setText("reserves-prev", formatNumber(data.reserves?.prev, 3));
         setText("reserves-current", formatNumber(data.reserves?.current, 3));
-
         setText("rrp-prev", formatNumber(data.rrp?.prev, 3));
         setText("rrp-current", formatNumber(data.rrp?.current, 3));
-
         setText("nfci-prev", formatNumber(data.nfci?.prev, 2));
         setText("nfci-current", formatNumber(data.nfci?.current, 2));
-
         setText("hy-prev", formatNumber(data.hy_spread?.prev, 2));
         setText("hy-current", formatNumber(data.hy_spread?.current, 2));
-
+        setText("hy-change20", formatSigned(data.hy_spread?.change_20d_abs, 2));
         setText("vix-prev", formatNumber(data.vix?.prev, 2));
         setText("vix-current", formatNumber(data.vix?.current, 2));
-
+        setText("vix-change5", formatSigned(data.vix?.change_5d_pct, 1));
         setText("claims-prev", formatNumber(data.initial_claims?.prev, 0));
         setText("claims-current", formatNumber(data.initial_claims?.current, 0));
-
         setText("sahm-prev", formatNumber(data.sahm_rule?.prev, 2));
         setText("sahm-current", formatNumber(data.sahm_rule?.current, 2));
-
         setText("leading-prev", formatNumber(data.leading_index?.prev, 2));
         setText("leading-current", formatNumber(data.leading_index?.current, 2));
 
-        setText("sp-prev", formatNumber(data.sp500_trend?.prev, 2));
-        setText("sp-current", formatNumber(data.sp500_trend?.current, 2));
-        setText("sp-ma200", formatNumber(data.sp500_trend?.ma200, 2));
-        setText("sp-drawdown", formatNumber(data.sp500_trend?.drawdown_from_high, 2));
-        setText("sp-high52", formatNumber(data.sp500_trend?.high_52w, 2));
+        const trend = data.sp500_trend || {};
+        setText("sp-prev", formatNumber(trend.prev, 2));
+        setText("sp-current", formatNumber(trend.current, 2));
+        setText("sp-return5", formatSigned(trend.return_5d, 2));
+        setText("sp-return20", formatSigned(trend.return_20d, 2));
+        setText("sp-ma20", formatNumber(trend.ma20, 2));
+        setText("sp-ma50", formatNumber(trend.ma50, 2));
+        setText("sp-ma200", formatNumber(trend.ma200, 2));
+        setText("sp-drawdown", formatSigned(trend.drawdown_from_high, 2));
+        setText("sp-high52", formatNumber(trend.high_52w, 2));
+        setText("sp-distance200", formatSigned(trend.distance_from_ma200, 2));
 
-        const maStatus = document.getElementById("sp-ma-status");
-        if (maStatus) {
-          maStatus.textContent = data.sp500_trend?.above_ma200
-            ? "站上 200 日均線"
-            : "跌破 200 日均線";
-        }
+        setMAStatus("sp-ma20-status", trend.above_ma20, "20 日線");
+        setMAStatus("sp-ma50-status", trend.above_ma50, "50 日線");
+        setMAStatus("sp-ma200-status", trend.above_ma200, "200 日線");
 
-        judgeMarket(data);
-        updateSignals(data);
-
+        const assessment = judgeMarket(data);
+        updateSignals(data, assessment);
       } catch (err) {
         console.error("資料載入失敗：", err);
         const regime = document.getElementById("market-regime");

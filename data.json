@@ -27,11 +27,15 @@
   },
   "hy_spread": {
     "prev": 2.71,
-    "current": 2.71
+    "current": 2.71,
+    "change_5d_abs": null,
+    "change_20d_abs": null
   },
   "vix": {
     "prev": 15.67,
-    "current": 16.73
+    "current": 16.73,
+    "change_5d_pct": null,
+    "change_20d_pct": null
   },
   "initial_claims": {
     "prev": 216000,
@@ -56,6 +60,17 @@
     "high_52w": 7609.78,
     "drawdown_from_high": -2.0,
     "above_ma200": true,
-    "distance_from_ma200": 6.73
-  }
+    "distance_from_ma200": 6.73,
+    "return_1d": -1.01,
+    "return_5d": null,
+    "return_20d": null,
+    "return_60d": null,
+    "ma20": null,
+    "ma50": null,
+    "distance_from_ma20": null,
+    "distance_from_ma50": null,
+    "above_ma20": null,
+    "above_ma50": null
+  },
+  "schema_version": 4
 }
