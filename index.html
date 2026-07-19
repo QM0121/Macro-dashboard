@@ -56,31 +56,23 @@
             </div>
           </div>
 
-          <div class="market-regime-ladder" id="market-regime-ladder" aria-label="美股牛熊市場位置量表">
-            <div class="regime-zone zone-deep-bear" id="regime-zone-deep-bear">
-              <span class="zone-range">0–19</span>
-              <strong>深度熊市</strong>
-            </div>
-            <div class="regime-zone zone-bear" id="regime-zone-bear">
-              <span class="zone-range">20–39</span>
-              <strong>熊市</strong>
-            </div>
-            <div class="regime-zone zone-boundary" id="regime-zone-boundary">
-              <span class="zone-range">40–59</span>
-              <strong>牛熊分界</strong>
-            </div>
-            <div class="regime-zone zone-bull" id="regime-zone-bull">
-              <span class="zone-range">60–79</span>
-              <strong>牛市</strong>
-            </div>
-            <div class="regime-zone zone-strong-bull" id="regime-zone-strong-bull">
-              <span class="zone-range">80–100</span>
-              <strong>強勢牛市</strong>
+          <div class="bear-meter focus-meter" aria-label="美股牛熊市場位置量表">
+            <div class="bear-meter-fill" id="bear-meter-fill"></div>
+            <div class="bear-meter-marker" id="bear-meter-marker" aria-hidden="true">
+              <span id="bear-meter-marker-score">--</span>
             </div>
           </div>
-          <div class="regime-ladder-caption">
-            <span>0 分偏空，100 分偏多</span>
-            <b id="regime-position-text">目前位置：讀取中</b>
+          <div class="bear-scale focus-scale" id="bear-scale">
+            <span data-zone="deep-bear"><b>深度熊市</b><small>0–19</small></span>
+            <span data-zone="bear"><b>熊市</b><small>20–39</small></span>
+            <span data-zone="boundary"><b>牛熊分界</b><small>40–59</small></span>
+            <span data-zone="bull"><b>牛市</b><small>60–79</small></span>
+            <span data-zone="strong-bull"><b>強勢牛市</b><small>80–100</small></span>
+          </div>
+          <div class="bear-position-caption">
+            <span>偏空</span>
+            <b id="bear-position-text">目前位置：讀取中</b>
+            <span>偏多</span>
           </div>
 
           <div class="focus-section-label">三個核心確認</div>
@@ -128,7 +120,7 @@
 
           <div class="focus-footer">
             <span>更新：<b id="last-update">--</b></span>
-            <span>版本：<b>6.2</b></span>
+            <span>版本：<b>6.1</b></span>
             <span>主判斷：<b>股票市場</b></span>
           </div>
           <div class="score-disclaimer focus-disclaimer">總經、通膨與就業只用來解釋市場背景，不會直接改變首頁牛熊判斷。</div>
@@ -1299,32 +1291,6 @@
       setText(detailId, detail);
     }
 
-    function renderRegimeLadder(score, label) {
-      const zones = [
-        { id: "regime-zone-deep-bear", min: 0, max: 19 },
-        { id: "regime-zone-bear", min: 20, max: 39 },
-        { id: "regime-zone-boundary", min: 40, max: 59 },
-        { id: "regime-zone-bull", min: 60, max: 79 },
-        { id: "regime-zone-strong-bull", min: 80, max: 100 }
-      ];
-
-      zones.forEach(zone => {
-        const el = document.getElementById(zone.id);
-        if (!el) return;
-        el.classList.remove("active");
-        el.removeAttribute("aria-current");
-        if (score !== null && score !== undefined && score >= zone.min && score <= zone.max) {
-          el.classList.add("active");
-          el.setAttribute("aria-current", "true");
-        }
-      });
-
-      const position = score === null || score === undefined
-        ? "目前位置：資料不足"
-        : `目前位置：${label}（${score} 分）`;
-      setText("regime-position-text", position);
-    }
-
     function judgeMarket(data) {
       const macro = scoreMacro(data);
       const tactical = scoreTactical(data);
@@ -1333,6 +1299,10 @@
       const note = document.getElementById("market-note");
       const panel = document.getElementById("bear-panel");
       const scoreRing = document.getElementById("bear-score-ring");
+      const meterFill = document.getElementById("bear-meter-fill");
+      const meterMarker = document.getElementById("bear-meter-marker");
+      const meterMarkerScore = document.getElementById("bear-meter-marker-score");
+      const scale = document.getElementById("bear-scale");
 
       renderSubMarketCard("broad-market-card", "broad-market-regime", "broad-market-score", "broad-market-detail",
         market.broadScore, "S&P 500、Nasdaq Composite 與大型股等權重。" );
@@ -1350,7 +1320,34 @@
         el.classList.remove("good", "warn", "elevated", "bad");
         el.classList.add(market.level);
       });
-      renderRegimeLadder(market.score, market.label);
+      const currentScore = market.score === null ? null : Math.max(0, Math.min(100, market.score));
+      if (meterFill) {
+        meterFill.style.width = `${currentScore === null ? 0 : currentScore}%`;
+        meterFill.className = `bear-meter-fill ${market.level}`;
+      }
+      if (meterMarker) {
+        const markerPosition = currentScore === null ? 0 : Math.max(2, Math.min(98, currentScore));
+        meterMarker.style.left = `${markerPosition}%`;
+        meterMarker.className = `bear-meter-marker ${market.level}${currentScore === null ? " is-hidden" : ""}`;
+      }
+      if (meterMarkerScore) meterMarkerScore.textContent = currentScore === null ? "--" : currentScore;
+      setText("bear-position-text", currentScore === null
+        ? "目前位置：資料不足"
+        : `目前位置：${market.label}（${currentScore} 分）`);
+
+      if (scale) {
+        const zones = [...scale.querySelectorAll("span[data-zone]")];
+        zones.forEach(zone => zone.classList.remove("active", "good", "warn", "bad"));
+        if (currentScore !== null) {
+          const zoneKey = currentScore >= 80 ? "strong-bull"
+            : currentScore >= 60 ? "bull"
+            : currentScore >= 40 ? "boundary"
+            : currentScore >= 20 ? "bear"
+            : "deep-bear";
+          const activeZone = scale.querySelector(`[data-zone="${zoneKey}"]`);
+          if (activeZone) activeZone.classList.add("active", market.level);
+        }
+      }
 
       const components = market.components;
       setBearCheck("market-check-sp500", "market-check-sp500-label", "market-check-sp500-note",
@@ -1583,7 +1580,6 @@
 
         if (regime) regime.textContent = "資料載入失敗";
         if (note) note.textContent = "請確認 data.json 是否存在，或稍後重新整理頁面。";
-        renderRegimeLadder(null, "資料不足");
       }
     }
 
