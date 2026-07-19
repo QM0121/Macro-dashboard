@@ -56,11 +56,31 @@
             </div>
           </div>
 
-          <div class="bear-meter focus-meter" aria-label="美股牛熊市場位置量表">
-            <div class="bear-meter-fill" id="bear-meter-fill"></div>
+          <div class="market-regime-ladder" id="market-regime-ladder" aria-label="美股牛熊市場位置量表">
+            <div class="regime-zone zone-deep-bear" id="regime-zone-deep-bear">
+              <span class="zone-range">0–19</span>
+              <strong>深度熊市</strong>
+            </div>
+            <div class="regime-zone zone-bear" id="regime-zone-bear">
+              <span class="zone-range">20–39</span>
+              <strong>熊市</strong>
+            </div>
+            <div class="regime-zone zone-boundary" id="regime-zone-boundary">
+              <span class="zone-range">40–59</span>
+              <strong>牛熊分界</strong>
+            </div>
+            <div class="regime-zone zone-bull" id="regime-zone-bull">
+              <span class="zone-range">60–79</span>
+              <strong>牛市</strong>
+            </div>
+            <div class="regime-zone zone-strong-bull" id="regime-zone-strong-bull">
+              <span class="zone-range">80–100</span>
+              <strong>強勢牛市</strong>
+            </div>
           </div>
-          <div class="bear-scale focus-scale">
-            <span>深度熊市</span><span>熊市</span><span>牛熊分界</span><span>牛市</span><span>強勢牛市</span>
+          <div class="regime-ladder-caption">
+            <span>0 分偏空，100 分偏多</span>
+            <b id="regime-position-text">目前位置：讀取中</b>
           </div>
 
           <div class="focus-section-label">三個核心確認</div>
@@ -108,7 +128,7 @@
 
           <div class="focus-footer">
             <span>更新：<b id="last-update">--</b></span>
-            <span>版本：<b>6.1</b></span>
+            <span>版本：<b>6.2</b></span>
             <span>主判斷：<b>股票市場</b></span>
           </div>
           <div class="score-disclaimer focus-disclaimer">總經、通膨與就業只用來解釋市場背景，不會直接改變首頁牛熊判斷。</div>
@@ -1279,6 +1299,32 @@
       setText(detailId, detail);
     }
 
+    function renderRegimeLadder(score, label) {
+      const zones = [
+        { id: "regime-zone-deep-bear", min: 0, max: 19 },
+        { id: "regime-zone-bear", min: 20, max: 39 },
+        { id: "regime-zone-boundary", min: 40, max: 59 },
+        { id: "regime-zone-bull", min: 60, max: 79 },
+        { id: "regime-zone-strong-bull", min: 80, max: 100 }
+      ];
+
+      zones.forEach(zone => {
+        const el = document.getElementById(zone.id);
+        if (!el) return;
+        el.classList.remove("active");
+        el.removeAttribute("aria-current");
+        if (score !== null && score !== undefined && score >= zone.min && score <= zone.max) {
+          el.classList.add("active");
+          el.setAttribute("aria-current", "true");
+        }
+      });
+
+      const position = score === null || score === undefined
+        ? "目前位置：資料不足"
+        : `目前位置：${label}（${score} 分）`;
+      setText("regime-position-text", position);
+    }
+
     function judgeMarket(data) {
       const macro = scoreMacro(data);
       const tactical = scoreTactical(data);
@@ -1287,7 +1333,6 @@
       const note = document.getElementById("market-note");
       const panel = document.getElementById("bear-panel");
       const scoreRing = document.getElementById("bear-score-ring");
-      const meterFill = document.getElementById("bear-meter-fill");
 
       renderSubMarketCard("broad-market-card", "broad-market-regime", "broad-market-score", "broad-market-detail",
         market.broadScore, "S&P 500、Nasdaq Composite 與大型股等權重。" );
@@ -1305,10 +1350,7 @@
         el.classList.remove("good", "warn", "elevated", "bad");
         el.classList.add(market.level);
       });
-      if (meterFill) {
-        meterFill.style.width = `${market.score === null ? 0 : market.score}%`;
-        meterFill.className = `bear-meter-fill ${market.level}`;
-      }
+      renderRegimeLadder(market.score, market.label);
 
       const components = market.components;
       setBearCheck("market-check-sp500", "market-check-sp500-label", "market-check-sp500-note",
@@ -1541,6 +1583,7 @@
 
         if (regime) regime.textContent = "資料載入失敗";
         if (note) note.textContent = "請確認 data.json 是否存在，或稍後重新整理頁面。";
+        renderRegimeLadder(null, "資料不足");
       }
     }
 
