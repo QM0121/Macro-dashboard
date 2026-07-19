@@ -38,97 +38,81 @@
         </div>
       </nav>
 
-      <section class="hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">U.S. Equity Market Regime</div>
-          <h1><span>美股牛熊市場</span><span>判斷儀表板</span></h1>
-          <p class="subtitle">
-            第一眼先判斷股市位於深度熊市、熊市、牛熊分界、牛市或強勢牛市。
-            主分數只看股價趨勢、回撤、科技領導、等權重廣度、VIX 與信用壓力；總經資料不會把價格訊號沖淡。
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn primary" href="#dashboard">查看儀表板</a>
-          </div>
-        </div>
-
-        <aside class="market-panel bear-panel" id="bear-panel">
-          <div class="panel-head bear-head">
-            <div>
-              <div class="panel-k">U.S. Equity Market Regime</div>
-              <div class="panel-v" id="market-regime">資料載入中</div>
+      <section class="market-first">
+        <aside class="market-panel bear-panel focus-panel" id="bear-panel">
+          <div class="focus-head">
+            <div class="focus-copy">
+              <div class="eyebrow">目前美股市場狀態</div>
+              <div class="panel-v focus-verdict" id="market-regime">資料載入中</div>
+              <p class="regime-note focus-note" id="market-note">
+                正在檢查廣泛市場、科技股與市場廣度。
+              </p>
             </div>
-            <div class="bear-score-ring" id="bear-score-ring">
-              <span id="market-strength-score">--</span>
-              <small>/ 100</small>
+
+            <div class="focus-score" id="bear-score-ring">
+              <strong id="market-strength-score">--</strong>
+              <span>/ 100</span>
+              <small>市場強度</small>
             </div>
           </div>
 
-          <div class="bear-meter" aria-label="美股牛熊市場位置量表">
+          <div class="bear-meter focus-meter" aria-label="美股牛熊市場位置量表">
             <div class="bear-meter-fill" id="bear-meter-fill"></div>
           </div>
-          <div class="bear-scale">
+          <div class="bear-scale focus-scale">
             <span>深度熊市</span><span>熊市</span><span>牛熊分界</span><span>牛市</span><span>強勢牛市</span>
           </div>
 
-          <div class="regime-note" id="market-note">
-            正在檢查大型股、科技股、半導體、等權重廣度、回撤與長期均線。
-          </div>
-          <div class="score-disclaimer">主分數只判斷股票市場。總經、通膨與就業放在下方解釋市場背景，不直接加減牛熊分數。</div>
-
-          <div class="bear-check-grid market-index-grid">
-            <div class="bear-check" id="market-check-sp500">
-              <span>S&amp;P 500</span><b id="market-check-sp500-label">讀取中</b><small id="market-check-sp500-note">大型股廣泛市場</small>
-            </div>
-            <div class="bear-check" id="market-check-nasdaq100">
-              <span>Nasdaq-100</span><b id="market-check-nasdaq100-label">讀取中</b><small id="market-check-nasdaq100-note">大型科技與成長股</small>
-            </div>
-            <div class="bear-check" id="market-check-nasdaqcomp">
-              <span>Nasdaq Composite</span><b id="market-check-nasdaqcomp-label">讀取中</b><small id="market-check-nasdaqcomp-note">科技市場整體廣度</small>
-            </div>
-            <div class="bear-check" id="market-check-equalweight">
-              <span>Large Cap Equal Weight</span><b id="market-check-equalweight-label">讀取中</b><small id="market-check-equalweight-note">降低巨頭權重扭曲</small>
-            </div>
-            <div class="bear-check" id="market-check-tech">
-              <span>Nasdaq-100 Technology</span><b id="market-check-tech-label">讀取中</b><small id="market-check-tech-note">科技板塊本身</small>
-            </div>
-            <div class="bear-check" id="market-check-semi">
-              <span>Semiconductors</span><b id="market-check-semi-label">讀取中</b><small id="market-check-semi-note">半導體領導循環</small>
-            </div>
-          </div>
-
-          <div class="regime-split market-split-three">
+          <div class="focus-section-label">三個核心確認</div>
+          <div class="regime-split market-split-three focus-pillars">
             <div class="regime-score-card" id="broad-market-card">
               <div class="regime-score-head"><span>廣泛市場</span><b id="broad-market-score">--</b></div>
               <strong id="broad-market-regime">資料載入中</strong>
-              <p id="broad-market-detail">S&amp;P 500、Nasdaq Composite 與大型股等權重。</p>
+              <p id="broad-market-detail">大型股與綜合指數。</p>
             </div>
             <div class="regime-score-card" id="tech-market-card">
               <div class="regime-score-head"><span>科技／成長股</span><b id="tech-market-score">--</b></div>
               <strong id="tech-market-regime">資料載入中</strong>
-              <p id="tech-market-detail">Nasdaq-100、科技板塊與半導體。</p>
+              <p id="tech-market-detail">科技板塊與半導體。</p>
             </div>
             <div class="regime-score-card" id="breadth-market-card">
               <div class="regime-score-head"><span>市場廣度</span><b id="breadth-market-score">--</b></div>
               <strong id="breadth-market-regime">資料載入中</strong>
-              <p id="breadth-market-detail">等權重與綜合指數是否同步確認。</p>
+              <p id="breadth-market-detail">等權重是否同步。</p>
             </div>
           </div>
 
-          <div class="mini-stats">
-            <div class="mini-stat"><span>Last update</span><b id="last-update">--</b></div>
-            <div class="mini-stat"><span>Version</span><b>6.0</b></div>
-            <div class="mini-stat"><span>Primary mode</span><b>Equity</b></div>
-          </div>
-        </aside>
-      </section>
+          <details class="index-breakdown">
+            <summary>查看 6 項指數明細</summary>
+            <div class="bear-check-grid market-index-grid compact-index-grid">
+              <div class="bear-check" id="market-check-sp500">
+                <span>S&amp;P 500</span><b id="market-check-sp500-label">讀取中</b><small id="market-check-sp500-note">大型股廣泛市場</small>
+              </div>
+              <div class="bear-check" id="market-check-nasdaq100">
+                <span>Nasdaq-100</span><b id="market-check-nasdaq100-label">讀取中</b><small id="market-check-nasdaq100-note">大型科技與成長股</small>
+              </div>
+              <div class="bear-check" id="market-check-nasdaqcomp">
+                <span>Nasdaq Composite</span><b id="market-check-nasdaqcomp-label">讀取中</b><small id="market-check-nasdaqcomp-note">科技市場整體</small>
+              </div>
+              <div class="bear-check" id="market-check-equalweight">
+                <span>大型股等權重</span><b id="market-check-equalweight-label">讀取中</b><small id="market-check-equalweight-note">降低巨頭權重扭曲</small>
+              </div>
+              <div class="bear-check" id="market-check-tech">
+                <span>科技板塊</span><b id="market-check-tech-label">讀取中</b><small id="market-check-tech-note">科技股本身</small>
+              </div>
+              <div class="bear-check" id="market-check-semi">
+                <span>半導體</span><b id="market-check-semi-label">讀取中</b><small id="market-check-semi-note">產業領導循環</small>
+              </div>
+            </div>
+          </details>
 
-      <section class="investor-snapshot market-snapshot" aria-label="美股市場快速檢查">
-        <article class="snapshot-card" id="snapshot-sp500-card"><span>S&amp;P 500</span><b id="snapshot-sp500-value">--</b><small id="snapshot-sp500-note">等待市場資料</small></article>
-        <article class="snapshot-card" id="snapshot-ndx-card"><span>Nasdaq-100</span><b id="snapshot-ndx-value">--</b><small id="snapshot-ndx-note">等待市場資料</small></article>
-        <article class="snapshot-card" id="snapshot-tech-card"><span>科技板塊</span><b id="snapshot-tech-value">--</b><small id="snapshot-tech-note">等待市場資料</small></article>
-        <article class="snapshot-card" id="snapshot-semi-card"><span>半導體</span><b id="snapshot-semi-value">--</b><small id="snapshot-semi-note">等待市場資料</small></article>
-        <article class="snapshot-card" id="snapshot-breadth-card"><span>市場廣度</span><b id="snapshot-breadth-value">--</b><small id="snapshot-breadth-note">等待市場資料</small></article>
+          <div class="focus-footer">
+            <span>更新：<b id="last-update">--</b></span>
+            <span>版本：<b>6.1</b></span>
+            <span>主判斷：<b>股票市場</b></span>
+          </div>
+          <div class="score-disclaimer focus-disclaimer">總經、通膨與就業只用來解釋市場背景，不會直接改變首頁牛熊判斷。</div>
+        </aside>
       </section>
     </div>
   </header>
