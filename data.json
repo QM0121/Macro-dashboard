@@ -1,6 +1,6 @@
 {
   "last_update": "2026-07-21",
-  "last_update_time": "2026-07-21 21:30:32",
+  "last_update_time": "2026-07-21 23:22:21",
   "schema_version": 6,
   "rate": {
     "prev": 3.63,
@@ -39,20 +39,20 @@
     "current_date": "2026-07-10"
   },
   "hy_spread": {
-    "prev": 2.71,
-    "current": 2.73,
-    "prev_date": "2026-07-16",
-    "current_date": "2026-07-17",
-    "change_5d_abs": 0.04,
-    "change_20d_abs": 0.07
+    "prev": 2.73,
+    "current": 2.69,
+    "prev_date": "2026-07-17",
+    "current_date": "2026-07-20",
+    "change_5d_abs": 0.0,
+    "change_20d_abs": 0.04
   },
   "vix": {
-    "prev": 16.73,
-    "current": 18.77,
-    "prev_date": "2026-07-16",
-    "current_date": "2026-07-17",
-    "change_5d_pct": 24.88,
-    "change_20d_pct": 11.86
+    "prev": 18.77,
+    "current": 18.65,
+    "prev_date": "2026-07-17",
+    "current_date": "2026-07-20",
+    "change_5d_pct": 8.68,
+    "change_20d_pct": 7.93
   },
   "sahm_rule": {
     "prev": 0.1,
