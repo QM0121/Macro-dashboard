@@ -1,6 +1,6 @@
 {
   "last_update": "2026-07-23",
-  "last_update_time": "2026-07-23 11:54:04",
+  "last_update_time": "2026-07-23 21:30:38",
   "schema_version": 6,
   "rate": {
     "prev": 3.63,
@@ -82,12 +82,12 @@
     "prev_date": "2026-05-01"
   },
   "initial_claims": {
-    "current": 208000,
-    "prev": 216000,
-    "avg_4w": 214250,
-    "prev_avg_4w": 219000,
-    "current_date": "2026-07-11",
-    "prev_date": "2026-07-04"
+    "current": 187000,
+    "prev": 209000,
+    "avg_4w": 207500,
+    "prev_avg_4w": 214750,
+    "current_date": "2026-07-18",
+    "prev_date": "2026-07-11"
   },
   "cpi": {
     "current_level": 332.568,
