@@ -1,18 +1,18 @@
 {
-  "last_update": "2026-07-28",
-  "last_update_time": "2026-07-28 23:42:11",
+  "last_update": "2026-07-29",
+  "last_update_time": "2026-07-29 08:30:39",
   "schema_version": 6,
   "rate": {
     "prev": 3.63,
     "current": 3.63,
-    "prev_date": "2026-07-23",
-    "current_date": "2026-07-24"
+    "prev_date": "2026-07-26",
+    "current_date": "2026-07-27"
   },
   "yield_curve": {
-    "prev": 0.36,
-    "current": 0.34,
-    "prev_date": "2026-07-24",
-    "current_date": "2026-07-27"
+    "prev": 0.34,
+    "current": 0.35,
+    "prev_date": "2026-07-27",
+    "current_date": "2026-07-28"
   },
   "fed_assets": {
     "prev": 6.743,
@@ -27,10 +27,10 @@
     "current_date": "2026-07-22"
   },
   "rrp": {
-    "prev": 0.675,
-    "current": 1.38,
-    "prev_date": "2026-07-24",
-    "current_date": "2026-07-27"
+    "prev": 1.38,
+    "current": 1.126,
+    "prev_date": "2026-07-27",
+    "current_date": "2026-07-28"
   },
   "nfci": {
     "prev": -0.54,
@@ -173,25 +173,25 @@
     "reference_date": "2026-06-24"
   },
   "sp500_trend": {
-    "prev": 7411.98,
-    "current": 7413.18,
-    "prev_date": "2026-07-24",
-    "current_date": "2026-07-27",
-    "return_1d": 0.02,
-    "return_5d": -0.4,
-    "return_20d": 0.8,
-    "return_60d": 3.88,
-    "ma20": 7492.85,
-    "ma50": 7471.39,
-    "ma200": 7009.23,
+    "prev": 7413.18,
+    "current": 7428.78,
+    "prev_date": "2026-07-27",
+    "current_date": "2026-07-28",
+    "return_1d": 0.21,
+    "return_5d": -1.07,
+    "return_20d": -0.16,
+    "return_60d": 3.05,
+    "ma20": 7492.27,
+    "ma50": 7469.94,
+    "ma200": 7012.6,
     "above_ma20": false,
     "above_ma50": false,
     "above_ma200": true,
-    "distance_from_ma20": -1.06,
-    "distance_from_ma50": -0.78,
-    "distance_from_ma200": 5.76,
+    "distance_from_ma20": -0.85,
+    "distance_from_ma50": -0.55,
+    "distance_from_ma200": 5.93,
     "high_52w": 7609.78,
-    "drawdown_from_high": -2.58
+    "drawdown_from_high": -2.38
   },
   "nasdaq100_trend": {
     "prev": 28128.34,
