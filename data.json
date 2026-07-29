@@ -1,6 +1,6 @@
 {
   "last_update": "2026-07-29",
-  "last_update_time": "2026-07-29 11:49:13",
+  "last_update_time": "2026-07-29 21:30:35",
   "schema_version": 6,
   "rate": {
     "prev": 3.63,
@@ -35,8 +35,8 @@
   "nfci": {
     "prev": -0.54,
     "current": -0.55,
-    "prev_date": "2026-07-10",
-    "current_date": "2026-07-17"
+    "prev_date": "2026-07-17",
+    "current_date": "2026-07-24"
   },
   "hy_spread": {
     "prev": 2.79,
