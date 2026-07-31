@@ -1,36 +1,36 @@
 {
-  "last_update": "2026-07-30",
-  "last_update_time": "2026-07-30 23:30:36",
+  "last_update": "2026-07-31",
+  "last_update_time": "2026-07-31 08:30:29",
   "schema_version": 6,
   "rate": {
     "prev": 3.63,
     "current": 3.63,
-    "prev_date": "2026-07-27",
-    "current_date": "2026-07-28"
+    "prev_date": "2026-07-28",
+    "current_date": "2026-07-29"
   },
   "yield_curve": {
-    "prev": 0.35,
+    "prev": 0.45,
     "current": 0.45,
-    "prev_date": "2026-07-28",
-    "current_date": "2026-07-29"
+    "prev_date": "2026-07-29",
+    "current_date": "2026-07-30"
   },
   "fed_assets": {
-    "prev": 6.743,
-    "current": 6.747,
-    "prev_date": "2026-07-15",
-    "current_date": "2026-07-22"
+    "prev": 6.747,
+    "current": 6.738,
+    "prev_date": "2026-07-22",
+    "current_date": "2026-07-29"
   },
   "reserves": {
-    "prev": 3.143,
-    "current": 3.062,
-    "prev_date": "2026-07-15",
-    "current_date": "2026-07-22"
+    "prev": 3.062,
+    "current": 2.985,
+    "prev_date": "2026-07-22",
+    "current_date": "2026-07-29"
   },
   "rrp": {
-    "prev": 1.126,
-    "current": 2.576,
-    "prev_date": "2026-07-28",
-    "current_date": "2026-07-29"
+    "prev": 2.576,
+    "current": 1.076,
+    "prev_date": "2026-07-29",
+    "current_date": "2026-07-30"
   },
   "nfci": {
     "prev": -0.54,
@@ -47,12 +47,12 @@
     "change_20d_abs": 0.13
   },
   "vix": {
-    "prev": 18.67,
-    "current": 18.21,
-    "prev_date": "2026-07-27",
-    "current_date": "2026-07-28",
-    "change_5d_pct": 6.8,
-    "change_20d_pct": 10.7
+    "prev": 18.21,
+    "current": 20.66,
+    "prev_date": "2026-07-28",
+    "current_date": "2026-07-29",
+    "change_5d_pct": 24.16,
+    "change_20d_pct": 24.53
   },
   "sahm_rule": {
     "prev": 0.1,
@@ -123,26 +123,26 @@
     "prev_date": "2026-05-01"
   },
   "pce": {
-    "current_level": 131.527,
-    "prev_level": 130.938,
-    "mom": 0.45,
-    "prev_mom": 0.41,
-    "yoy": 4.07,
-    "prev_yoy": 3.8,
-    "annualized_3m": 6.28,
-    "current_date": "2026-05-01",
-    "prev_date": "2026-04-01"
+    "current_level": 131.392,
+    "prev_level": 131.535,
+    "mom": -0.11,
+    "prev_mom": 0.46,
+    "yoy": 3.67,
+    "prev_yoy": 4.08,
+    "annualized_3m": 3.07,
+    "current_date": "2026-06-01",
+    "prev_date": "2026-05-01"
   },
   "core_pce": {
-    "current_level": 130.082,
-    "prev_level": 129.667,
-    "mom": 0.32,
-    "prev_mom": 0.25,
-    "yoy": 3.41,
-    "prev_yoy": 3.32,
-    "annualized_3m": 3.52,
-    "current_date": "2026-05-01",
-    "prev_date": "2026-04-01"
+    "current_level": 130.266,
+    "prev_level": 130.094,
+    "mom": 0.13,
+    "prev_mom": 0.33,
+    "yoy": 3.29,
+    "prev_yoy": 3.42,
+    "annualized_3m": 2.89,
+    "current_date": "2026-06-01",
+    "prev_date": "2026-05-01"
   },
   "retail_sales": {
     "current_level": 768553.0,
@@ -156,21 +156,21 @@
     "prev_date": "2026-05-01"
   },
   "real_pce": {
-    "current_level": 16773.4,
-    "prev_level": 16729.6,
-    "mom": 0.26,
-    "prev_mom": -0.0,
-    "yoy": 2.13,
-    "prev_yoy": 1.72,
-    "annualized_3m": 2.15,
-    "current_date": "2026-05-01",
-    "prev_date": "2026-04-01"
+    "current_level": 16885.2,
+    "prev_level": 16817.2,
+    "mom": 0.4,
+    "prev_mom": 0.39,
+    "yoy": 2.54,
+    "prev_yoy": 2.39,
+    "annualized_3m": 3.76,
+    "current_date": "2026-06-01",
+    "prev_date": "2026-05-01"
   },
   "fed_assets_month_change": {
-    "prev": 66.04,
-    "current": 117.33,
-    "current_date": "2026-07-22",
-    "reference_date": "2026-06-24"
+    "prev": 117.33,
+    "current": 136.26,
+    "current_date": "2026-07-29",
+    "reference_date": "2026-07-01"
   },
   "sp500_trend": {
     "prev": 7428.78,
