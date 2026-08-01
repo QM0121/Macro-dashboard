@@ -1,18 +1,18 @@
 {
-  "last_update": "2026-07-31",
-  "last_update_time": "2026-07-31 23:36:51",
+  "last_update": "2026-08-01",
+  "last_update_time": "2026-08-01 08:30:32",
   "schema_version": 6,
   "rate": {
     "prev": 3.63,
     "current": 3.63,
-    "prev_date": "2026-07-28",
-    "current_date": "2026-07-29"
+    "prev_date": "2026-07-29",
+    "current_date": "2026-07-30"
   },
   "yield_curve": {
     "prev": 0.45,
-    "current": 0.45,
-    "prev_date": "2026-07-29",
-    "current_date": "2026-07-30"
+    "current": 0.47,
+    "prev_date": "2026-07-30",
+    "current_date": "2026-07-31"
   },
   "fed_assets": {
     "prev": 6.747,
@@ -27,10 +27,10 @@
     "current_date": "2026-07-29"
   },
   "rrp": {
-    "prev": 2.576,
-    "current": 1.076,
-    "prev_date": "2026-07-29",
-    "current_date": "2026-07-30"
+    "prev": 1.076,
+    "current": 2.151,
+    "prev_date": "2026-07-30",
+    "current_date": "2026-07-31"
   },
   "nfci": {
     "prev": -0.54,
@@ -173,25 +173,25 @@
     "reference_date": "2026-07-01"
   },
   "sp500_trend": {
-    "prev": 7428.78,
-    "current": 7316.15,
-    "prev_date": "2026-07-28",
-    "current_date": "2026-07-29",
-    "return_1d": -1.52,
-    "return_5d": -2.44,
-    "return_20d": -2.44,
-    "return_60d": 1.19,
-    "ma20": 7483.11,
-    "ma50": 7468.1,
-    "ma200": 7015.51,
-    "above_ma20": false,
-    "above_ma50": false,
+    "prev": 7437.63,
+    "current": 7489.72,
+    "prev_date": "2026-07-30",
+    "current_date": "2026-07-31",
+    "return_1d": 0.7,
+    "return_5d": 1.05,
+    "return_20d": 0.09,
+    "return_60d": 3.18,
+    "ma20": 7481.15,
+    "ma50": 7471.51,
+    "ma200": 7024.11,
+    "above_ma20": true,
+    "above_ma50": true,
     "above_ma200": true,
-    "distance_from_ma20": -2.23,
-    "distance_from_ma50": -2.03,
-    "distance_from_ma200": 4.29,
+    "distance_from_ma20": 0.11,
+    "distance_from_ma50": 0.24,
+    "distance_from_ma200": 6.63,
     "high_52w": 7609.78,
-    "drawdown_from_high": -3.86
+    "drawdown_from_high": -1.58
   },
   "nasdaq100_trend": {
     "prev": 27192.31,
