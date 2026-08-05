@@ -1,6 +1,6 @@
 {
   "last_update": "2026-08-05",
-  "last_update_time": "2026-08-05 11:42:57",
+  "last_update_time": "2026-08-05 21:30:33",
   "schema_version": 6,
   "rate": {
     "prev": 3.63,
@@ -33,10 +33,10 @@
     "current_date": "2026-08-04"
   },
   "nfci": {
-    "prev": -0.54,
-    "current": -0.55,
-    "prev_date": "2026-07-17",
-    "current_date": "2026-07-24"
+    "prev": -0.53,
+    "current": -0.53,
+    "prev_date": "2026-07-24",
+    "current_date": "2026-07-31"
   },
   "hy_spread": {
     "prev": 2.85,
@@ -236,25 +236,25 @@
     "drawdown_from_high": -1.88
   },
   "largecap_equal_weight_trend": {
-    "prev": 2844.63,
-    "current": 2877.47,
-    "prev_date": "2026-07-31",
-    "current_date": "2026-08-03",
-    "return_1d": 1.15,
-    "return_5d": 0.82,
-    "return_20d": 0.34,
-    "return_60d": 5.86,
-    "ma20": 2843.62,
-    "ma50": 2810.15,
-    "ma200": 2646.9,
+    "prev": 2877.47,
+    "current": 2920.24,
+    "prev_date": "2026-08-03",
+    "current_date": "2026-08-04",
+    "return_1d": 1.49,
+    "return_5d": 1.44,
+    "return_20d": 2.13,
+    "return_60d": 8.23,
+    "ma20": 2846.67,
+    "ma50": 2814.44,
+    "ma200": 2648.85,
     "above_ma20": true,
     "above_ma50": true,
     "above_ma200": true,
-    "distance_from_ma20": 1.19,
-    "distance_from_ma50": 2.4,
-    "distance_from_ma200": 8.71,
-    "high_52w": 2878.8,
-    "drawdown_from_high": -0.05
+    "distance_from_ma20": 2.58,
+    "distance_from_ma50": 3.76,
+    "distance_from_ma200": 10.25,
+    "high_52w": 2920.24,
+    "drawdown_from_high": 0.0
   },
   "nasdaq100_equal_weight_trend": {
     "prev": 12102.91,
@@ -299,24 +299,24 @@
     "drawdown_from_high": -4.67
   },
   "semiconductor_trend": {
-    "prev": 14503.99,
-    "current": 14656.93,
-    "prev_date": "2026-07-31",
-    "current_date": "2026-08-03",
-    "return_1d": 1.05,
-    "return_5d": -1.05,
-    "return_20d": -11.37,
-    "return_60d": -0.25,
-    "ma20": 15352.06,
-    "ma50": 16313.88,
-    "ma200": 11846.73,
-    "above_ma20": false,
+    "prev": 14656.93,
+    "current": 15617.25,
+    "prev_date": "2026-08-03",
+    "current_date": "2026-08-04",
+    "return_1d": 6.55,
+    "return_5d": 10.39,
+    "return_20d": -0.96,
+    "return_60d": 9.26,
+    "ma20": 15344.52,
+    "ma50": 16319.75,
+    "ma200": 11881.64,
+    "above_ma20": true,
     "above_ma50": false,
     "above_ma200": true,
-    "distance_from_ma20": -4.53,
-    "distance_from_ma50": -10.16,
-    "distance_from_ma200": 23.72,
+    "distance_from_ma20": 1.78,
+    "distance_from_ma50": -4.3,
+    "distance_from_ma200": 31.44,
     "high_52w": 18757.24,
-    "drawdown_from_high": -21.86
+    "drawdown_from_high": -16.74
   }
 }
