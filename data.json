@@ -1,18 +1,18 @@
 {
-  "last_update": "2026-08-05",
-  "last_update_time": "2026-08-05 23:37:34",
+  "last_update": "2026-08-06",
+  "last_update_time": "2026-08-06 08:30:36",
   "schema_version": 6,
   "rate": {
     "prev": 3.63,
     "current": 3.63,
-    "prev_date": "2026-08-02",
-    "current_date": "2026-08-03"
-  },
-  "yield_curve": {
-    "prev": 0.45,
-    "current": 0.43,
     "prev_date": "2026-08-03",
     "current_date": "2026-08-04"
+  },
+  "yield_curve": {
+    "prev": 0.43,
+    "current": 0.45,
+    "prev_date": "2026-08-04",
+    "current_date": "2026-08-05"
   },
   "fed_assets": {
     "prev": 6.747,
@@ -27,10 +27,10 @@
     "current_date": "2026-07-29"
   },
   "rrp": {
-    "prev": 2.127,
-    "current": 2.251,
-    "prev_date": "2026-08-03",
-    "current_date": "2026-08-04"
+    "prev": 2.251,
+    "current": 1.65,
+    "prev_date": "2026-08-04",
+    "current_date": "2026-08-05"
   },
   "nfci": {
     "prev": -0.53,
@@ -39,11 +39,11 @@
     "current_date": "2026-07-31"
   },
   "hy_spread": {
-    "prev": 2.85,
-    "current": 2.78,
-    "prev_date": "2026-07-31",
-    "current_date": "2026-08-03",
-    "change_5d_abs": -0.03,
+    "prev": 2.78,
+    "current": 2.73,
+    "prev_date": "2026-08-03",
+    "current_date": "2026-08-04",
+    "change_5d_abs": -0.11,
     "change_20d_abs": 0.06
   },
   "vix": {
@@ -173,25 +173,25 @@
     "reference_date": "2026-07-01"
   },
   "sp500_trend": {
-    "prev": 7600.5,
-    "current": 7736.52,
-    "prev_date": "2026-08-03",
-    "current_date": "2026-08-04",
-    "return_1d": 1.79,
-    "return_5d": 4.14,
-    "return_20d": 3.1,
-    "return_60d": 5.44,
-    "ma20": 7495.94,
-    "ma50": 7480.68,
-    "ma200": 7034.21,
+    "prev": 7736.52,
+    "current": 7723.55,
+    "prev_date": "2026-08-04",
+    "current_date": "2026-08-05",
+    "return_1d": -0.17,
+    "return_5d": 5.57,
+    "return_20d": 3.22,
+    "return_60d": 4.39,
+    "ma20": 7507.98,
+    "ma50": 7485.68,
+    "ma200": 7039.69,
     "above_ma20": true,
     "above_ma50": true,
     "above_ma200": true,
-    "distance_from_ma20": 3.21,
-    "distance_from_ma50": 3.42,
-    "distance_from_ma200": 9.98,
+    "distance_from_ma20": 2.87,
+    "distance_from_ma50": 3.18,
+    "distance_from_ma200": 9.71,
     "high_52w": 7736.52,
-    "drawdown_from_high": 0.0
+    "drawdown_from_high": -0.17
   },
   "nasdaq100_trend": {
     "prev": 28776.8,
