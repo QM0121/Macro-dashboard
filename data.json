@@ -1,18 +1,18 @@
 {
-  "last_update": "2026-08-11",
-  "last_update_time": "2026-08-11 22:35:03",
+  "last_update": "2026-08-12",
+  "last_update_time": "2026-08-12 08:30:48",
   "schema_version": 6,
   "rate": {
     "prev": 3.63,
     "current": 3.63,
-    "prev_date": "2026-08-06",
-    "current_date": "2026-08-07"
+    "prev_date": "2026-08-09",
+    "current_date": "2026-08-10"
   },
   "yield_curve": {
-    "prev": 0.46,
-    "current": 0.47,
-    "prev_date": "2026-08-07",
-    "current_date": "2026-08-10"
+    "prev": 0.47,
+    "current": 0.48,
+    "prev_date": "2026-08-10",
+    "current_date": "2026-08-11"
   },
   "fed_assets": {
     "prev": 6.738,
@@ -27,10 +27,10 @@
     "current_date": "2026-08-05"
   },
   "rrp": {
-    "prev": 1.45,
-    "current": 0.975,
-    "prev_date": "2026-08-07",
-    "current_date": "2026-08-10"
+    "prev": 0.975,
+    "current": 1.25,
+    "prev_date": "2026-08-10",
+    "current_date": "2026-08-11"
   },
   "nfci": {
     "prev": -0.53,
@@ -173,25 +173,25 @@
     "reference_date": "2026-07-08"
   },
   "sp500_trend": {
-    "prev": 7757.64,
-    "current": 7753.11,
-    "prev_date": "2026-08-07",
-    "current_date": "2026-08-10",
-    "return_1d": -0.06,
-    "return_5d": 2.01,
-    "return_20d": 3.16,
-    "return_60d": 4.15,
-    "ma20": 7537.3,
-    "ma50": 7498.03,
-    "ma200": 7055.12,
+    "prev": 7753.11,
+    "current": 7728.2,
+    "prev_date": "2026-08-10",
+    "current_date": "2026-08-11",
+    "return_1d": -0.32,
+    "return_5d": -0.11,
+    "return_20d": 2.45,
+    "return_60d": 3.03,
+    "ma20": 7546.53,
+    "ma50": 7500.99,
+    "ma200": 7060.26,
     "above_ma20": true,
     "above_ma50": true,
     "above_ma200": true,
-    "distance_from_ma20": 2.86,
-    "distance_from_ma50": 3.4,
-    "distance_from_ma200": 9.89,
+    "distance_from_ma20": 2.41,
+    "distance_from_ma50": 3.03,
+    "distance_from_ma200": 9.46,
     "high_52w": 7757.64,
-    "drawdown_from_high": -0.06
+    "drawdown_from_high": -0.38
   },
   "nasdaq100_trend": {
     "prev": 29722.3,
