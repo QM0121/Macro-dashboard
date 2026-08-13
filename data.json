@@ -1,18 +1,18 @@
 {
-  "last_update": "2026-08-12",
-  "last_update_time": "2026-08-12 22:35:11",
+  "last_update": "2026-08-13",
+  "last_update_time": "2026-08-13 08:30:34",
   "schema_version": 6,
   "rate": {
     "prev": 3.63,
     "current": 3.63,
-    "prev_date": "2026-08-09",
-    "current_date": "2026-08-10"
-  },
-  "yield_curve": {
-    "prev": 0.47,
-    "current": 0.48,
     "prev_date": "2026-08-10",
     "current_date": "2026-08-11"
+  },
+  "yield_curve": {
+    "prev": 0.48,
+    "current": 0.48,
+    "prev_date": "2026-08-11",
+    "current_date": "2026-08-12"
   },
   "fed_assets": {
     "prev": 6.738,
@@ -27,10 +27,10 @@
     "current_date": "2026-08-05"
   },
   "rrp": {
-    "prev": 0.975,
-    "current": 1.25,
-    "prev_date": "2026-08-10",
-    "current_date": "2026-08-11"
+    "prev": 1.25,
+    "current": 0.725,
+    "prev_date": "2026-08-11",
+    "current_date": "2026-08-12"
   },
   "nfci": {
     "prev": -0.55,
@@ -173,25 +173,25 @@
     "reference_date": "2026-07-08"
   },
   "sp500_trend": {
-    "prev": 7753.11,
-    "current": 7728.2,
-    "prev_date": "2026-08-10",
-    "current_date": "2026-08-11",
-    "return_1d": -0.32,
-    "return_5d": -0.11,
-    "return_20d": 2.45,
-    "return_60d": 3.03,
-    "ma20": 7546.53,
-    "ma50": 7500.99,
-    "ma200": 7060.26,
+    "prev": 7728.2,
+    "current": 7748.5,
+    "prev_date": "2026-08-11",
+    "current_date": "2026-08-12",
+    "return_1d": 0.26,
+    "return_5d": 0.32,
+    "return_20d": 2.33,
+    "return_60d": 4.59,
+    "ma20": 7555.33,
+    "ma50": 7503.96,
+    "ma200": 7065.31,
     "above_ma20": true,
     "above_ma50": true,
     "above_ma200": true,
-    "distance_from_ma20": 2.41,
-    "distance_from_ma50": 3.03,
-    "distance_from_ma200": 9.46,
+    "distance_from_ma20": 2.56,
+    "distance_from_ma50": 3.26,
+    "distance_from_ma200": 9.67,
     "high_52w": 7757.64,
-    "drawdown_from_high": -0.38
+    "drawdown_from_high": -0.12
   },
   "nasdaq100_trend": {
     "prev": 29621.8,
