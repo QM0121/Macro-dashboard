@@ -1,36 +1,36 @@
 {
-  "last_update": "2026-08-13",
-  "last_update_time": "2026-08-13 22:36:27",
+  "last_update": "2026-08-14",
+  "last_update_time": "2026-08-14 08:30:31",
   "schema_version": 6,
   "rate": {
     "prev": 3.63,
     "current": 3.63,
-    "prev_date": "2026-08-10",
-    "current_date": "2026-08-11"
+    "prev_date": "2026-08-11",
+    "current_date": "2026-08-12"
   },
   "yield_curve": {
     "prev": 0.48,
     "current": 0.48,
-    "prev_date": "2026-08-11",
-    "current_date": "2026-08-12"
+    "prev_date": "2026-08-12",
+    "current_date": "2026-08-13"
   },
   "fed_assets": {
-    "prev": 6.738,
-    "current": 6.749,
-    "prev_date": "2026-07-29",
-    "current_date": "2026-08-05"
+    "prev": 6.749,
+    "current": 6.76,
+    "prev_date": "2026-08-05",
+    "current_date": "2026-08-12"
   },
   "reserves": {
-    "prev": 2.985,
-    "current": 2.993,
-    "prev_date": "2026-07-29",
-    "current_date": "2026-08-05"
+    "prev": 2.993,
+    "current": 2.944,
+    "prev_date": "2026-08-05",
+    "current_date": "2026-08-12"
   },
   "rrp": {
-    "prev": 1.25,
-    "current": 0.725,
-    "prev_date": "2026-08-11",
-    "current_date": "2026-08-12"
+    "prev": 0.725,
+    "current": 0.45,
+    "prev_date": "2026-08-12",
+    "current_date": "2026-08-13"
   },
   "nfci": {
     "prev": -0.55,
@@ -167,31 +167,31 @@
     "prev_date": "2026-05-01"
   },
   "fed_assets_month_change": {
-    "prev": 136.26,
-    "current": 129.58,
-    "current_date": "2026-08-05",
-    "reference_date": "2026-07-08"
+    "prev": 129.58,
+    "current": 169.27,
+    "current_date": "2026-08-12",
+    "reference_date": "2026-07-15"
   },
   "sp500_trend": {
-    "prev": 7728.2,
-    "current": 7748.5,
-    "prev_date": "2026-08-11",
-    "current_date": "2026-08-12",
-    "return_1d": 0.26,
-    "return_5d": 0.32,
-    "return_20d": 2.33,
-    "return_60d": 4.59,
-    "ma20": 7555.33,
-    "ma50": 7503.96,
-    "ma200": 7065.31,
+    "prev": 7748.5,
+    "current": 7798.99,
+    "prev_date": "2026-08-12",
+    "current_date": "2026-08-13",
+    "return_1d": 0.65,
+    "return_5d": 1.15,
+    "return_20d": 3.52,
+    "return_60d": 5.35,
+    "ma20": 7568.59,
+    "ma50": 7507.75,
+    "ma200": 7070.35,
     "above_ma20": true,
     "above_ma50": true,
     "above_ma200": true,
-    "distance_from_ma20": 2.56,
-    "distance_from_ma50": 3.26,
-    "distance_from_ma200": 9.67,
-    "high_52w": 7757.64,
-    "drawdown_from_high": -0.12
+    "distance_from_ma20": 3.04,
+    "distance_from_ma50": 3.88,
+    "distance_from_ma200": 10.31,
+    "high_52w": 7798.99,
+    "drawdown_from_high": 0.0
   },
   "nasdaq100_trend": {
     "prev": 29525.48,
