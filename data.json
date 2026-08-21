@@ -1,36 +1,36 @@
 {
-  "last_update": "2026-08-20",
-  "last_update_time": "2026-08-20 22:07:26",
+  "last_update": "2026-08-21",
+  "last_update_time": "2026-08-21 10:07:08",
   "schema_version": 6,
   "rate": {
     "prev": 3.63,
     "current": 3.63,
-    "prev_date": "2026-08-17",
-    "current_date": "2026-08-18"
+    "prev_date": "2026-08-18",
+    "current_date": "2026-08-19"
   },
   "yield_curve": {
-    "prev": 0.52,
-    "current": 0.46,
-    "prev_date": "2026-08-18",
-    "current_date": "2026-08-19"
+    "prev": 0.46,
+    "current": 0.5,
+    "prev_date": "2026-08-19",
+    "current_date": "2026-08-20"
   },
   "fed_assets": {
-    "prev": 6.749,
-    "current": 6.76,
-    "prev_date": "2026-08-05",
-    "current_date": "2026-08-12"
+    "prev": 6.76,
+    "current": 6.746,
+    "prev_date": "2026-08-12",
+    "current_date": "2026-08-19"
   },
   "reserves": {
-    "prev": 2.993,
-    "current": 2.944,
-    "prev_date": "2026-08-05",
-    "current_date": "2026-08-12"
+    "prev": 2.944,
+    "current": 2.935,
+    "prev_date": "2026-08-12",
+    "current_date": "2026-08-19"
   },
   "rrp": {
-    "prev": 0.155,
-    "current": 0.317,
-    "prev_date": "2026-08-18",
-    "current_date": "2026-08-19"
+    "prev": 0.317,
+    "current": 0.225,
+    "prev_date": "2026-08-19",
+    "current_date": "2026-08-20"
   },
   "nfci": {
     "prev": -0.56,
@@ -39,12 +39,12 @@
     "current_date": "2026-08-14"
   },
   "hy_spread": {
-    "prev": 2.7,
-    "current": 2.75,
-    "prev_date": "2026-08-17",
-    "current_date": "2026-08-18",
-    "change_5d_abs": 0.03,
-    "change_20d_abs": 0.06
+    "prev": 2.75,
+    "current": 2.73,
+    "prev_date": "2026-08-18",
+    "current_date": "2026-08-19",
+    "change_5d_abs": 0.02,
+    "change_20d_abs": 0.05
   },
   "vix": {
     "prev": 15.84,
@@ -167,31 +167,31 @@
     "prev_date": "2026-05-01"
   },
   "fed_assets_month_change": {
-    "prev": 129.58,
-    "current": 169.27,
-    "current_date": "2026-08-12",
-    "reference_date": "2026-07-15"
+    "prev": 169.27,
+    "current": -16.79,
+    "current_date": "2026-08-19",
+    "reference_date": "2026-07-22"
   },
   "sp500_trend": {
-    "prev": 7691.76,
-    "current": 7707.98,
-    "prev_date": "2026-08-18",
-    "current_date": "2026-08-19",
-    "return_1d": 0.21,
-    "return_5d": -0.52,
-    "return_20d": 2.79,
-    "return_60d": 3.14,
-    "ma20": 7619.66,
-    "ma50": 7527.81,
-    "ma200": 7087.61,
+    "prev": 7707.98,
+    "current": 7641.16,
+    "prev_date": "2026-08-19",
+    "current_date": "2026-08-20",
+    "return_1d": -0.87,
+    "return_5d": -2.02,
+    "return_20d": 3.14,
+    "return_60d": 1.62,
+    "ma20": 7631.31,
+    "ma50": 7532.9,
+    "ma200": 7091.61,
     "above_ma20": true,
     "above_ma50": true,
     "above_ma200": true,
-    "distance_from_ma20": 1.16,
-    "distance_from_ma50": 2.39,
-    "distance_from_ma200": 8.75,
+    "distance_from_ma20": 0.13,
+    "distance_from_ma50": 1.44,
+    "distance_from_ma200": 7.75,
     "high_52w": 7798.99,
-    "drawdown_from_high": -1.17
+    "drawdown_from_high": -2.02
   },
   "nasdaq100_trend": {
     "prev": 29490.96,
