@@ -1,6 +1,6 @@
 {
-  "last_update": "2026-09-03",
-  "last_update_time": "2026-09-03 12:51:37",
+  "last_update": "2026-09-04",
+  "last_update_time": "2026-09-04 01:06:17",
   "schema_version": 6,
   "rate": {
     "prev": 3.63,
@@ -39,20 +39,20 @@
     "current_date": "2026-08-28"
   },
   "hy_spread": {
-    "prev": 2.63,
-    "current": 2.65,
-    "prev_date": "2026-08-31",
-    "current_date": "2026-09-01",
-    "change_5d_abs": -0.05,
-    "change_20d_abs": -0.08
+    "prev": 2.65,
+    "current": 2.66,
+    "prev_date": "2026-09-01",
+    "current_date": "2026-09-02",
+    "change_5d_abs": -0.01,
+    "change_20d_abs": -0.09
   },
   "vix": {
-    "prev": 14.92,
-    "current": 16.34,
-    "prev_date": "2026-08-31",
-    "current_date": "2026-09-01",
-    "change_5d_pct": 5.76,
-    "change_20d_pct": -0.97
+    "prev": 16.34,
+    "current": 15.2,
+    "prev_date": "2026-09-01",
+    "current_date": "2026-09-02",
+    "change_5d_pct": -0.07,
+    "change_20d_pct": -3.86
   },
   "sahm_rule": {
     "prev": 0.07,
@@ -82,12 +82,12 @@
     "prev_date": "2026-06-01"
   },
   "initial_claims": {
-    "current": 203000,
-    "prev": 207000,
-    "avg_4w": 205500,
-    "prev_avg_4w": 204250,
-    "current_date": "2026-08-22",
-    "prev_date": "2026-08-15"
+    "current": 206000,
+    "prev": 204000,
+    "avg_4w": 207250,
+    "prev_avg_4w": 205750,
+    "current_date": "2026-08-29",
+    "prev_date": "2026-08-22"
   },
   "cpi": {
     "current_level": 332.813,
