@@ -1,6 +1,6 @@
 {
-  "last_update": "2026-09-04",
-  "last_update_time": "2026-09-04 12:54:42",
+  "last_update": "2026-09-05",
+  "last_update_time": "2026-09-05 00:56:20",
   "schema_version": 6,
   "rate": {
     "prev": 3.63,
@@ -39,26 +39,26 @@
     "current_date": "2026-08-28"
   },
   "hy_spread": {
-    "prev": 2.65,
-    "current": 2.66,
-    "prev_date": "2026-09-01",
-    "current_date": "2026-09-02",
-    "change_5d_abs": -0.01,
-    "change_20d_abs": -0.09
+    "prev": 2.66,
+    "current": 2.65,
+    "prev_date": "2026-09-02",
+    "current_date": "2026-09-03",
+    "change_5d_abs": 0.02,
+    "change_20d_abs": -0.06
   },
   "vix": {
-    "prev": 16.34,
-    "current": 15.2,
-    "prev_date": "2026-09-01",
-    "current_date": "2026-09-02",
-    "change_5d_pct": -0.07,
-    "change_20d_pct": -3.86
+    "prev": 15.2,
+    "current": 14.32,
+    "prev_date": "2026-09-02",
+    "current_date": "2026-09-03",
+    "change_5d_pct": -1.31,
+    "change_20d_pct": -5.48
   },
   "sahm_rule": {
-    "prev": 0.07,
-    "current": -0.03,
-    "prev_date": "2026-06-01",
-    "current_date": "2026-07-01"
+    "prev": -0.03,
+    "current": -0.07,
+    "prev_date": "2026-07-01",
+    "current_date": "2026-08-01"
   },
   "leading_index": {
     "prev": 1.57,
@@ -67,19 +67,19 @@
     "current_date": "2020-02-01"
   },
   "nonfarm_payrolls": {
-    "current": -23,
-    "prev": 20,
-    "avg_3m": 20.0,
-    "level": 158858,
-    "current_date": "2026-07-01",
-    "prev_date": "2026-06-01"
+    "current": 162,
+    "prev": 21,
+    "avg_3m": 71.3,
+    "level": 159075,
+    "current_date": "2026-08-01",
+    "prev_date": "2026-07-01"
   },
   "unemployment_rate": {
     "current": 4.1,
-    "prev": 4.2,
+    "prev": 4.1,
     "change_3m": -0.2,
-    "current_date": "2026-07-01",
-    "prev_date": "2026-06-01"
+    "current_date": "2026-08-01",
+    "prev_date": "2026-07-01"
   },
   "initial_claims": {
     "current": 206000,
