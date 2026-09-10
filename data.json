@@ -1,6 +1,6 @@
 {
-  "last_update": "2026-09-10",
-  "last_update_time": "2026-09-10 13:02:30",
+  "last_update": "2026-09-11",
+  "last_update_time": "2026-09-11 01:04:11",
   "schema_version": 6,
   "rate": {
     "prev": 3.63,
@@ -35,24 +35,24 @@
   "nfci": {
     "prev": -0.56,
     "current": -0.56,
-    "prev_date": "2026-08-21",
-    "current_date": "2026-08-28"
+    "prev_date": "2026-08-28",
+    "current_date": "2026-09-04"
   },
   "hy_spread": {
-    "prev": 2.68,
-    "current": 2.67,
-    "prev_date": "2026-09-07",
-    "current_date": "2026-09-08",
-    "change_5d_abs": 0.02,
-    "change_20d_abs": -0.05
+    "prev": 2.67,
+    "current": 2.71,
+    "prev_date": "2026-09-08",
+    "current_date": "2026-09-09",
+    "change_5d_abs": 0.05,
+    "change_20d_abs": 0.0
   },
   "vix": {
-    "prev": 15.3,
-    "current": 15.72,
-    "prev_date": "2026-09-07",
-    "current_date": "2026-09-08",
-    "change_5d_pct": -3.79,
-    "change_20d_pct": 2.88
+    "prev": 15.72,
+    "current": 16.46,
+    "prev_date": "2026-09-08",
+    "current_date": "2026-09-09",
+    "change_5d_pct": 8.29,
+    "change_20d_pct": 13.13
   },
   "sahm_rule": {
     "prev": -0.03,
@@ -83,11 +83,11 @@
   },
   "initial_claims": {
     "current": 206000,
-    "prev": 204000,
-    "avg_4w": 207250,
-    "prev_avg_4w": 205750,
-    "current_date": "2026-08-29",
-    "prev_date": "2026-08-22"
+    "prev": 207000,
+    "avg_4w": 206000,
+    "prev_avg_4w": 207500,
+    "current_date": "2026-09-05",
+    "prev_date": "2026-08-29"
   },
   "cpi": {
     "current_level": 332.813,
@@ -112,15 +112,15 @@
     "prev_date": "2026-06-01"
   },
   "ppi": {
-    "current_level": 156.563,
-    "prev_level": 156.607,
-    "mom": -0.03,
-    "prev_mom": -0.11,
-    "yoy": 4.66,
-    "prev_yoy": 5.54,
-    "annualized_3m": 1.25,
-    "current_date": "2026-07-01",
-    "prev_date": "2026-06-01"
+    "current_level": 157.411,
+    "prev_level": 156.784,
+    "mom": 0.4,
+    "prev_mom": 0.07,
+    "yoy": 5.41,
+    "prev_yoy": 4.8,
+    "annualized_3m": 1.4,
+    "current_date": "2026-08-01",
+    "prev_date": "2026-07-01"
   },
   "pce": {
     "current_level": 131.659,
