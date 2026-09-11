@@ -1,6 +1,6 @@
 {
-  "last_update": "2026-09-11",
-  "last_update_time": "2026-09-11 12:59:28",
+  "last_update": "2026-09-12",
+  "last_update_time": "2026-09-12 01:04:22",
   "schema_version": 6,
   "rate": {
     "prev": 3.63,
@@ -39,20 +39,20 @@
     "current_date": "2026-09-04"
   },
   "hy_spread": {
-    "prev": 2.67,
-    "current": 2.71,
-    "prev_date": "2026-09-08",
-    "current_date": "2026-09-09",
+    "prev": 2.71,
+    "current": 2.7,
+    "prev_date": "2026-09-09",
+    "current_date": "2026-09-10",
     "change_5d_abs": 0.05,
-    "change_20d_abs": 0.0
+    "change_20d_abs": -0.01
   },
   "vix": {
-    "prev": 15.72,
-    "current": 16.46,
-    "prev_date": "2026-09-08",
-    "current_date": "2026-09-09",
-    "change_5d_pct": 8.29,
-    "change_20d_pct": 13.13
+    "prev": 16.46,
+    "current": 17.84,
+    "prev_date": "2026-09-09",
+    "current_date": "2026-09-10",
+    "change_5d_pct": 24.58,
+    "change_20d_pct": 21.94
   },
   "sahm_rule": {
     "prev": -0.03,
@@ -90,26 +90,26 @@
     "prev_date": "2026-08-29"
   },
   "cpi": {
-    "current_level": 332.813,
-    "prev_level": 332.568,
-    "mom": 0.07,
-    "prev_mom": -0.42,
-    "yoy": 3.54,
-    "prev_yoy": 3.73,
-    "annualized_3m": 0.49,
-    "current_date": "2026-07-01",
-    "prev_date": "2026-06-01"
+    "current_level": 334.131,
+    "prev_level": 332.813,
+    "mom": 0.4,
+    "prev_mom": 0.07,
+    "yoy": 3.71,
+    "prev_yoy": 3.54,
+    "annualized_3m": 0.18,
+    "current_date": "2026-08-01",
+    "prev_date": "2026-07-01"
   },
   "core_cpi": {
-    "current_level": 336.789,
-    "prev_level": 336.065,
-    "mom": 0.22,
-    "prev_mom": -0.02,
-    "yoy": 2.79,
-    "prev_yoy": 2.81,
-    "annualized_3m": 1.64,
-    "current_date": "2026-07-01",
-    "prev_date": "2026-06-01"
+    "current_level": 337.765,
+    "prev_level": 336.789,
+    "mom": 0.29,
+    "prev_mom": 0.22,
+    "yoy": 2.76,
+    "prev_yoy": 2.79,
+    "annualized_3m": 1.97,
+    "current_date": "2026-08-01",
+    "prev_date": "2026-07-01"
   },
   "ppi": {
     "current_level": 157.411,
