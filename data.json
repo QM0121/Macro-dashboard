@@ -1,6 +1,6 @@
 {
-  "last_update": "2026-09-16",
-  "last_update_time": "2026-09-16 13:04:02",
+  "last_update": "2026-09-17",
+  "last_update_time": "2026-09-17 01:40:47",
   "schema_version": 6,
   "rate": {
     "prev": 3.63,
@@ -35,24 +35,24 @@
   "nfci": {
     "prev": -0.56,
     "current": -0.56,
-    "prev_date": "2026-08-28",
-    "current_date": "2026-09-04"
+    "prev_date": "2026-09-04",
+    "current_date": "2026-09-11"
   },
   "hy_spread": {
-    "prev": 2.65,
-    "current": 2.71,
-    "prev_date": "2026-09-11",
-    "current_date": "2026-09-14",
-    "change_5d_abs": 0.03,
+    "prev": 2.71,
+    "current": 2.76,
+    "prev_date": "2026-09-14",
+    "current_date": "2026-09-15",
+    "change_5d_abs": 0.09,
     "change_20d_abs": 0.01
   },
   "vix": {
-    "prev": 15.84,
-    "current": 17.1,
-    "prev_date": "2026-09-11",
-    "current_date": "2026-09-14",
-    "change_5d_pct": 11.76,
-    "change_20d_pct": 12.57
+    "prev": 17.1,
+    "current": 17.2,
+    "prev_date": "2026-09-14",
+    "current_date": "2026-09-15",
+    "change_5d_pct": 9.41,
+    "change_20d_pct": 8.59
   },
   "sahm_rule": {
     "prev": -0.03,
@@ -145,15 +145,15 @@
     "prev_date": "2026-06-01"
   },
   "retail_sales": {
-    "current_level": 763602.0,
-    "prev_level": 768072.0,
-    "mom": -0.58,
-    "prev_mom": 0.25,
-    "yoy": 5.01,
-    "prev_yoy": 6.75,
-    "annualized_3m": 2.4,
-    "current_date": "2026-07-01",
-    "prev_date": "2026-06-01"
+    "current_level": 773947.0,
+    "prev_level": 764462.0,
+    "mom": 1.24,
+    "prev_mom": -0.54,
+    "yoy": 6.01,
+    "prev_yoy": 5.03,
+    "annualized_3m": 4.11,
+    "current_date": "2026-08-01",
+    "prev_date": "2026-07-01"
   },
   "real_pce": {
     "current_level": 16901.3,
