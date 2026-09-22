@@ -1,6 +1,6 @@
 {
-  "last_update": "2026-09-22",
-  "last_update_time": "2026-09-22 13:14:54",
+  "last_update": "2026-09-23",
+  "last_update_time": "2026-09-23 01:41:17",
   "schema_version": 6,
   "rate": {
     "prev": 3.88,
@@ -47,12 +47,12 @@
     "change_20d_abs": -0.02
   },
   "vix": {
-    "prev": 15.44,
-    "current": 14.81,
-    "prev_date": "2026-09-17",
-    "current_date": "2026-09-18",
-    "change_5d_pct": -6.5,
-    "change_20d_pct": -2.12
+    "prev": 14.81,
+    "current": 14.87,
+    "prev_date": "2026-09-18",
+    "current_date": "2026-09-21",
+    "change_5d_pct": -13.04,
+    "change_20d_pct": -6.18
   },
   "sahm_rule": {
     "prev": -0.03,
