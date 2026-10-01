@@ -1,6 +1,6 @@
 {
-  "last_update": "2026-10-01",
-  "last_update_time": "2026-10-01 14:21:11",
+  "last_update": "2026-10-02",
+  "last_update_time": "2026-10-02 02:58:02",
   "schema_version": 6,
   "rate": {
     "prev": 3.88,
@@ -27,10 +27,10 @@
     "current_date": "2026-09-23"
   },
   "rrp": {
-    "prev": 11.446,
-    "current": 11.539,
-    "prev_date": "2026-09-29",
-    "current_date": "2026-09-30"
+    "prev": 11.539,
+    "current": 0.35,
+    "prev_date": "2026-09-30",
+    "current_date": "2026-10-01"
   },
   "nfci": {
     "prev": -0.55,
@@ -39,20 +39,20 @@
     "current_date": "2026-09-25"
   },
   "hy_spread": {
-    "prev": 3.02,
-    "current": 3.08,
-    "prev_date": "2026-09-28",
-    "current_date": "2026-09-29",
-    "change_5d_abs": 0.4,
-    "change_20d_abs": 0.43
+    "prev": 3.08,
+    "current": 3.12,
+    "prev_date": "2026-09-29",
+    "current_date": "2026-09-30",
+    "change_5d_abs": 0.39,
+    "change_20d_abs": 0.46
   },
   "vix": {
-    "prev": 16.07,
-    "current": 16.04,
-    "prev_date": "2026-09-28",
-    "current_date": "2026-09-29",
-    "change_5d_pct": 12.88,
-    "change_20d_pct": -1.84
+    "prev": 16.04,
+    "current": 16.34,
+    "prev_date": "2026-09-29",
+    "current_date": "2026-09-30",
+    "change_5d_pct": 7.64,
+    "change_20d_pct": 7.5
   },
   "sahm_rule": {
     "prev": -0.03,
@@ -84,10 +84,10 @@
   "initial_claims": {
     "current": 197000,
     "prev": 198000,
-    "avg_4w": 202250,
-    "prev_avg_4w": 204000,
-    "current_date": "2026-09-19",
-    "prev_date": "2026-09-12"
+    "avg_4w": 200000,
+    "prev_avg_4w": 202500,
+    "current_date": "2026-09-26",
+    "prev_date": "2026-09-19"
   },
   "cpi": {
     "current_level": 334.131,
