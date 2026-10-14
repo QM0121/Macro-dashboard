@@ -1,6 +1,6 @@
 {
-  "last_update": "2026-10-14",
-  "last_update_time": "2026-10-14 13:11:33",
+  "last_update": "2026-10-15",
+  "last_update_time": "2026-10-15 02:06:23",
   "schema_version": 6,
   "rate": {
     "prev": 3.88,
@@ -27,10 +27,10 @@
     "current_date": "2026-10-07"
   },
   "rrp": {
-    "prev": 0.3,
-    "current": 0.275,
-    "prev_date": "2026-10-09",
-    "current_date": "2026-10-13"
+    "prev": 0.275,
+    "current": 0.201,
+    "prev_date": "2026-10-13",
+    "current_date": "2026-10-14"
   },
   "nfci": {
     "prev": -0.51,
@@ -40,19 +40,19 @@
   },
   "hy_spread": {
     "prev": 3.11,
-    "current": 3.11,
-    "prev_date": "2026-10-09",
-    "current_date": "2026-10-12",
-    "change_5d_abs": -0.01,
+    "current": 3.16,
+    "prev_date": "2026-10-12",
+    "current_date": "2026-10-13",
+    "change_5d_abs": 0.13,
     "change_20d_abs": 0.4
   },
   "vix": {
-    "prev": 14.84,
-    "current": 15.21,
-    "prev_date": "2026-10-09",
-    "current_date": "2026-10-12",
-    "change_5d_pct": -2.0,
-    "change_20d_pct": -11.05
+    "prev": 15.21,
+    "current": 15.27,
+    "prev_date": "2026-10-12",
+    "current_date": "2026-10-13",
+    "change_5d_pct": 1.73,
+    "change_20d_pct": -11.22
   },
   "sahm_rule": {
     "prev": -0.07,
@@ -90,26 +90,26 @@
     "prev_date": "2026-09-26"
   },
   "cpi": {
-    "current_level": 334.131,
-    "prev_level": 332.813,
-    "mom": 0.4,
-    "prev_mom": 0.07,
-    "yoy": 3.71,
-    "prev_yoy": 3.54,
-    "annualized_3m": 0.18,
-    "current_date": "2026-08-01",
-    "prev_date": "2026-07-01"
+    "current_level": 336.298,
+    "prev_level": 334.131,
+    "mom": 0.65,
+    "prev_mom": 0.4,
+    "yoy": 4.02,
+    "prev_yoy": 3.71,
+    "annualized_3m": 4.56,
+    "current_date": "2026-09-01",
+    "prev_date": "2026-08-01"
   },
   "core_cpi": {
-    "current_level": 337.765,
-    "prev_level": 336.789,
-    "mom": 0.29,
-    "prev_mom": 0.22,
-    "yoy": 2.76,
-    "prev_yoy": 2.79,
-    "annualized_3m": 1.97,
-    "current_date": "2026-08-01",
-    "prev_date": "2026-07-01"
+    "current_level": 338.896,
+    "prev_level": 337.765,
+    "mom": 0.33,
+    "prev_mom": 0.29,
+    "yoy": 2.79,
+    "prev_yoy": 2.76,
+    "annualized_3m": 3.41,
+    "current_date": "2026-09-01",
+    "prev_date": "2026-08-01"
   },
   "ppi": {
     "current_level": 157.411,
