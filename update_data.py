@@ -1,10 +1,11 @@
 import json
 import os
 import time
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from typing import Any, Dict, List, Optional
 
 import requests
+from history_data import SPECS, build_history, shift_month
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
@@ -23,7 +24,6 @@ SERIES = {
     "hy_spread": "BAMLH0A0HYM2",
     "vix": "VIXCLS",
     "sahm_rule": "SAHMREALTIME",
-    "leading_index": "USSLIND",
 }
 
 # 需要自行計算月增率、年增率或動能的系列。
@@ -78,6 +78,8 @@ def build_session() -> requests.Session:
 
 
 SESSION = build_session()
+OBSERVATION_CACHE = {}
+FAILED_SNAPSHOTS = set()
 
 
 def load_old_data() -> Dict[str, Any]:
@@ -94,6 +96,8 @@ def load_old_data() -> Dict[str, Any]:
 
 
 def fetch_observations(series_id: str, limit: int) -> List[Dict[str, Any]]:
+    if series_id in OBSERVATION_CACHE and len(OBSERVATION_CACHE[series_id]) >= limit:
+        return OBSERVATION_CACHE[series_id][:limit]
     if not FRED_API_KEY:
         raise RuntimeError("找不到 FRED_API_KEY，請確認 GitHub Secrets 已設定。")
 
@@ -102,7 +106,7 @@ def fetch_observations(series_id: str, limit: int) -> List[Dict[str, Any]]:
         "api_key": FRED_API_KEY,
         "file_type": "json",
         "sort_order": "desc",
-        "limit": limit,
+        "limit": max(limit, next((1100 if spec[3] == "daily" else 120 if spec[3] == "weekly" else 40 for spec in SPECS.values() if spec[0] == series_id), limit)),
     }
 
     response = SESSION.get(FRED_URL, params=params, timeout=40)
@@ -119,7 +123,8 @@ def fetch_observations(series_id: str, limit: int) -> List[Dict[str, Any]]:
     if not isinstance(observations, list):
         raise ValueError(f"{series_id} observations 格式異常。")
 
-    return observations
+    OBSERVATION_CACHE[series_id] = observations
+    return observations[:limit]
 
 
 def extract_numeric_observations(
@@ -214,75 +219,53 @@ def fetch_market_snapshot(series_id: str, change_mode: str) -> Dict[str, Any]:
     return result
 
 
+def calendar_month_values(series_id: str, count: int):
+    points = extract_numeric_observations(fetch_observations(series_id=series_id, limit=max(30, count + 6)))
+    if not points:
+        raise ValueError(f"{series_id} 找不到有效月資料。")
+    latest = date.fromisoformat(points[0]["date"])
+    lookup = {point["date"]: point["value"] for point in points}
+    stamps = [shift_month(latest, offset) for offset in range(count)]
+    return stamps, [lookup.get(stamp) for stamp in stamps]
+
+
 def fetch_growth_snapshot(series_id: str) -> Dict[str, Any]:
-    """計算月頻指標的月增率、年增率與三個月年化率。"""
-    points = extract_numeric_observations(
-        fetch_observations(series_id=series_id, limit=30)
-    )
-    values = [point["value"] for point in points]
-
-    if len(values) < 2:
-        raise ValueError(f"{series_id} 找不到足夠資料。")
-
-    mom = pct_change(values[0], values[1])
-    prev_mom = pct_change(values[1], values[2]) if len(values) > 2 else None
-    yoy = pct_change(values[0], values[12]) if len(values) > 12 else None
-    prev_yoy = pct_change(values[1], values[13]) if len(values) > 13 else None
-
-    annualized_3m = None
-    if len(values) > 3 and values[0] > 0 and values[3] > 0:
-        annualized_3m = ((values[0] / values[3]) ** 4 - 1) * 100
-
+    """按日曆月份計算成長率；缺月時不以其他月份替代。"""
+    stamps, values = calendar_month_values(series_id, 14)
+    def change(current, previous):
+        return pct_change(current, previous) if current is not None and previous is not None else None
+    annualized = ((values[0] / values[3]) ** 4 - 1) * 100 if values[0] is not None and values[3] is not None and values[0] > 0 and values[3] > 0 else None
     return {
         "current_level": round_optional(values[0], 3),
         "prev_level": round_optional(values[1], 3),
-        "mom": round_optional(mom, 2),
-        "prev_mom": round_optional(prev_mom, 2),
-        "yoy": round_optional(yoy, 2),
-        "prev_yoy": round_optional(prev_yoy, 2),
-        "annualized_3m": round_optional(annualized_3m, 2),
-        "current_date": points[0]["date"],
-        "prev_date": points[1]["date"],
+        "mom": round_optional(change(values[0], values[1]), 2),
+        "prev_mom": round_optional(change(values[1], values[2]), 2),
+        "yoy": round_optional(change(values[0], values[12]), 2),
+        "prev_yoy": round_optional(change(values[1], values[13]), 2),
+        "annualized_3m": round_optional(annualized, 2),
+        "current_date": stamps[0], "prev_date": stamps[1],
     }
 
 
 def fetch_payroll_snapshot(series_id: str) -> Dict[str, Any]:
-    """PAYEMS 單位為千人；以月差計算非農新增就業與三個月平均。"""
-    points = extract_numeric_observations(
-        fetch_observations(series_id=series_id, limit=12)
-    )
-    values = [point["value"] for point in points]
-
-    if len(values) < 4:
-        raise ValueError(f"{series_id} 找不到足夠資料。")
-
-    changes = [values[index] - values[index + 1] for index in range(3)]
-
+    """PAYEMS 單位為千人；缺月時不跨月計算新增就業。"""
+    stamps, values = calendar_month_values(series_id, 4)
+    changes = [values[i] - values[i+1] if values[i] is not None and values[i+1] is not None else None for i in range(3)]
     return {
-        "current": int(round(changes[0])),
-        "prev": int(round(changes[1])),
-        "avg_3m": round(sum(changes) / len(changes), 1),
-        "level": int(round(values[0])),
-        "current_date": points[0]["date"],
-        "prev_date": points[1]["date"],
+        "current": round_optional(changes[0], 0),
+        "prev": round_optional(changes[1], 0),
+        "avg_3m": round(sum(changes) / 3, 1) if all(value is not None for value in changes) else None,
+        "level": round_optional(values[0], 0),
+        "current_date": stamps[0], "prev_date": stamps[1],
     }
 
 
 def fetch_unemployment_snapshot(series_id: str) -> Dict[str, Any]:
-    points = extract_numeric_observations(
-        fetch_observations(series_id=series_id, limit=12)
-    )
-    values = [point["value"] for point in points]
-
-    if len(values) < 4:
-        raise ValueError(f"{series_id} 找不到足夠資料。")
-
+    stamps, values = calendar_month_values(series_id, 4)
     return {
-        "current": round(values[0], 2),
-        "prev": round(values[1], 2),
-        "change_3m": round(values[0] - values[3], 2),
-        "current_date": points[0]["date"],
-        "prev_date": points[1]["date"],
+        "current": round_optional(values[0], 2), "prev": round_optional(values[1], 2),
+        "change_3m": round(values[0] - values[3], 2) if values[0] is not None and values[3] is not None else None,
+        "current_date": stamps[0], "prev_date": stamps[1],
     }
 
 
@@ -441,11 +424,13 @@ def fallback_or_default(
     error: Exception,
     default: Dict[str, Any],
 ) -> Dict[str, Any]:
+    FAILED_SNAPSHOTS.add(key)
+    safe_error = str(error).replace(FRED_API_KEY, "[redacted]") if FRED_API_KEY else str(error)
     if key in old_data:
-        print(f"[警告] {key} 更新失敗，保留舊資料。原因：{error}")
+        print(f"[警告] {key} 更新失敗，保留舊資料。原因：{safe_error}")
         return old_data[key]
 
-    print(f"[警告] {key} 更新失敗，先寫入空值。原因：{error}")
+    print(f"[警告] {key} 更新失敗，先寫入空值。原因：{safe_error}")
     return default
 
 
@@ -459,7 +444,7 @@ def main() -> None:
     taipei_time = datetime.now(timezone.utc) + timedelta(hours=8)
     data["last_update"] = taipei_time.strftime("%Y-%m-%d")
     data["last_update_time"] = taipei_time.strftime("%Y-%m-%d %H:%M:%S")
-    data["schema_version"] = 6
+    data["schema_version"] = 7
 
     print(f"[開始] 更新股市與總經資料：{data['last_update_time']} Asia/Taipei")
 
@@ -567,8 +552,15 @@ def main() -> None:
                 market_default.copy(),
             )
 
-    with open(DATA_FILE, "w", encoding="utf-8") as file:
+    data["history"] = build_history(fetch_observations, old_data.get("history"))
+    data["data_health"] = {
+        "snapshot_failures": sorted(FAILED_SNAPSHOTS),
+        "history_failures": [key for key, value in data["history"].items() if value["fetch_status"] != "ok"],
+        "history_vintage": "current_revised",
+    }
+    with open(DATA_FILE + ".tmp", "w", encoding="utf-8") as file:
         json.dump(data, file, ensure_ascii=False, indent=2)
+    os.replace(DATA_FILE + ".tmp", DATA_FILE)
 
     print(f"[成功] 已更新 {DATA_FILE}")
 

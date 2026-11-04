@@ -45,7 +45,7 @@
               <div class="eyebrow">目前美股市場狀態</div>
               <div class="panel-v focus-verdict" id="market-regime">資料載入中</div>
               <p class="regime-note focus-note" id="market-note">
-                正在檢查廣泛市場、科技股與市場廣度。
+                正在檢查廣泛市場、科技股與市場廣度代理。
               </p>
             </div>
 
@@ -96,14 +96,14 @@
               <p id="tech-market-detail">科技板塊與半導體。</p>
             </div>
             <div class="regime-score-card" id="breadth-market-card">
-              <div class="regime-score-head"><span>市場廣度</span><b id="breadth-market-score">--</b></div>
+              <div class="regime-score-head"><span>市場廣度代理</span><b id="breadth-market-score">--</b></div>
               <strong id="breadth-market-regime">資料載入中</strong>
               <p id="breadth-market-detail">等權重是否同步。</p>
             </div>
           </div>
 
           <details class="index-breakdown">
-            <summary>查看 6 項指數明細</summary>
+            <summary>查看 7 項指數明細</summary>
             <div class="bear-check-grid market-index-grid compact-index-grid">
               <div class="bear-check" id="market-check-sp500">
                 <span>S&amp;P 500</span><b id="market-check-sp500-label">讀取中</b><small id="market-check-sp500-note">大型股廣泛市場</small>
@@ -117,6 +117,7 @@
               <div class="bear-check" id="market-check-equalweight">
                 <span>大型股等權重</span><b id="market-check-equalweight-label">讀取中</b><small id="market-check-equalweight-note">降低巨頭權重扭曲</small>
               </div>
+              <div class="bear-check" id="market-check-nasdaqequal"><span>Nasdaq-100 等權重</span><b id="market-check-nasdaqequal-label">讀取中</b><small id="market-check-nasdaqequal-note">等權重成長股</small></div>
               <div class="bear-check" id="market-check-tech">
                 <span>科技板塊</span><b id="market-check-tech-label">讀取中</b><small id="market-check-tech-note">科技股本身</small>
               </div>
@@ -127,17 +128,18 @@
           </details>
 
           <div class="focus-footer">
-            <span>更新：<b id="last-update">--</b></span>
-            <span>版本：<b>6.2</b></span>
+            <span>抓取時間：<b id="last-update">--</b></span>
+            <span>版本：<b>7.0</b></span>
             <span>主判斷：<b>股票市場</b></span>
           </div>
-          <div class="score-disclaimer focus-disclaimer">總經、通膨與就業只用來解釋市場背景，不會直接改變首頁牛熊判斷。</div>
+          <div id="data-health" class="data-health" role="status"></div><div class="score-disclaimer focus-disclaimer">總經、通膨與就業只用來解釋市場背景，不會直接改變首頁牛熊判斷。</div>
         </aside>
       </section>
     </div>
   </header>
 
   <main class="container">
+    <nav class="metric-nav" aria-label="指標分類"><a href="#history-market">股市</a><a href="#history-stress">風險</a><a href="#history-inflation">通膨</a><a href="#history-labor">就業</a><a href="#history-liquidity">流動性</a></nav>
 
     <section class="section-head" id="dashboard">
       <div>
@@ -151,7 +153,7 @@
 
     <section class="dashboard-grid">
 
-      <article class="card metric-card color-blue detail-rate">
+      <article class="card metric-card color-blue detail-rate" id="history-rates">
         <div class="card-top">
           <div>
             <span class="card-icon">R</span>
@@ -162,7 +164,7 @@
 
         <div class="metric-main">
           <div>
-            <div class="metric-label">聯邦基金利率</div>
+            <div class="metric-label">有效聯邦基金利率</div>
             <div class="big-number">
               <span id="rate-current">--</span><small>%</small>
             </div>
@@ -184,7 +186,7 @@
 
 
 
-      <article class="card metric-card color-purple detail-curve">
+      <article class="card metric-card color-purple detail-curve" id="history-curve">
         <div class="card-top">
           <div>
             <span class="card-icon">Y</span>
@@ -215,7 +217,7 @@
         </div>
       </article>
 
-      <article class="card metric-card color-orange wide detail-inflation">
+      <article class="card metric-card color-orange wide detail-inflation" id="history-inflation">
         <div class="card-top">
           <div>
             <span class="card-icon">I</span>
@@ -265,7 +267,7 @@
         <div class="status-line" id="inflation-status">資料載入中</div>
       </article>
 
-      <article class="card metric-card color-teal wide detail-liquidity">
+      <article class="card metric-card color-teal wide detail-liquidity" id="history-liquidity">
         <div class="card-top">
           <div>
             <span class="card-icon">Q</span>
@@ -282,7 +284,7 @@
           </div>
 
           <div class="submetric">
-            <p>資產單月變動</p>
+            <p>資產近四週變動</p>
             <div><b id="assets-change-current">--</b><small>億美元</small></div>
             <span>前值 <strong id="assets-change-prev">--</strong></span>
           </div>
@@ -303,7 +305,7 @@
         <div class="status-line" id="liquidity-status">資料載入中</div>
       </article>
 
-      <article class="card metric-card color-amber wide detail-risk">
+      <article class="card metric-card color-amber wide detail-risk" id="history-stress">
         <div class="card-top">
           <div>
             <span class="card-icon">S</span>
@@ -341,7 +343,7 @@
         <div class="status-line" id="risk-status">資料載入中</div>
       </article>
 
-      <article class="card metric-card color-rose wide detail-labor">
+      <article class="card metric-card color-rose wide detail-labor" id="history-labor">
         <div class="card-top">
           <div>
             <span class="card-icon">L</span>
@@ -397,7 +399,7 @@
         <div class="status-line" id="labor-status">資料載入中</div>
       </article>
 
-      <article class="card metric-card color-cyan wide detail-consumption">
+      <article class="card metric-card color-cyan wide detail-consumption" id="history-consumption">
         <div class="card-top">
           <div>
             <span class="card-icon">C</span>
@@ -435,7 +437,7 @@
         <div class="status-line" id="consumption-status">資料載入中</div>
       </article>
 
-      <article class="card metric-card color-indigo wide detail-trend">
+      <article class="card metric-card color-indigo wide detail-trend" id="history-market">
         <div class="card-top">
           <div>
             <span class="card-icon">M</span>
@@ -445,12 +447,6 @@
         </div>
 
         <div class="trend-grid">
-          <div class="submetric">
-            <p>美國領先指標</p>
-            <div><b id="leading-current">--</b></div>
-            <span>前值 <strong id="leading-prev">--</strong></span>
-          </div>
-
           <div class="submetric">
             <p>S&P 500</p>
             <div><b id="sp-current">--</b></div>
@@ -499,6 +495,7 @@
 
     </section>
 
+    <details class="methodology"><summary>評分方法與資料說明</summary><p>市場強度為自訂趨勢評分，並非上漲機率，也不是經驗證的報酬預測。指數權重：S&amp;P 500 25%、Nasdaq-100 20%、Nasdaq Composite 15%、大型股等權重 15%、Nasdaq-100 等權重 10%、科技板塊 10%、半導體 5%。</p><p>單項評分依據：站上 200 日線 25 分、50 日線高於 200 日線 15 分、站上 50 日線 10 分、距高點回撤 25 分、60 日報酬 15 分、20 日報酬 10 分；依條件分級給分。VIX 調整 −10 至 +2 分，信用利差調整 −7 至 +1 分；分歧與同步轉空時另設分數上限。資料缺漏會重新分配可用權重，必須至少保留 55% 原始權重才顯示總分。</p><p>廣度分項以等權重及綜合指數作為代理，並非直接統計上漲家數。走勢圖使用 FRED 最新修訂後歷史數據；月資料日期代表所屬月份，並非發布日。非交易日略過，長時間資料中斷則斷線呈現。已移除停止更新的 USSLIND 指標。</p><p>初領失業金來源為美國勞工部就業與訓練管理局；有效聯邦基金利率並非政策目標區間。圖表不回填歷史市場總分，避免將最新修訂資料誤當成當時可得的訊號。</p></details>
     <section class="guide-grid">
       <article class="guide-card">
         <h3>如何快速判讀？</h3>
@@ -531,7 +528,7 @@
       <div class="sources-grid">
         <a class="source" href="https://www.bls.gov/" target="_blank" rel="noopener">
           <div class="source-title">BLS</div>
-          <div class="source-desc">非農就業、失業率、CPI、PPI 與初領失業相關資料</div>
+          <div class="source-desc">非農就業、失業率、CPI 與 PPI</div>
         </a>
 
         <a class="source" href="https://www.bea.gov/" target="_blank" rel="noopener">
@@ -570,6 +567,7 @@
     </div>
   </footer>
 
+  <script src="charts.js" defer></script>
   <script>
     if ("scrollRestoration" in history) {
       history.scrollRestoration = "manual";
@@ -852,7 +850,7 @@
       const spDrawdown = indexResults.sp500.drawdown;
       const compDrawdown = indexResults.nasdaqcomp.drawdown;
 
-      // 硬性限制：科技股已在熊市時，整體不能顯示強勢牛市；市場廣度差時也不能顯示強勢牛市。
+      // 硬性限制：科技股已在熊市時，整體不能顯示強勢牛市；市場廣度代理差時也不能顯示強勢牛市。
       if (techScore !== null && techScore < 40 && broadScore !== null && broadScore >= 60) score = Math.min(score, 59);
       if (breadthScore !== null && breadthScore < 45) score = Math.min(score, 59);
 
@@ -865,7 +863,7 @@
         validCount >= 5 && below200Count >= 5
       ) score = Math.min(score, 19);
 
-      // 強勢牛市必須由廣泛市場、科技領導與市場廣度共同確認。
+      // 強勢牛市必須由廣泛市場、科技領導與市場廣度代理共同確認。
       if (score >= 80 && !(
         broadScore !== null && broadScore >= 75 &&
         techScore !== null && techScore >= 70 &&
@@ -877,7 +875,7 @@
 
       score = Math.max(0, Math.min(100, Math.round(score)));
       const state = classifyMarketScore(score);
-      let note = `廣泛市場 ${broadScore ?? "--"} 分、科技／成長股 ${techScore ?? "--"} 分、市場廣度 ${breadthScore ?? "--"} 分。`;
+      let note = `廣泛市場 ${broadScore ?? "--"} 分、科技／成長股 ${techScore ?? "--"} 分、市場廣度代理 ${breadthScore ?? "--"} 分。`;
       if (broadScore !== null && techScore !== null && Math.abs(broadScore - techScore) >= 20) {
         note += broadScore > techScore
           ? "大型廣泛指數明顯強於科技股，市場內部分化。"
@@ -1084,12 +1082,12 @@
       if (rateNow !== null && ratePrev !== null) {
         if (rateNow < ratePrev - 0.01) {
           score += 1;
-          reasons.push("政策利率下降");
+          reasons.push("有效聯邦基金利率下降");
         } else if (rateNow > ratePrev + 0.01) {
           score -= 1;
-          reasons.push("政策利率上升");
+          reasons.push("有效聯邦基金利率上升");
         } else {
-          reasons.push("政策利率持平");
+          reasons.push("有效聯邦基金利率持平");
         }
       }
 
@@ -1144,19 +1142,6 @@
 
       score += consumption.score;
       reasons.push(`消費：${consumption.label}`);
-
-      const leading = toValidNumber(data.leading_index?.current);
-      if (leading !== null) {
-        if (leading > 0.5) {
-          score += 1;
-          reasons.push("領先指標維持正成長");
-        } else if (leading < 0) {
-          score -= 1;
-          reasons.push("領先指標轉為負值");
-        } else {
-          reasons.push("領先指標接近零成長");
-        }
-      }
 
       const result = {
         score,
@@ -1353,6 +1338,7 @@
       renderRegimeLadder(market.score, market.label);
 
       const components = market.components;
+      setBearCheck("market-check-nasdaqequal", "market-check-nasdaqequal-label", "market-check-nasdaqequal-note", components.nasdaqEqual.level, components.nasdaqEqual.label, components.nasdaqEqual.note);
       setBearCheck("market-check-sp500", "market-check-sp500-label", "market-check-sp500-note",
         components.sp500.level, components.sp500.label, components.sp500.note);
       setBearCheck("market-check-nasdaq100", "market-check-nasdaq100-label", "market-check-nasdaq100-note",
@@ -1462,13 +1448,13 @@
 
       if (assessment.market.level === "good") {
         setSignal("signal-trend", "good", assessment.market.label);
-        setStatus("trend-status", "good", "多個美股指數與市場廣度共同確認牛市狀態。" );
+        setStatus("trend-status", "good", "廣泛市場偏多；請搭配科技股與廣度代理分項，確認是否存在市場分化。" );
       } else if (assessment.market.level === "bad") {
         setSignal("signal-trend", "bad", assessment.market.label);
         setStatus("trend-status", "bad", "多個美股指數的長期趨勢、回撤或科技領導已進入熊市區間。" );
       } else {
         setSignal("signal-trend", "warn", assessment.market.label);
-        setStatus("trend-status", "warn", "股市位於牛熊分界，廣泛市場、科技股或市場廣度尚未同步確認。" );
+        setStatus("trend-status", "warn", "股市位於牛熊分界，廣泛市場、科技股或市場廣度代理尚未同步確認。" );
       }
 
       const renderIndexSnapshot = (cardId, valueId, noteId, result) => {
@@ -1502,7 +1488,7 @@
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
 
-        setText("last-update", data.last_update);
+        setText("last-update", `${data.last_update_time || data.last_update} 台北`);
 
         setText("rate-prev", formatNumber(data.rate?.prev, 2));
         setText("rate-current", formatNumber(data.rate?.current, 2));
@@ -1574,6 +1560,8 @@
         setMAStatus("sp-ma50-status", trend.above_ma50, "50 日線");
         setMAStatus("sp-ma200-status", trend.above_ma200, "200 日線");
 
+        window.dashboardData = data;
+        window.dispatchEvent(new CustomEvent("dashboard:ready", {detail: data}));
         const assessment = judgeMarket(data);
         updateSignals(data, assessment);
       } catch (err) {
