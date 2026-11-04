@@ -1,8 +1,11 @@
-# Macro Dashboard · v7
+# Macro Dashboard · v7.1
 
 以美股趨勢為主、總經資料為背景的 GitHub Pages 儀表板。
 
 ## 本版功能
+
+- 圖下兩句動態解讀：顯示期間的首末變化，以及與指標定義相符的解釋。
+- 「如何判讀與數據明細」預設收合，整合指標用途、觀察重點、常見誤讀、官方說明與原有數據；避免重複訊號堆疊。
 
 - 30 組真實 FRED 歷史序列，各保留截至最新觀察日的一年資料。
 - 每個類別可切換指標與近三個月、半年、一年；可放大、觸控及以方向鍵查看數值。
@@ -15,6 +18,8 @@
 
 - `index.html`、`styles.css`：介面與手機排版。
 - `charts.js`：SVG 互動圖表。
+- `interpretation.js`：30 項指標教學與依可見資料產生的規則式解讀。
+- `test_interpretation.cjs`：解讀單位、缺資料、過期資料與期間切換檢查。
 - `data.json`：最新摘要、歷史觀察值與抓取狀態。
 - `update_data.py`、`history_data.py`：FRED API 抓取、歷史轉換與資料品質紀錄。
 - `test_history.py`：成長率、單位、均線與更新失敗處理測試。
@@ -27,6 +32,7 @@
 ```bash
 pip install requests
 python -m unittest test_history.py
+node --test test_interpretation.cjs
 python update_data.py
 ```
 

@@ -129,7 +129,7 @@
 
           <div class="focus-footer">
             <span>抓取時間：<b id="last-update">--</b></span>
-            <span>版本：<b>7.0</b></span>
+            <span>版本：<b>7.1</b></span>
             <span>主判斷：<b>股票市場</b></span>
           </div>
           <div id="data-health" class="data-health" role="status"></div><div class="score-disclaimer focus-disclaimer">總經、通膨與就業只用來解釋市場背景，不會直接改變首頁牛熊判斷。</div>
@@ -144,10 +144,10 @@
     <section class="section-head" id="dashboard">
       <div>
         <div class="eyebrow">Dashboard</div>
-        <h2>先判斷股市，再查看經濟背景</h2>
+        <h2>從走勢讀懂市場</h2>
       </div>
       <p>
-        首頁牛熊分數由多個美股指數、科技領導、等權重廣度、VIX 與信用壓力決定。下方利率、通膨、就業與消費只用來解釋市場為何轉強或轉弱。
+        選擇指標，看走勢與簡短解讀；需要背景或完整數字時，再展開「如何判讀與數據明細」。
       </p>
     </section>
 
@@ -567,6 +567,7 @@
     </div>
   </footer>
 
+  <script src="interpretation.js" defer></script>
   <script src="charts.js" defer></script>
   <script>
     if ("scrollRestoration" in history) {
@@ -875,13 +876,19 @@
 
       score = Math.max(0, Math.min(100, Math.round(score)));
       const state = classifyMarketScore(score);
-      let note = `廣泛市場 ${broadScore ?? "--"} 分、科技／成長股 ${techScore ?? "--"} 分、市場廣度代理 ${breadthScore ?? "--"} 分。`;
-      if (broadScore !== null && techScore !== null && Math.abs(broadScore - techScore) >= 20) {
-        note += broadScore > techScore
-          ? "大型廣泛指數明顯強於科技股，市場內部分化。"
-          : "科技股明顯強於廣泛市場，需留意漲勢集中。";
+      let note;
+      if (broadScore === null || techScore === null || breadthScore === null) {
+        note = "部分分項資料不足，請展開指數明細確認。";
+      } else if (broadScore >= 60 && techScore < 60) {
+        note = "廣泛市場偏多，但科技／成長股尚未同步轉強，市場仍有分化。";
+      } else if (techScore >= 60 && (broadScore < 60 || breadthScore < 60)) {
+        note = "科技／成長股較強，但廣泛市場或廣度尚未同步，需留意漲勢集中。";
+      } else if (broadScore >= 60 && techScore >= 60 && breadthScore >= 60) {
+        note = "廣泛市場、科技股與廣度代理均偏多；分數描述目前趨勢，並非上漲機率。";
+      } else if (broadScore < 40 && techScore < 40) {
+        note = "廣泛市場與科技股同步偏弱，需留意壓力是否擴散至信用及就業。";
       } else {
-        note += "主要市場分項方向大致一致。";
+        note = "主要分項尚未形成一致方向，請比較市場分項與下方背景指標。";
       }
 
       return {

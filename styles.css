@@ -2452,3 +2452,29 @@ button:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible,
 .metric-main>.observation-date{
   flex-basis:100%
 }
+
+/* v7.1: progressive disclosure, with one quiet reading below each chart. */
+[hidden] { display: none !important; }
+.reading-ready .metric-card > .status-line { display: none; }
+.reading-ready .metric-card .history-chart { margin-top: 14px; padding-top: 0; border-top: 0; margin-bottom: 0; }
+.chart-options:empty { display: none; }
+.chart-reading { margin: 18px 0 14px; padding-top: 14px; border-top: 1px solid var(--line); }
+.chart-reading p { margin: 0; }
+.reading-observation { color: #a8bbd0; font-size: 12px; line-height: 1.8; font-variant-numeric: tabular-nums; }
+.chart-reading .reading-meaning { margin-top: 5px; color: #d6e2f1; font-size: 14px; line-height: 1.85; }
+.chart-guide { border-top: 1px solid var(--line); }
+.chart-guide > summary { padding: 14px 0 2px; color: #b7c9dc; font-size: 12px; line-height: 1.7; cursor: pointer; }
+.chart-guide[open] > summary { padding-bottom: 12px; }
+.chart-guide-body p { margin: 0 0 12px; color: #bacadd; font-size: 13px; line-height: 1.9; }
+.chart-guide-body strong { color: #e0e9f5; font-size: 12px; margin-right: 9px; font-weight: 600; }
+.chart-guide-body a { color: #9fc9c3; font-size: 11px; text-decoration: underline; text-underline-offset: 3px; }
+.chart-snapshot { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--line); }
+.chart-snapshot-title { font-size: 12px; color: #a7bbd3; margin: 0 0 14px; }
+.chart-snapshot .metric-main { margin: 0; }
+.methodology .guide-grid { margin: 20px 0 8px; }
+.methodology .guide-card { padding: 16px; box-shadow: none; }
+@media (max-width: 560px) {
+  .chart-reading .reading-meaning { font-size: 13px; }
+  .chart-guide > summary { padding: 14px 0 8px; }
+  .chart-guide-body p { font-size: 12px; }
+}

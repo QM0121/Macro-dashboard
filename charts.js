@@ -35,14 +35,19 @@
       figure.className = 'history-chart';
       article.querySelector('.status-line').before(figure);
       createView(figure, keys, keys[0], false);
-      const grid = article.querySelector('.inflation-grid, .labor-grid, .liquidity-grid, .risk-grid, .consumption-grid, .trend-grid');
+      const grid = article.querySelector('.inflation-grid, .labor-grid, .liquidity-grid, .risk-grid, .consumption-grid, .trend-grid, .metric-main');
       if (grid) {
-        const details = document.createElement('details');
-        details.className = 'metric-details';
-        details.innerHTML = '<summary>查看最新數值明細</summary>';
-        grid.before(details); details.append(grid);
+        const snapshot = document.createElement('div');
+        snapshot.className = 'chart-snapshot';
+        const title = document.createElement('p'); title.className = 'chart-snapshot-title'; title.textContent = '本類最新數據';
+        snapshot.append(title, grid);
+        figure.querySelector('.chart-guide').append(snapshot);
       }
+      article.querySelector('.insight-list')?.remove();
     });
+    const previousGuide = document.querySelector('.guide-grid');
+    if (previousGuide) document.querySelector('.methodology')?.append(previousGuide);
+    document.body.classList.add('reading-ready');
     const fields = {
       'rate-current':'rate','yield-current':'yield_curve','assets-current':'fed_assets','assets-change-current':'fed_assets_month_change',
       'reserves-current':'reserves','rrp-current':'rrp','nfci-current':'nfci','hy-current':'hy_spread','vix-current':'vix','vix-change5':'vix',
@@ -75,7 +80,7 @@
 
   function createView(root, keys, initial, expanded, initialDays = 365) {
     let selected = initial, days = initialDays, showMA = true, active = 0;
-    root.innerHTML = `<div class="chart-toolbar"><label class="chart-metric-label"><span class="sr-only">選擇指標</span><select aria-label="選擇走勢指標">${keys.map(key => `<option value="${key}">${escape(data.history?.[key]?.label || key)}</option>`).join('')}</select></label><div class="chart-periods" role="group" aria-label="走勢期間">${[[90,'3月'],[180,'6月'],[365,'1年']].map(([value,label]) => `<button type="button" data-days="${value}" aria-pressed="${value === days}">${label}</button>`).join('')}</div>${expanded ? '' : '<button type="button" class="chart-expand" aria-label="放大走勢圖">放大 ↗</button>'}</div><div class="chart-meta"></div><div class="chart-options"></div><output class="chart-readout" aria-live="polite"></output><div class="chart-plot"></div><figcaption class="chart-caption"></figcaption>`;
+    root.innerHTML = `<div class="chart-toolbar"><label class="chart-metric-label"><span class="sr-only">選擇指標</span><select aria-label="選擇走勢指標">${keys.map(key => `<option value="${key}">${escape(data.history?.[key]?.label || key)}</option>`).join('')}</select></label><div class="chart-periods" role="group" aria-label="走勢期間">${[[90,'3月'],[180,'6月'],[365,'1年']].map(([value,label]) => `<button type="button" data-days="${value}" aria-pressed="${value === days}">${label}</button>`).join('')}</div>${expanded ? '' : '<button type="button" class="chart-expand" aria-label="放大走勢圖">放大 ↗</button>'}</div><div class="chart-meta"></div><div class="chart-options"></div><output class="chart-readout" aria-live="polite"></output><div class="chart-plot"></div><figcaption class="chart-caption"></figcaption><div class="chart-reading"><p class="reading-observation"></p><p class="reading-meaning"></p></div><details class="chart-guide"><summary>如何判讀與數據明細</summary><div class="chart-guide-body"></div></details>`;
     const select = root.querySelector('select'); select.value = selected;
     const plot = root.querySelector('.chart-plot');
     const readout = root.querySelector('output');
@@ -95,6 +100,24 @@
     function render() {
       const series = data.history?.[selected];
       if (expanded) dialog.querySelector('h2').textContent = series?.label || '歷史走勢';
+      const reading = window.MacroReading?.explain(selected, series, days);
+      root.querySelector('.chart-reading').hidden = !reading;
+      if (reading) {
+        root.querySelector('.reading-observation').textContent = reading.observation;
+        root.querySelector('.reading-meaning').textContent = reading.meaning;
+        const body = root.querySelector('.chart-guide-body');
+        body.replaceChildren();
+        if (reading.guide) {
+          for (const [label, text] of [['這是什麼',reading.guide.definition], ['觀察重點',reading.guide.watch], ['容易誤讀',reading.guide.caution]]) {
+            const paragraph = document.createElement('p');
+            const title = document.createElement('strong'); title.textContent = label;
+            paragraph.append(title, document.createTextNode(text)); body.append(paragraph);
+          }
+          if (reading.guide.source) {
+            const source = document.createElement('a'); source.href = reading.guide.source[1]; source.textContent = reading.guide.source[0]; source.target = '_blank'; source.rel = 'noopener noreferrer'; body.append(source);
+          }
+        }
+      }
       const meta = root.querySelector('.chart-meta');
       const options = root.querySelector('.chart-options');
       const caption = root.querySelector('.chart-caption');
