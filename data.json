@@ -1,18 +1,18 @@
 {
   "last_update": "2026-11-11",
-  "last_update_time": "2026-11-11 04:31:50",
+  "last_update_time": "2026-11-11 14:54:57",
   "schema_version": 7,
   "rate": {
     "prev": 3.88,
     "current": 3.88,
-    "prev_date": "2026-11-05",
-    "current_date": "2026-11-06"
+    "prev_date": "2026-11-08",
+    "current_date": "2026-11-09"
   },
   "yield_curve": {
-    "prev": 0.35,
-    "current": 0.32,
-    "prev_date": "2026-11-06",
-    "current_date": "2026-11-09"
+    "prev": 0.32,
+    "current": 0.25,
+    "prev_date": "2026-11-09",
+    "current_date": "2026-11-10"
   },
   "fed_assets": {
     "prev": 6.746,
@@ -167,151 +167,151 @@
     "reference_date": "2026-10-07"
   },
   "sp500_trend": {
-    "prev": 7376.86,
-    "current": 7549.94,
-    "prev_date": "2026-11-06",
-    "current_date": "2026-11-09",
-    "return_1d": 2.35,
-    "return_5d": 0.11,
-    "return_20d": -3.3,
-    "return_60d": -3.03,
-    "ma20": 7644.94,
-    "ma50": 7676.21,
-    "ma200": 7328.22,
+    "prev": 7549.94,
+    "current": 7520.93,
+    "prev_date": "2026-11-09",
+    "current_date": "2026-11-10",
+    "return_1d": -0.38,
+    "return_5d": -0.63,
+    "return_20d": -3.65,
+    "return_60d": -2.89,
+    "ma20": 7630.71,
+    "ma50": 7672.91,
+    "ma200": 7331.08,
     "above_ma20": false,
     "above_ma50": false,
     "above_ma200": true,
-    "distance_from_ma20": -1.24,
-    "distance_from_ma50": -1.64,
-    "distance_from_ma200": 3.03,
+    "distance_from_ma20": -1.44,
+    "distance_from_ma50": -1.98,
+    "distance_from_ma200": 2.59,
     "high_52w": 7818.93,
-    "drawdown_from_high": -3.44
+    "drawdown_from_high": -3.81
   },
   "nasdaq100_trend": {
-    "prev": 26989.99,
-    "current": 27907.63,
-    "prev_date": "2026-11-06",
-    "current_date": "2026-11-09",
-    "return_1d": 3.4,
-    "return_5d": -0.29,
-    "return_20d": -8.99,
-    "return_60d": -7.12,
-    "ma20": 28953.09,
-    "ma50": 29602.19,
-    "ma200": 27995.4,
+    "prev": 27907.63,
+    "current": 27740.8,
+    "prev_date": "2026-11-09",
+    "current_date": "2026-11-10",
+    "return_1d": -0.6,
+    "return_5d": -1.56,
+    "return_20d": -9.25,
+    "return_60d": -7.52,
+    "ma20": 28811.66,
+    "ma50": 29567.86,
+    "ma200": 28005.54,
     "above_ma20": false,
     "above_ma50": false,
     "above_ma200": false,
-    "distance_from_ma20": -3.61,
-    "distance_from_ma50": -5.72,
-    "distance_from_ma200": -0.31,
+    "distance_from_ma20": -3.72,
+    "distance_from_ma50": -6.18,
+    "distance_from_ma200": -0.95,
     "high_52w": 31224.69,
-    "drawdown_from_high": -10.62
+    "drawdown_from_high": -11.16
   },
   "nasdaq_composite_trend": {
-    "prev": 24579.42,
-    "current": 25253.14,
-    "prev_date": "2026-11-06",
-    "current_date": "2026-11-09",
-    "return_1d": 2.74,
-    "return_5d": 0.35,
-    "return_20d": -7.31,
-    "return_60d": -5.52,
-    "ma20": 25975.61,
-    "ma50": 26434.84,
-    "ma200": 25107.04,
+    "prev": 25253.14,
+    "current": 25065.87,
+    "prev_date": "2026-11-09",
+    "current_date": "2026-11-10",
+    "return_1d": -0.74,
+    "return_5d": -1.21,
+    "return_20d": -7.86,
+    "return_60d": -5.93,
+    "ma20": 25868.69,
+    "ma50": 26408.74,
+    "ma200": 25114.37,
     "above_ma20": false,
     "above_ma50": false,
-    "above_ma200": true,
-    "distance_from_ma20": -2.78,
-    "distance_from_ma50": -4.47,
-    "distance_from_ma200": 0.58,
+    "above_ma200": false,
+    "distance_from_ma20": -3.1,
+    "distance_from_ma50": -5.08,
+    "distance_from_ma200": -0.19,
     "high_52w": 27599.89,
-    "drawdown_from_high": -8.5
+    "drawdown_from_high": -9.18
   },
   "largecap_equal_weight_trend": {
-    "prev": 2840.64,
-    "current": 2911.88,
-    "prev_date": "2026-11-06",
-    "current_date": "2026-11-09",
-    "return_1d": 2.51,
-    "return_5d": 0.59,
-    "return_20d": 1.95,
-    "return_60d": -2.18,
-    "ma20": 2872.57,
-    "ma50": 2858.85,
-    "ma200": 2760.95,
+    "prev": 2911.88,
+    "current": 2908.94,
+    "prev_date": "2026-11-09",
+    "current_date": "2026-11-10",
+    "return_1d": -0.1,
+    "return_5d": 0.54,
+    "return_20d": 1.92,
+    "return_60d": -1.46,
+    "ma20": 2875.31,
+    "ma50": 2858.6,
+    "ma200": 2762.34,
     "above_ma20": true,
     "above_ma50": true,
     "above_ma200": true,
-    "distance_from_ma20": 1.37,
-    "distance_from_ma50": 1.86,
-    "distance_from_ma200": 5.47,
+    "distance_from_ma20": 1.17,
+    "distance_from_ma50": 1.76,
+    "distance_from_ma200": 5.31,
     "high_52w": 2976.72,
-    "drawdown_from_high": -2.18
+    "drawdown_from_high": -2.28
   },
   "nasdaq100_equal_weight_trend": {
-    "prev": 11459.21,
-    "current": 11822.74,
-    "prev_date": "2026-11-06",
-    "current_date": "2026-11-09",
-    "return_1d": 3.17,
-    "return_5d": -0.22,
-    "return_20d": -4.41,
-    "return_60d": -7.06,
-    "ma20": 12002.22,
-    "ma50": 12162.85,
-    "ma200": 11559.98,
+    "prev": 11822.74,
+    "current": 11776.41,
+    "prev_date": "2026-11-09",
+    "current_date": "2026-11-10",
+    "return_1d": -0.39,
+    "return_5d": -0.69,
+    "return_20d": -4.4,
+    "return_60d": -6.92,
+    "ma20": 11975.11,
+    "ma50": 12149.47,
+    "ma200": 11565.31,
     "above_ma20": false,
     "above_ma50": false,
     "above_ma200": true,
-    "distance_from_ma20": -1.5,
-    "distance_from_ma50": -2.8,
-    "distance_from_ma200": 2.27,
+    "distance_from_ma20": -1.66,
+    "distance_from_ma50": -3.07,
+    "distance_from_ma200": 1.83,
     "high_52w": 12727.14,
-    "drawdown_from_high": -7.11
+    "drawdown_from_high": -7.47
   },
   "nasdaq_tech_trend": {
-    "prev": 14672.32,
-    "current": 15337.56,
-    "prev_date": "2026-11-06",
-    "current_date": "2026-11-09",
-    "return_1d": 4.53,
-    "return_5d": -1.81,
-    "return_20d": -13.95,
-    "return_60d": -14.11,
-    "ma20": 16347.55,
-    "ma50": 17068.96,
-    "ma200": 15534.67,
+    "prev": 15337.56,
+    "current": 15217.85,
+    "prev_date": "2026-11-09",
+    "current_date": "2026-11-10",
+    "return_1d": -0.78,
+    "return_5d": -3.45,
+    "return_20d": -14.19,
+    "return_60d": -14.64,
+    "ma20": 16221.75,
+    "ma50": 17027.16,
+    "ma200": 15545.09,
     "above_ma20": false,
     "above_ma50": false,
     "above_ma200": false,
-    "distance_from_ma20": -6.18,
-    "distance_from_ma50": -10.14,
-    "distance_from_ma200": -1.27,
+    "distance_from_ma20": -6.19,
+    "distance_from_ma50": -10.63,
+    "distance_from_ma200": -2.11,
     "high_52w": 18608.21,
-    "drawdown_from_high": -17.58
+    "drawdown_from_high": -18.22
   },
   "semiconductor_trend": {
-    "prev": 12059.03,
-    "current": 12885.65,
-    "prev_date": "2026-11-06",
-    "current_date": "2026-11-09",
-    "return_1d": 6.85,
-    "return_5d": -2.85,
-    "return_20d": -17.98,
-    "return_60d": -19.07,
-    "ma20": 14015.5,
-    "ma50": 14974.73,
-    "ma200": 13895.0,
+    "prev": 12885.65,
+    "current": 12839.93,
+    "prev_date": "2026-11-09",
+    "current_date": "2026-11-10",
+    "return_1d": -0.35,
+    "return_5d": -5.68,
+    "return_20d": -18.08,
+    "return_60d": -20.67,
+    "ma20": 13873.81,
+    "ma50": 14935.64,
+    "ma200": 13908.54,
     "above_ma20": false,
     "above_ma50": false,
     "above_ma200": false,
-    "distance_from_ma20": -8.06,
-    "distance_from_ma50": -13.95,
-    "distance_from_ma200": -7.26,
+    "distance_from_ma20": -7.45,
+    "distance_from_ma50": -14.03,
+    "distance_from_ma200": -7.68,
     "high_52w": 18757.24,
-    "drawdown_from_high": -31.3
+    "drawdown_from_high": -31.55
   },
   "history": {
     "rate": {
@@ -320,20 +320,8 @@
       "unit": "%",
       "frequency": "daily",
       "transform": "level",
-      "as_of": "2026-11-06",
+      "as_of": "2026-11-09",
       "points": [
-        {
-          "date": "2025-11-06",
-          "value": 3.87
-        },
-        {
-          "date": "2025-11-07",
-          "value": 3.87
-        },
-        {
-          "date": "2025-11-08",
-          "value": 3.87
-        },
         {
           "date": "2025-11-09",
           "value": 3.87
@@ -1785,6 +1773,18 @@
         {
           "date": "2026-11-06",
           "value": 3.88
+        },
+        {
+          "date": "2026-11-07",
+          "value": 3.88
+        },
+        {
+          "date": "2026-11-08",
+          "value": 3.88
+        },
+        {
+          "date": "2026-11-09",
+          "value": 3.88
         }
       ],
       "fetch_status": "ok"
@@ -1795,7 +1795,7 @@
       "unit": "百分點",
       "frequency": "daily",
       "transform": "level",
-      "as_of": "2026-11-09",
+      "as_of": "2026-11-10",
       "points": [
         {
           "date": "2025-11-10",
@@ -2796,6 +2796,10 @@
         {
           "date": "2026-11-09",
           "value": 0.32
+        },
+        {
+          "date": "2026-11-10",
+          "value": 0.25
         }
       ],
       "fetch_status": "ok"
@@ -7841,7 +7845,7 @@
       "unit": "點",
       "frequency": "daily",
       "transform": "level",
-      "as_of": "2026-11-09",
+      "as_of": "2026-11-10",
       "points": [
         {
           "date": "2025-11-10",
@@ -9097,6 +9101,11 @@
           "date": "2026-11-09",
           "value": 7549.94,
           "ma200": 7328.2249
+        },
+        {
+          "date": "2026-11-10",
+          "value": 7520.93,
+          "ma200": 7331.0784
         }
       ],
       "fetch_status": "ok"
@@ -9107,7 +9116,7 @@
       "unit": "點",
       "frequency": "daily",
       "transform": "level",
-      "as_of": "2026-11-09",
+      "as_of": "2026-11-10",
       "points": [
         {
           "date": "2025-11-10",
@@ -10363,6 +10372,11 @@
           "date": "2026-11-09",
           "value": 27907.63,
           "ma200": 27995.4035
+        },
+        {
+          "date": "2026-11-10",
+          "value": 27740.8,
+          "ma200": 28005.5414
         }
       ],
       "fetch_status": "ok"
@@ -10373,7 +10387,7 @@
       "unit": "點",
       "frequency": "daily",
       "transform": "level",
-      "as_of": "2026-11-09",
+      "as_of": "2026-11-10",
       "points": [
         {
           "date": "2025-11-10",
@@ -11629,6 +11643,11 @@
           "date": "2026-11-09",
           "value": 25253.14,
           "ma200": 25107.0449
+        },
+        {
+          "date": "2026-11-10",
+          "value": 25065.87,
+          "ma200": 25114.3675
         }
       ],
       "fetch_status": "ok"
@@ -11639,7 +11658,7 @@
       "unit": "點",
       "frequency": "daily",
       "transform": "level",
-      "as_of": "2026-11-09",
+      "as_of": "2026-11-10",
       "points": [
         {
           "date": "2025-11-10",
@@ -12895,6 +12914,11 @@
           "date": "2026-11-09",
           "value": 2911.88,
           "ma200": 2760.9546
+        },
+        {
+          "date": "2026-11-10",
+          "value": 2908.94,
+          "ma200": 2762.338
         }
       ],
       "fetch_status": "ok"
@@ -12905,7 +12929,7 @@
       "unit": "點",
       "frequency": "daily",
       "transform": "level",
-      "as_of": "2026-11-09",
+      "as_of": "2026-11-10",
       "points": [
         {
           "date": "2025-11-10",
@@ -14161,6 +14185,11 @@
           "date": "2026-11-09",
           "value": 11822.74,
           "ma200": 11559.984
+        },
+        {
+          "date": "2026-11-10",
+          "value": 11776.41,
+          "ma200": 11565.31
         }
       ],
       "fetch_status": "ok"
@@ -14171,7 +14200,7 @@
       "unit": "點",
       "frequency": "daily",
       "transform": "level",
-      "as_of": "2026-11-09",
+      "as_of": "2026-11-10",
       "points": [
         {
           "date": "2025-11-10",
@@ -15427,6 +15456,11 @@
           "date": "2026-11-09",
           "value": 15337.56,
           "ma200": 15534.6684
+        },
+        {
+          "date": "2026-11-10",
+          "value": 15217.85,
+          "ma200": 15545.0853
         }
       ],
       "fetch_status": "ok"
@@ -15437,7 +15471,7 @@
       "unit": "點",
       "frequency": "daily",
       "transform": "level",
-      "as_of": "2026-11-09",
+      "as_of": "2026-11-10",
       "points": [
         {
           "date": "2025-11-10",
@@ -16693,6 +16727,11 @@
           "date": "2026-11-09",
           "value": 12885.65,
           "ma200": 13895.0035
+        },
+        {
+          "date": "2026-11-10",
+          "value": 12839.93,
+          "ma200": 13908.5431
         }
       ],
       "fetch_status": "ok"
