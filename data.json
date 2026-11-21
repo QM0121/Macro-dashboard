@@ -1,6 +1,6 @@
 {
   "last_update": "2026-11-21",
-  "last_update_time": "2026-11-21 05:24:54",
+  "last_update_time": "2026-11-21 15:33:34",
   "schema_version": 7,
   "rate": {
     "prev": 3.88,
@@ -9,10 +9,10 @@
     "current_date": "2026-11-19"
   },
   "yield_curve": {
-    "prev": 0.27,
-    "current": 0.28,
-    "prev_date": "2026-11-18",
-    "current_date": "2026-11-19"
+    "prev": 0.28,
+    "current": 0.29,
+    "prev_date": "2026-11-19",
+    "current_date": "2026-11-20"
   },
   "fed_assets": {
     "prev": 6.759,
@@ -1795,12 +1795,8 @@
       "unit": "百分點",
       "frequency": "daily",
       "transform": "level",
-      "as_of": "2026-11-19",
+      "as_of": "2026-11-20",
       "points": [
-        {
-          "date": "2025-11-19",
-          "value": 0.55
-        },
         {
           "date": "2025-11-20",
           "value": 0.55
@@ -2800,6 +2796,10 @@
         {
           "date": "2026-11-19",
           "value": 0.28
+        },
+        {
+          "date": "2026-11-20",
+          "value": 0.29
         }
       ],
       "fetch_status": "ok"
