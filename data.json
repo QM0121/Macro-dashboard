@@ -1,6 +1,6 @@
 {
   "last_update": "2026-11-26",
-  "last_update_time": "2026-11-26 06:39:16",
+  "last_update_time": "2026-11-26 16:44:18",
   "schema_version": 7,
   "rate": {
     "prev": 3.88,
@@ -188,130 +188,130 @@
     "drawdown_from_high": -7.9
   },
   "nasdaq100_trend": {
-    "prev": 26746.1,
-    "current": 26214.17,
-    "prev_date": "2026-11-23",
-    "current_date": "2026-11-24",
-    "return_1d": -1.99,
-    "return_5d": -2.92,
-    "return_20d": -11.59,
-    "return_60d": -11.01,
-    "ma20": 27595.23,
-    "ma50": 29122.17,
-    "ma200": 28086.38,
+    "prev": 26214.17,
+    "current": 26046.9,
+    "prev_date": "2026-11-24",
+    "current_date": "2026-11-25",
+    "return_1d": -0.64,
+    "return_5d": -3.94,
+    "return_20d": -12.63,
+    "return_60d": -10.42,
+    "ma20": 27406.92,
+    "ma50": 29064.21,
+    "ma200": 28090.98,
     "above_ma20": false,
     "above_ma50": false,
     "above_ma200": false,
-    "distance_from_ma20": -5.0,
-    "distance_from_ma50": -9.99,
-    "distance_from_ma200": -6.67,
+    "distance_from_ma20": -4.96,
+    "distance_from_ma50": -10.38,
+    "distance_from_ma200": -7.28,
     "high_52w": 31224.69,
-    "drawdown_from_high": -16.05
+    "drawdown_from_high": -16.58
   },
   "nasdaq_composite_trend": {
-    "prev": 24089.56,
-    "current": 23733.54,
-    "prev_date": "2026-11-23",
-    "current_date": "2026-11-24",
-    "return_1d": -1.48,
-    "return_5d": -2.45,
-    "return_20d": -10.36,
-    "return_60d": -10.0,
-    "ma20": 24860.72,
-    "ma50": 26026.55,
-    "ma200": 25165.23,
+    "prev": 23733.54,
+    "current": 23585.8,
+    "prev_date": "2026-11-24",
+    "current_date": "2026-11-25",
+    "return_1d": -0.62,
+    "return_5d": -3.46,
+    "return_20d": -11.16,
+    "return_60d": -9.63,
+    "ma20": 24712.52,
+    "ma50": 25978.69,
+    "ma200": 25167.65,
     "above_ma20": false,
     "above_ma50": false,
     "above_ma200": false,
-    "distance_from_ma20": -4.53,
-    "distance_from_ma50": -8.81,
-    "distance_from_ma200": -5.69,
+    "distance_from_ma20": -4.56,
+    "distance_from_ma50": -9.21,
+    "distance_from_ma200": -6.29,
     "high_52w": 27599.89,
-    "drawdown_from_high": -14.01
+    "drawdown_from_high": -14.54
   },
   "largecap_equal_weight_trend": {
-    "prev": 2791.96,
-    "current": 2799.34,
-    "prev_date": "2026-11-23",
-    "current_date": "2026-11-24",
-    "return_1d": 0.26,
-    "return_5d": -1.11,
-    "return_20d": -2.82,
-    "return_60d": -4.18,
-    "ma20": 2863.5,
-    "ma50": 2849.99,
-    "ma200": 2773.11,
+    "prev": 2799.34,
+    "current": 2821.81,
+    "prev_date": "2026-11-24",
+    "current_date": "2026-11-25",
+    "return_1d": 0.8,
+    "return_5d": -0.12,
+    "return_20d": -2.14,
+    "return_60d": -2.52,
+    "ma20": 2860.42,
+    "ma50": 2850.0,
+    "ma200": 2773.91,
     "above_ma20": false,
     "above_ma50": false,
     "above_ma200": true,
-    "distance_from_ma20": -2.24,
-    "distance_from_ma50": -1.78,
-    "distance_from_ma200": 0.95,
+    "distance_from_ma20": -1.35,
+    "distance_from_ma50": -0.99,
+    "distance_from_ma200": 1.73,
     "high_52w": 2976.72,
-    "drawdown_from_high": -5.96
+    "drawdown_from_high": -5.2
   },
   "nasdaq100_equal_weight_trend": {
-    "prev": 11318.54,
-    "current": 11207.7,
-    "prev_date": "2026-11-23",
-    "current_date": "2026-11-24",
-    "return_1d": -0.98,
-    "return_5d": -2.17,
-    "return_20d": -8.17,
-    "return_60d": -9.94,
-    "ma20": 11669.38,
-    "ma50": 12016.27,
-    "ma200": 11613.4,
+    "prev": 11207.7,
+    "current": 11238.08,
+    "prev_date": "2026-11-24",
+    "current_date": "2026-11-25",
+    "return_1d": 0.27,
+    "return_5d": -1.92,
+    "return_20d": -8.34,
+    "return_60d": -8.18,
+    "ma20": 11618.29,
+    "ma50": 12002.87,
+    "ma200": 11617.36,
     "above_ma20": false,
     "above_ma50": false,
     "above_ma200": false,
-    "distance_from_ma20": -3.96,
-    "distance_from_ma50": -6.73,
-    "distance_from_ma200": -3.49,
+    "distance_from_ma20": -3.27,
+    "distance_from_ma50": -6.37,
+    "distance_from_ma200": -3.26,
     "high_52w": 12727.14,
-    "drawdown_from_high": -11.94
+    "drawdown_from_high": -11.7
   },
   "nasdaq_tech_trend": {
-    "prev": 14444.94,
-    "current": 13867.26,
-    "prev_date": "2026-11-23",
-    "current_date": "2026-11-24",
-    "return_1d": -4.0,
-    "return_5d": -5.19,
-    "return_20d": -18.42,
-    "return_60d": -19.88,
-    "ma20": 15185.98,
-    "ma50": 16593.85,
-    "ma200": 15640.02,
+    "prev": 13867.26,
+    "current": 13852.7,
+    "prev_date": "2026-11-24",
+    "current_date": "2026-11-25",
+    "return_1d": -0.1,
+    "return_5d": -5.4,
+    "return_20d": -19.4,
+    "return_60d": -17.72,
+    "ma20": 15019.31,
+    "ma50": 16538.82,
+    "ma200": 15646.72,
     "above_ma20": false,
     "above_ma50": false,
     "above_ma200": false,
-    "distance_from_ma20": -8.68,
-    "distance_from_ma50": -16.43,
-    "distance_from_ma200": -11.33,
+    "distance_from_ma20": -7.77,
+    "distance_from_ma50": -16.24,
+    "distance_from_ma200": -11.47,
     "high_52w": 18608.21,
-    "drawdown_from_high": -25.48
+    "drawdown_from_high": -25.56
   },
   "semiconductor_trend": {
-    "prev": 12316.32,
-    "current": 11345.78,
-    "prev_date": "2026-11-23",
-    "current_date": "2026-11-24",
-    "return_1d": -7.88,
-    "return_5d": -8.39,
-    "return_20d": -23.04,
-    "return_60d": -23.31,
-    "ma20": 12835.49,
-    "ma50": 14453.12,
-    "ma200": 14014.19,
+    "prev": 11345.78,
+    "current": 11271.74,
+    "prev_date": "2026-11-24",
+    "current_date": "2026-11-25",
+    "return_1d": -0.65,
+    "return_5d": -9.08,
+    "return_20d": -24.86,
+    "return_60d": -22.16,
+    "ma20": 12649.03,
+    "ma50": 14389.88,
+    "ma200": 14018.72,
     "above_ma20": false,
     "above_ma50": false,
     "above_ma200": false,
-    "distance_from_ma20": -11.61,
-    "distance_from_ma50": -21.5,
-    "distance_from_ma200": -19.04,
+    "distance_from_ma20": -10.89,
+    "distance_from_ma50": -21.67,
+    "distance_from_ma200": -19.6,
     "high_52w": 18757.24,
-    "drawdown_from_high": -39.51
+    "drawdown_from_high": -39.91
   },
   "history": {
     "rate": {
@@ -9124,13 +9124,8 @@
       "unit": "點",
       "frequency": "daily",
       "transform": "level",
-      "as_of": "2026-11-24",
+      "as_of": "2026-11-25",
       "points": [
-        {
-          "date": "2025-11-24",
-          "value": 24873.85,
-          "ma200": 22349.9516
-        },
         {
           "date": "2025-11-25",
           "value": 25018.36,
@@ -10385,6 +10380,11 @@
           "date": "2026-11-24",
           "value": 26214.17,
           "ma200": 28086.3833
+        },
+        {
+          "date": "2026-11-25",
+          "value": 26046.9,
+          "ma200": 28090.9796
         }
       ],
       "fetch_status": "ok"
@@ -10395,13 +10395,8 @@
       "unit": "點",
       "frequency": "daily",
       "transform": "level",
-      "as_of": "2026-11-24",
+      "as_of": "2026-11-25",
       "points": [
-        {
-          "date": "2025-11-24",
-          "value": 22872.01,
-          "ma200": 20260.6735
-        },
         {
           "date": "2025-11-25",
           "value": 23025.59,
@@ -11656,6 +11651,11 @@
           "date": "2026-11-24",
           "value": 23733.54,
           "ma200": 25165.2313
+        },
+        {
+          "date": "2026-11-25",
+          "value": 23585.8,
+          "ma200": 25167.648
         }
       ],
       "fetch_status": "ok"
@@ -11666,13 +11666,8 @@
       "unit": "點",
       "frequency": "daily",
       "transform": "level",
-      "as_of": "2026-11-24",
+      "as_of": "2026-11-25",
       "points": [
-        {
-          "date": "2025-11-24",
-          "value": 2480.21,
-          "ma200": 2386.5253
-        },
         {
           "date": "2025-11-25",
           "value": 2514.7,
@@ -12927,6 +12922,11 @@
           "date": "2026-11-24",
           "value": 2799.34,
           "ma200": 2773.1092
+        },
+        {
+          "date": "2026-11-25",
+          "value": 2821.81,
+          "ma200": 2773.9097
         }
       ],
       "fetch_status": "ok"
@@ -12937,13 +12937,8 @@
       "unit": "點",
       "frequency": "daily",
       "transform": "level",
-      "as_of": "2026-11-24",
+      "as_of": "2026-11-25",
       "points": [
-        {
-          "date": "2025-11-24",
-          "value": 10088.2,
-          "ma200": 9661.7465
-        },
         {
           "date": "2025-11-25",
           "value": 10190.09,
@@ -14198,6 +14193,11 @@
           "date": "2026-11-24",
           "value": 11207.7,
           "ma200": 11613.4001
+        },
+        {
+          "date": "2026-11-25",
+          "value": 11238.08,
+          "ma200": 11617.3626
         }
       ],
       "fetch_status": "ok"
@@ -14208,13 +14208,8 @@
       "unit": "點",
       "frequency": "daily",
       "transform": "level",
-      "as_of": "2026-11-24",
+      "as_of": "2026-11-25",
       "points": [
-        {
-          "date": "2025-11-24",
-          "value": 12138.7,
-          "ma200": 11250.782
-        },
         {
           "date": "2025-11-25",
           "value": 12233.49,
@@ -15469,6 +15464,11 @@
           "date": "2026-11-24",
           "value": 13867.26,
           "ma200": 15640.0247
+        },
+        {
+          "date": "2026-11-25",
+          "value": 13852.7,
+          "ma200": 15646.7155
         }
       ],
       "fetch_status": "ok"
@@ -15479,13 +15479,8 @@
       "unit": "點",
       "frequency": "daily",
       "transform": "level",
-      "as_of": "2026-11-24",
+      "as_of": "2026-11-25",
       "points": [
-        {
-          "date": "2025-11-24",
-          "value": 8560.31,
-          "ma200": 6950.5564
-        },
         {
           "date": "2025-11-25",
           "value": 8574.33,
@@ -16740,6 +16735,11 @@
           "date": "2026-11-24",
           "value": 11345.78,
           "ma200": 14014.1928
+        },
+        {
+          "date": "2026-11-25",
+          "value": 11271.74,
+          "ma200": 14018.7216
         }
       ],
       "fetch_status": "ok"
