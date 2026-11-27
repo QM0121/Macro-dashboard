@@ -1,36 +1,36 @@
 {
-  "last_update": "2026-11-27",
-  "last_update_time": "2026-11-27 16:55:19",
+  "last_update": "2026-11-28",
+  "last_update_time": "2026-11-28 06:13:00",
   "schema_version": 7,
   "rate": {
     "prev": 3.88,
     "current": 3.88,
-    "prev_date": "2026-11-23",
-    "current_date": "2026-11-24"
+    "prev_date": "2026-11-25",
+    "current_date": "2026-11-26"
   },
   "yield_curve": {
-    "prev": 0.28,
-    "current": 0.24,
-    "prev_date": "2026-11-24",
-    "current_date": "2026-11-25"
+    "prev": 0.24,
+    "current": 0.25,
+    "prev_date": "2026-11-25",
+    "current_date": "2026-11-27"
   },
   "fed_assets": {
-    "prev": 6.759,
-    "current": 6.741,
-    "prev_date": "2026-11-11",
-    "current_date": "2026-11-18"
+    "prev": 6.741,
+    "current": 6.732,
+    "prev_date": "2026-11-18",
+    "current_date": "2026-11-25"
   },
   "reserves": {
-    "prev": 2.961,
-    "current": 2.98,
-    "prev_date": "2026-11-11",
-    "current_date": "2026-11-18"
+    "prev": 2.98,
+    "current": 2.964,
+    "prev_date": "2026-11-18",
+    "current_date": "2026-11-25"
   },
   "rrp": {
-    "prev": 0.301,
-    "current": 0.3,
-    "prev_date": "2026-11-24",
-    "current_date": "2026-11-25"
+    "prev": 0.3,
+    "current": 0.35,
+    "prev_date": "2026-11-25",
+    "current_date": "2026-11-27"
   },
   "nfci": {
     "prev": -0.45,
@@ -39,20 +39,20 @@
     "current_date": "2026-11-20"
   },
   "hy_spread": {
-    "prev": 3.63,
-    "current": 3.72,
-    "prev_date": "2026-11-23",
-    "current_date": "2026-11-24",
-    "change_5d_abs": 0.29,
-    "change_20d_abs": 0.54
+    "prev": 3.77,
+    "current": 3.77,
+    "prev_date": "2026-11-25",
+    "current_date": "2026-11-26",
+    "change_5d_abs": 0.25,
+    "change_20d_abs": 0.51
   },
   "vix": {
-    "prev": 26.62,
-    "current": 26.36,
-    "prev_date": "2026-11-23",
-    "current_date": "2026-11-24",
-    "change_5d_pct": 3.53,
-    "change_20d_pct": 50.46
+    "prev": 28.29,
+    "current": 26.8,
+    "prev_date": "2026-11-25",
+    "current_date": "2026-11-26",
+    "change_5d_pct": -5.77,
+    "change_20d_pct": 55.81
   },
   "sahm_rule": {
     "prev": 0.0,
@@ -161,31 +161,31 @@
     "prev_date": "2026-09-01"
   },
   "fed_assets_month_change": {
-    "prev": 32.28,
-    "current": -121.52,
-    "current_date": "2026-11-18",
-    "reference_date": "2026-10-21"
+    "prev": -121.52,
+    "current": -135.91,
+    "current_date": "2026-11-25",
+    "reference_date": "2026-10-28"
   },
   "sp500_trend": {
-    "prev": 7237.17,
-    "current": 7201.09,
-    "prev_date": "2026-11-23",
-    "current_date": "2026-11-24",
-    "return_1d": -0.5,
-    "return_5d": -1.9,
-    "return_20d": -6.75,
-    "return_60d": -6.31,
-    "ma20": 7451.18,
-    "ma50": 7609.91,
-    "ma200": 7351.29,
+    "prev": 7201.09,
+    "current": 7182.78,
+    "prev_date": "2026-11-24",
+    "current_date": "2026-11-25",
+    "return_1d": -0.25,
+    "return_5d": -1.92,
+    "return_20d": -7.25,
+    "return_60d": -5.88,
+    "ma20": 7423.12,
+    "ma50": 7602.53,
+    "ma200": 7352.49,
     "above_ma20": false,
     "above_ma50": false,
     "above_ma200": false,
-    "distance_from_ma20": -3.36,
-    "distance_from_ma50": -5.37,
-    "distance_from_ma200": -2.04,
+    "distance_from_ma20": -3.24,
+    "distance_from_ma50": -5.52,
+    "distance_from_ma200": -2.31,
     "high_52w": 7818.93,
-    "drawdown_from_high": -7.9
+    "drawdown_from_high": -8.14
   },
   "nasdaq100_trend": {
     "prev": 26214.17,
@@ -320,16 +320,8 @@
       "unit": "%",
       "frequency": "daily",
       "transform": "level",
-      "as_of": "2026-11-24",
+      "as_of": "2026-11-26",
       "points": [
-        {
-          "date": "2025-11-24",
-          "value": 3.88
-        },
-        {
-          "date": "2025-11-25",
-          "value": 3.88
-        },
         {
           "date": "2025-11-26",
           "value": 3.88
@@ -1785,6 +1777,14 @@
         {
           "date": "2026-11-24",
           "value": 3.88
+        },
+        {
+          "date": "2026-11-25",
+          "value": 3.88
+        },
+        {
+          "date": "2026-11-26",
+          "value": 3.88
         }
       ],
       "fetch_status": "ok"
@@ -1795,16 +1795,8 @@
       "unit": "百分點",
       "frequency": "daily",
       "transform": "level",
-      "as_of": "2026-11-25",
+      "as_of": "2026-11-27",
       "points": [
-        {
-          "date": "2025-11-25",
-          "value": 0.58
-        },
-        {
-          "date": "2025-11-26",
-          "value": 0.55
-        },
         {
           "date": "2025-11-28",
           "value": 0.55
@@ -2800,6 +2792,10 @@
         {
           "date": "2026-11-25",
           "value": 0.24
+        },
+        {
+          "date": "2026-11-27",
+          "value": 0.25
         }
       ],
       "fetch_status": "ok"
@@ -2810,12 +2806,8 @@
       "unit": "兆美元",
       "frequency": "weekly",
       "transform": "level",
-      "as_of": "2026-11-18",
+      "as_of": "2026-11-25",
       "points": [
-        {
-          "date": "2025-11-19",
-          "value": 6.5553
-        },
         {
           "date": "2025-11-26",
           "value": 6.5524
@@ -3023,6 +3015,10 @@
         {
           "date": "2026-11-18",
           "value": 6.7415
+        },
+        {
+          "date": "2026-11-25",
+          "value": 6.732
         }
       ],
       "fetch_status": "ok"
@@ -3033,12 +3029,8 @@
       "unit": "億美元",
       "frequency": "weekly",
       "transform": "change4",
-      "as_of": "2026-11-18",
+      "as_of": "2026-11-25",
       "points": [
-        {
-          "date": "2025-11-19",
-          "value": -342.5
-        },
         {
           "date": "2025-11-26",
           "value": -346.15
@@ -3246,6 +3238,10 @@
         {
           "date": "2026-11-18",
           "value": -121.52
+        },
+        {
+          "date": "2026-11-25",
+          "value": -135.91
         }
       ],
       "fetch_status": "ok"
@@ -3256,12 +3252,8 @@
       "unit": "兆美元",
       "frequency": "weekly",
       "transform": "level",
-      "as_of": "2026-11-18",
+      "as_of": "2026-11-25",
       "points": [
-        {
-          "date": "2025-11-19",
-          "value": 2.8886
-        },
         {
           "date": "2025-11-26",
           "value": 2.8966
@@ -3469,6 +3461,10 @@
         {
           "date": "2026-11-18",
           "value": 2.9797
+        },
+        {
+          "date": "2026-11-25",
+          "value": 2.9637
         }
       ],
       "fetch_status": "ok"
@@ -3479,16 +3475,8 @@
       "unit": "十億美元",
       "frequency": "daily",
       "transform": "level",
-      "as_of": "2026-11-25",
+      "as_of": "2026-11-27",
       "points": [
-        {
-          "date": "2025-11-25",
-          "value": 2.314
-        },
-        {
-          "date": "2025-11-26",
-          "value": 2.217
-        },
         {
           "date": "2025-11-28",
           "value": 7.561
@@ -4480,6 +4468,10 @@
         {
           "date": "2026-11-25",
           "value": 0.3
+        },
+        {
+          "date": "2026-11-27",
+          "value": 0.35
         }
       ],
       "fetch_status": "ok"
@@ -4713,16 +4705,8 @@
       "unit": "%",
       "frequency": "daily",
       "transform": "level",
-      "as_of": "2026-11-24",
+      "as_of": "2026-11-26",
       "points": [
-        {
-          "date": "2025-11-24",
-          "value": 3.15
-        },
-        {
-          "date": "2025-11-25",
-          "value": 3.1
-        },
         {
           "date": "2025-11-26",
           "value": 3.0
@@ -5770,6 +5754,14 @@
         {
           "date": "2026-11-24",
           "value": 3.72
+        },
+        {
+          "date": "2026-11-25",
+          "value": 3.77
+        },
+        {
+          "date": "2026-11-26",
+          "value": 3.77
         }
       ],
       "fetch_status": "ok"
@@ -5780,16 +5772,8 @@
       "unit": "指數",
       "frequency": "daily",
       "transform": "level",
-      "as_of": "2026-11-24",
+      "as_of": "2026-11-26",
       "points": [
-        {
-          "date": "2025-11-24",
-          "value": 20.52
-        },
-        {
-          "date": "2025-11-25",
-          "value": 18.56
-        },
         {
           "date": "2025-11-26",
           "value": 17.19
@@ -6817,6 +6801,14 @@
         {
           "date": "2026-11-24",
           "value": 26.36
+        },
+        {
+          "date": "2026-11-25",
+          "value": 28.29
+        },
+        {
+          "date": "2026-11-26",
+          "value": 26.8
         }
       ],
       "fetch_status": "ok"
@@ -7853,13 +7845,8 @@
       "unit": "點",
       "frequency": "daily",
       "transform": "level",
-      "as_of": "2026-11-24",
+      "as_of": "2026-11-25",
       "points": [
-        {
-          "date": "2025-11-24",
-          "value": 6705.12,
-          "ma200": 6166.1423
-        },
         {
           "date": "2025-11-25",
           "value": 6765.88,
@@ -9114,6 +9101,11 @@
           "date": "2026-11-24",
           "value": 7201.09,
           "ma200": 7351.286
+        },
+        {
+          "date": "2026-11-25",
+          "value": 7182.78,
+          "ma200": 7352.4908
         }
       ],
       "fetch_status": "ok"
